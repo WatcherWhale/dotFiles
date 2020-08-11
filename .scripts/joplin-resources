@@ -1,0 +1,13 @@
+#!/bin/sh
+
+RESOURCES_LINK="/home/watcherwhale/.config/joplin/tmp/resources"
+RESOURCES_DIR="/home/watcherwhale/.config/joplin/resources"
+
+#run every 5 seconds with a cron trigger set for every minute
+for i in {1..12};
+do
+    if [ ! -L "$RESOURCES_LINK" ];then
+        ln -s "$RESOURCES_DIR" "$RESOURCES_LINK"
+    fi
+    sleep 5
+done

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+country="ch"
+
+if [ "$1" == "stop" ] || [ "$1" == "disconnect" ] || [ "$1" == "d" ]; then
+    nordvpn d
+elif [ "$1" == "t" ] || [ "$1" == "toggle" ]; then
+    server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -F '.' '{ print $1}')"
+
+    if [ "$server" == "" ]; then
+        nordvpn c $country
+    else
+        nordvpn d
+    fi
+
+else
+    nordvpn c $1
+fi

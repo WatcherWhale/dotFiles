@@ -1,0 +1,9 @@
+#!/bin/sh
+
+updates=$((checkupdates; yay -Qum) | wc -l)
+
+if [ "$updates" != "0" ]; then
+    echo "%{F#bf616a} %{F#88c0d0}$updates"
+else
+    echo "%{F#a3be8c} %{F#88c0d0}$updates"
+fi

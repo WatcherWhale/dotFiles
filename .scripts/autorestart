@@ -1,0 +1,8 @@
+#!/bin/sh
+
+sh -c '~/.config/i3/scripts/picom.sh' &
+sh -c '~/.config/i3/scripts/polybar.sh' &
+sh -c '~/.scripts/notifications' &
+sh -c '~/.scripts/background' &
+
+sh -c '~/.scripts/xob/start.sh' &

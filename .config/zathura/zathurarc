@@ -1,0 +1,36 @@
+# Default selection clipboard to my clipboard
+set selection-clipboard clipboard
+
+# Remap zoom controls for azerty layout
+
+map = zoom in
+map - zoom out
+map + zoom default
+
+map <C-=> zoom in
+map <C--> zoom out
+map <C-+> zoom default
+
+# I am blind
+
+set font "Hack normal 14"
+
+# Nord theme
+
+set inputbar-bg "#3b4252"
+set inputbar-fg "#eceff4"
+
+set statusbar-bg "#3b4252"
+set statusbar-fg "#eceff4"
+
+set notification-warning-bg "#ebcb8b"
+set notification-warning-fg "#eceff4"
+
+set notification-warning-bg "#ebcb8b"
+set notification-warning-fg "#eceff4"
+
+set notification-error-bg "#bf616a"
+set notification-error-fg "#eceff4"
+
+set default-bg "#2e3440"
+set default-fg "#eceff4"

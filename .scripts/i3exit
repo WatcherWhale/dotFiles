@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Get the current running socket
+socket="$(ls /run/user/1000/i3 | grep ipc | sed -n 1p)"
+# Use this socket to logout out of i3
+i3-msg exit --socket /run/user/1000/i3/$socket

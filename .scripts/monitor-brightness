@@ -1,0 +1,10 @@
+#!/bin/sh
+while true
+do
+    for m in $(xrandr --query | grep " connected" | cut -d" " -f1);
+    do
+        xrandr --output $m --brightness $1
+    done
+
+    #sleep 1
+done

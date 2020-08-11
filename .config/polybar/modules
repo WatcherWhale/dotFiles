@@ -1,0 +1,30 @@
+[module/corona]
+type = custom/script
+interval = 3600
+exec = ~/.scripts/corona
+format-padding = 2
+format-underline = #bf616a
+format-background = #192632
+
+[module/spacer]
+type = custom/text
+content = " "
+
+[module/nordvpn]
+type = custom/script
+exec= ~/.scripts/nordvpn.sh
+interval = 10
+label-underline = ${colors.nord8}
+label = %output%
+label-background = #192632
+label-padding = 2
+click-left = i3-msg exec ~/.scripts/vpn t
+
+[module/updates]
+type = custom/script
+interval = 600
+exec = ~/.scripts/updates 2> /dev/null
+format-padding = 2
+format-underline = #5e81ac
+format-background = #192632
+click-left = i3-msg exec /usr/local/bin/st yay

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+url="http://coronavirus-tracker-api.herokuapp.com/v2/locations/23"
+json=$(curl -Ss $url)
+
+# Today
+confirmed=$(jq '.["location"]["latest"]["confirmed"]' <<< $json)
+deaths=$(jq '.["location"]["latest"]["deaths"]' <<< $json)
+
+# Yesterday
+yesterday="$(date --date="2 days ago" +%Y-%m-%d)T00:00:00Z"
+
+confirmedY=$(jq ".[\"location\"][\"timelines\"][\"confirmed\"][\"timeline\"][\"$yesterday\"]" <<< $json)
+deathsY=$(jq ".[\"location\"][\"timelines\"][\"deaths\"][\"timeline\"][\"$yesterday\"]" <<< $json)
+
+let cRate=$confirmed/$confirmedY
+let cRate=$cRate*100
+
+let dRate=$deaths/$deathsY-1
+let dRate=$dRate*100
+
+sickEmoji=$(echo -e '\ue063')
+
+echo " $confirmed ($cRate%)   $deaths ($dRate%)"

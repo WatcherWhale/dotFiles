@@ -1,0 +1,10 @@
+[
+    { "keys": ["LEFT", "SHIFT_TAB"], "type": "function", "command": "focus_previous"},
+    { "keys": ["RIGHT", "TAB"], "type": "function", "command": "focus_next"},
+    { "keys": ["yy"], "type": "prompt", "command": "cp $n \"\"", "cursorPosition": -2 },
+    { "keys": ["dd"], "type": "prompt", "command": "mv $n \"\"", "cursorPosition": -2 },
+    { "keys": ["DELETE", "dD"], "type": "function", "command": "delete" },
+    { "keys": ["F2"], "type": "prompt", "command": "ren $c \"\"", "cursorPosition": -2 },
+    { "keys": ["q"], "type": "prompt", "command": "exit" },
+    { "keys": ["s"], "type": "prompt", "command": "sync" }
+]

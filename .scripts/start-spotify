@@ -1,0 +1,3 @@
+spotify-tray -t &
+sleep 2
+spotify-tray -t &

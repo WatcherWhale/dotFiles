@@ -1,0 +1,22 @@
+#!/bin/sh
+
+name="$(echo "$1" | cut -f1 -d'.')"
+file="$name.md"
+
+# Remove previous files
+rm -Rf $name
+rm -f $file
+
+# Create new files
+mkdir -p $name
+touch $file
+
+# Export pdf to png's
+pdftoppm -png $1 $name/$name
+
+# Add pngs to markdown file
+for img in $name/*.png
+do
+    echo "![$img]($img)" >> $file
+    echo -e "\n" >> $file
+done

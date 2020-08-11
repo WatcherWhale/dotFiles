@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# QT
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1
+
+sleep 2
+
+# Volume
+volumeicon
+
+# Wifi & ethernet
+nm-applet --indicator &
+
+# Bleutooth
+blueberry-tray &
+
+# Nightmode
+redshift-gtk &
+
+# KDE Connect
+/usr/lib/kdeconnectd &
+sleep 1
+kdeconnect-indicator &
+
+# Nextcloud
+nextcloud --background &
+
+# Empty trash
+trash-empty 30

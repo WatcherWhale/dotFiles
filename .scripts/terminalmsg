@@ -1,0 +1,6 @@
+#!/bin/sh
+fish="/home/watcherwhale/.local/share/fish/$(ls ~/.local/share/fish | sort -R | tail -1)"
+
+echo -n -e "\e[0m\e[34m"
+cat $fish
+echo -n -e "\e[0m"

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+state=$(echo "$1" | cut -d " " -f 3)
+
+case "$state" in
+    open)
+        # do what needs to be done when the lid is opened
+        xset dpms force on
+        ;;
+    close)
+        # do what needs to be done when the lid is closed
+        betterlockscreen -l dim &
+        sleep 1
+        xset dpms force off &
+        ;;
+    *)
+        # panic: not a state I know about!
+    esac
+
+if condition; then
+fi

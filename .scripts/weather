@@ -1,0 +1,28 @@
+#!/bin/env python3
+
+import argparse
+import requests
+import subprocess
+
+parser = argparse.ArgumentParser(description="Get the weather.")
+
+parser.add_argument('loc', metavar='Location', type=str, help='get the weather from this location, leave blank to automatically detect your location', nargs='?')
+parser.add_argument('-f', '--full',action='store_true' , help='show all weather info')
+
+args = parser.parse_args()
+
+# Check vpn
+vpn = subprocess.getoutput("nordvpn status | grep -w 'server' | awk -F ': ' '{ print $2 }' | cut -f1 -d'.'")
+
+getargs="?0"
+
+if args.full == True:
+    getargs = "?3"
+
+if args.loc != None:
+    getargs = "/" + args.loc + getargs
+elif vpn != "":
+    getargs = "/Hoogstraten" + getargs
+
+r = requests.get(url = "https://wttr.in" + getargs)
+print(r.text)

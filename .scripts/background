@@ -1,0 +1,7 @@
+#!/bin/sh
+
+background="$HOME/Nextcloud/Wallpapers/nord-aincrad.jpg"
+#background="$HOME/Nextcloud/Wallpapers/$(ls $HOME/Nextcloud/Wallpapers | grep -v \.gif | sort -R | tail -1 | xargs echo)"
+
+betterlockscreen -u $background  &
+feh --bg-center --bg-scale $background --image-bg '#4c566a'

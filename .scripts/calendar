@@ -1,0 +1,15 @@
+#!/bin/sh
+
+clear
+
+day="$(date +%d)"
+
+gcalcli calw --monday --width 15 $day 2
+
+echo -n "Press 'q' to quit"
+
+key=""
+while [ "$key" != "q" ];
+do
+    read -rsn1 key
+done

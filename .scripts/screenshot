@@ -1,0 +1,3 @@
+#!/bin/sh
+killall spectacle > /dev/null
+spectacle -r &

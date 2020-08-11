@@ -1,0 +1,25 @@
+#!/bin/sh
+
+choice="$(echo -e "Lock\nLogout\nRestart\nShutdown\nSleep" | rofi -dmenu -p 'Action: ')"
+
+if [ "$choice" != "" ]; then
+
+    confirm="$(echo -e "No\nYes" | rofi -dmenu -p 'Are you sure?')"
+
+    echo $choice
+    echo $confirm
+
+    if [ "$confirm" == "Yes" ]; then
+        if [ "$choice" == "Logout" ]; then
+            sh -c '~/.scripts/i3exit'
+        elif [ "$choice" == "Restart" ]; then
+            systemctl reboot
+        elif [ "$choice" == "Shutdown" ]; then
+            systemctl poweroff
+        elif [ "$choice" == "Lock" ]; then
+            ~/.scripts/lock
+        elif [ $choice == "Sleep" ]; then
+            betterlockscreen -s
+        fi
+    fi
+fi
