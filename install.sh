@@ -1,3 +1,12 @@
 #!/bin/sh
-git clone --bare https://github.com/WatcherWhale/dots.git $HOME/.dotfiles
+yay -S i3-gaps rofi xob dunst nordvpn-bin ranger gcalcli figlet feh joplin kdeconnect polybar
+
+git clone --bare git@gitlab.com:WatcherWhale/dots.git $HOME/.dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
+
+mkdir -p Projects
+
+git clone git@gitlab.com:WatcherWhale/st.git ~/Projects/st
+
+
+
