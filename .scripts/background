@@ -1,6 +1,6 @@
 #!/bin/sh
 
-background="$HOME/Nextcloud/Wallpapers/Nord-1.png"
+background="$HOME/Nextcloud/Wallpapers/arco-nord.png"
 #background="$HOME/Nextcloud/Wallpapers/$(ls $HOME/Nextcloud/Wallpapers | grep -v \.gif | sort -R | tail -1 | xargs echo)"
 
 betterlockscreen -u $background  &

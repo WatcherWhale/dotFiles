@@ -40,7 +40,7 @@ set laststatus=2
 
 " Display options
 set noshowmode
-set noshowcmd
+set showcmd
 
 " Highlight matching pairs of brackets. Use the '%' character to jump
 " between them.
@@ -122,6 +122,18 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_hotkey='<C-i>'
 
+let mapleader = ","
+
+noremap <silent> <leader>m      :MarkdownPreview<CR>
+vnoremap <silent> <leader>m     <C-C>:MarkdownPreview<CR>
+inoremap <silent> <leader>m     <C-O>:MarkdownPreview<CR>
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
 " Automatically save and load folds
 " autocmd BufWinLeave *.* mkview

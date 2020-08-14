@@ -40,6 +40,13 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim="nvim"
 alias svim="sudo -e"
 
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+    eval `$SSHAGENT $SSHAGENTARGS` > /dev/null
+    trap "kill $SSH_AGENT_PID" 0
+fi
+
 # Load nvm
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
