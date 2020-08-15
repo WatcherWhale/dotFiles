@@ -7,10 +7,10 @@ pin-workspaces = ${config.i3-pin-workspaces}
 strip-wsnumbers = true
 
 index-sort = true
-enable-click = true
-enable-scroll = true
-wrapping-scroll = true
-reverse-scroll = true
+enable-click = false
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
 
 fuzzy-match = false
 
