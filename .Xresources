@@ -1,2 +1,4 @@
 Xcursor.theme: xcursor-breeze
-Xcursor.size: 25
+Xcursor.size: 16
+Xft.dpi: 96
+Xft.antialias: true

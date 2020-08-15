@@ -1,8 +1,10 @@
-# Export env
-export PATH=$PATH:~/.scripts/
-export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="firefox"
+tty="$(tty)"
+
+if [ "$tty" = "/dev/tty1" ];
+then
+    startx
+    exit
+fi
 
 ~/.scripts/terminalmsg
 
@@ -13,7 +15,7 @@ HISTFILE=~/.config/zsh/.zsh_history
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # Oh My Zsh
-export ZSH="/home/watcherwhale/.config/oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 
 # Theming
 ZSH_THEME="spaceship"

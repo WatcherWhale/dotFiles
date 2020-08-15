@@ -196,6 +196,7 @@ bindsym $mod+b exec --no-startup-id ~/.scripts/background false
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagibar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+shift+e exec sh -c "~/.scripts/exit-options"
+# bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
 
 #bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
