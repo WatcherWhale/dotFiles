@@ -6,6 +6,9 @@ then
     exit
 fi
 
+export PATH=$PATH:~/.scripts/
+export EDITOR="nvim"
+
 ~/.scripts/terminalmsg
 
 # Set History file
