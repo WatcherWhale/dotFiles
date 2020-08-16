@@ -105,6 +105,8 @@ noremap <silent> <C-n>      :NERDTreeToggle<CR>
 vnoremap <silent> <C-n>     <C-C>:NERDTreeToggle<CR>
 inoremap <silent> <C-n>     <C-O>:NERDTreeToggle<CR>
 
+let NERDTreeQuitOnOpen=1
+
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Modified'  :'•',
     \ 'Staged'    :'✚',
