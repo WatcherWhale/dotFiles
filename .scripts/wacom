@@ -1,5 +1,14 @@
 #!/bin/sh
 
 stylus=$(xsetwacom --list devices | grep "type: STYLUS" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
+pad=$(xsetwacom --list devices | grep "type: PAD" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
+monitor=$(autorandr | grep -w "(detected)" | cut -d' ' -f1)
 
-echo "$stylus"
+# Map output
+if [ "$monitor" == "dock" ];
+then
+    xsetwacom set "Wacom Intuos S Pen stylus" MapToOutput 2560x1440+1920+0
+fi
+
+# Set button shortcuts
+xsetwacom set "Wacom Intuos S Pad pad" Button 8 "key Delete"
