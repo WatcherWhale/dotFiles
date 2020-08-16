@@ -243,6 +243,9 @@ for_window [class="(?i)*nextcloud*"] floating enable
 for_window[title="Spectacle"] floating enable, mark "printscreen", move scratchpad
 for_window[title="Qalculate!"] floating enable, move position center
 
+for_window [class="termcalc"] floating enable; move position center
+
+
 # Background
 # exec --no-startup-id feh --bg-scale /home/watcherwhale/Pictures/avatars/Background.png
 # exec_always --no-startup-id "zsh ~/.config/i3/scripts/background.sh"
@@ -281,6 +284,7 @@ mode "quicklaunch" {
     bindsym o exec libreoffice; mode "default"
     bindsym n exec --no-startup-id $term "joplin"; mode "default"
     bindsym Shift+n exec "joplin-desktop"; mode "default"
+    bindsym x exec xournalpp; mode "default"
 
     bindsym $mod+Return exec --no-startup-id $term; mode "default"
 
@@ -310,6 +314,7 @@ client.urgent           #5e81ac #5e81ac #eceff4 #5e81ac
 
 # Calculator
 bindsym XF86Calculator exec qalculate-gtk
+bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional
 
 # Rofi menus
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
