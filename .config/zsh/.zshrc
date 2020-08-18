@@ -45,6 +45,12 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim="nvim"
 alias svim="sudo -e"
 
+alias ls="exa -l --git"
+alias lsa="exa -a -l --git"
+
+alias lss="exa"
+alias lssa="exa -a"
+
 SSHAGENT=/usr/bin/ssh-agent
 SSHAGENTARGS="-s"
 if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
