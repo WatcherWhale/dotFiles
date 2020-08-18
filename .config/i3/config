@@ -315,7 +315,10 @@ client.urgent           #5e81ac #5e81ac #eceff4 #5e81ac
 
 # Calculator
 bindsym XF86Calculator exec qalculate-gtk
-bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional
+bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
+
+bindsym $mod+c exec qalculate-gtk
+bindsym $mod+Control+c exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
 
 # Rofi menus
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh

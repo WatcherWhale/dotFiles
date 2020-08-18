@@ -31,4 +31,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" Latex
+Plug 'lervag/vimtex'
+
 call plug#end()

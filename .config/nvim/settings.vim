@@ -137,6 +137,6 @@ endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
-" Automatically save and load folds
-" autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview
+" Latex
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
