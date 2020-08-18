@@ -4,8 +4,16 @@ reload-time 60
 # Keybindings
 bind-key j down
 bind-key k up
-unbind-key j
-unbind-key k
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
 
 # highlights
 highlight article "^(Title):.*$" yellow default
