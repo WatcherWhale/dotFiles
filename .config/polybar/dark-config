@@ -37,10 +37,14 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
+border-color = #192632
+
 [bar/nord-top]
 inherit = bar/base
 
 module-margin = 1
+
+border-bottom-size = 2px
 
 ;font-0 = "NotoSans-Regular:size=12"
 font-0 = WenQuanYiMicroHei:size=12
@@ -64,6 +68,8 @@ tray-position = ${config.systray-top}
 inherit = bar/base
 
 bottom = true
+
+border-top-size = 2px
 
 padding = 2
 module-margin = 2
