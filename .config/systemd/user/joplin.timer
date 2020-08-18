@@ -1,0 +1,10 @@
+[Unit]
+Description=Joplin resource timer
+
+[Timer]
+OnBootSec=0min
+OnCalendar=*:*:*
+Persistent=true
+
+[Install]
+WantedBy=timers.target
