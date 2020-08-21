@@ -11,7 +11,7 @@ if [ "$choice" != "" ]; then
 
     if [ "$confirm" == "Yes" ]; then
         if [ "$choice" == "Logout" ]; then
-            sh -c '~/.scripts/i3exit'
+            i3-msg exit
         elif [ "$choice" == "Restart" ]; then
             systemctl reboot
         elif [ "$choice" == "Shutdown" ]; then

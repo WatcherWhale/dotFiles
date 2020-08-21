@@ -1,6 +1,6 @@
 configuration {
   show-icons: true;
-  font: "SauceCodePro Nerd Font Medium 12, Fontawesome5FreeSolid 12";
+  font: "Noto Color Emoji 12, SauceCodePro Nerd Font Medium 12, Fontawesome5FreeSolid 12, Noto Sans 12";
   drun-display-format: "{icon} {name}";
   display-run: " ";
   display-drun: " ";

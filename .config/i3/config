@@ -39,8 +39,24 @@ bindsym $mod+l exec --no-startup-id ~/.scripts/lock
 # exec --no-startup-id nm-applet
 
 # Autostart scripts
-exec_always --no-startup-id sh -c '~/.scripts/autorestart'
-exec --no-startup-id sh -c '~/.scripts/autostart'
+exec_always --no-startup-id sh -c '~/.scripts/notifications'
+exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
+exec_always --no-startup-id sh -c '~/.config/i3/scripts/polybar.sh'
+exec_always --no-startup-id sh -c '~/.scripts/background'
+exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id autotiling
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+exec --no-startup-id blueberry-tray
+exec --no-startup-id redshift-gtk
+exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id owncloud
+exec --no-startup-id trash-empty
+exec --no-startup-id unclutter
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -196,6 +212,7 @@ bindsym $mod+b exec --no-startup-id ~/.scripts/background false
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagibar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+shift+e exec sh -c "~/.scripts/exit-options"
+# bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
 
 #bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
@@ -240,7 +257,6 @@ bindsym $mod+r mode "resize"
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="(?i)*nextcloud*"] floating enable
-for_window[title="Spectacle"] floating enable, mark "printscreen", move scratchpad
 for_window[title="Qalculate!"] floating enable, move position center
 
 for_window [class="termcalc"] floating enable; move position center
@@ -254,14 +270,53 @@ for_window [class="termcalc"] floating enable; move position center
 
 for_window [class=".*"] border pixel 4
 for_window [class="^.*"] border pixel 4
-
+smart_borders on
 # Add titlebars back for floating windows
 #exec_always --no-startup-id sh -c "~/.config/i3/scripts/floatingBorder.py"
 
 # Set gaps
 
-#smart_gaps off
-gaps inner 10
+smart_gaps on
+gaps outer -6
+gaps inner 6
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
 # Transparant background
 # exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
@@ -303,8 +358,9 @@ bindsym $mod+Control+semicolon exec splatmoji -s dark copy
 mouse_warping none
 
 # Printscreen
-bindsym Print exec --no-startup-id sh -c '~/.scripts/screenshot'
-bindsym Control+Print [con_mark="printscreen"] scratchpad show
+bindsym Print exec --no-startup-id "maim -s -u -D | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Print exec --no-startup-id "maim -u -st 9999999 | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Control+Print exec --no-startup-id "maim -u | xclip -selection clipboard -t image/png -i"
 
 # class                 border  backgr. text    indicator
 client.focused          #e5e9f0 #e5e9f0 #e5e9f0 #e5e9f0
@@ -314,7 +370,10 @@ client.urgent           #5e81ac #5e81ac #eceff4 #5e81ac
 
 # Calculator
 bindsym XF86Calculator exec qalculate-gtk
-bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional
+bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
+
+bindsym $mod+c exec qalculate-gtk
+bindsym $mod+Control+c exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
 
 # Rofi menus
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
@@ -322,6 +381,7 @@ bindsym $alt+Shift+Tab exec --no-startup-id rofi -show windowcd
 bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+Shift+Tab exec --no-startup-id rofi -show windowcd
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+p exec --no-startup-id bwmenu
 
 # Mouse scroll
 bindsym $mod+colon exec --no-startup-id xdotool click 4
