@@ -59,13 +59,14 @@ ex ()
 # Aliases
 
 alias htop="bashtop"
-
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
 
 alias rm="trash"
+
+alias ytmp3="youtube-dl -x --audio-format mp3"
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias backup="sudo sh /etc/backup-service.sh"
@@ -84,6 +85,15 @@ alias lss="exa"
 alias lssa="exa -a"
 
 alias cp="cp -i"
+
+alias :q="exit"
+alias q="exit"
+
+#get fastest mirrors in your neighborhood
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Fun
 alias rr="~/.scripts/roll.sh"

@@ -1,5 +1,4 @@
 #!/bin/sh
 
 killall dunst
-sleep 2
 dunst &

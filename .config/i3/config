@@ -39,15 +39,11 @@ bindsym $mod+l exec --no-startup-id ~/.scripts/lock
 # exec --no-startup-id nm-applet
 
 # Autostart scripts
-exec_always --no-startup-id sh -c '~/.scripts/autorestart'
-
+exec_always --no-startup-id sh -c '~/.scripts/notifications'
 exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
 exec_always --no-startup-id sh -c '~/.config/i3/scripts/polybar.sh'
-exec_always --no-startup-id sh -c '~/.scripts/notifications'
 exec_always --no-startup-id sh -c '~/.scripts/background'
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
-
-exec --no-startup-id sh -c '~/.scripts/autostart'
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id autotiling
@@ -274,15 +270,15 @@ for_window [class="termcalc"] floating enable; move position center
 
 for_window [class=".*"] border pixel 4
 for_window [class="^.*"] border pixel 4
-
+smart_borders on
 # Add titlebars back for floating windows
 #exec_always --no-startup-id sh -c "~/.config/i3/scripts/floatingBorder.py"
 
 # Set gaps
 
-#smart_gaps off
-#gaps outer 5
-gaps inner 10
+smart_gaps on
+gaps outer -6
+gaps inner 6
 
 
 set $mode_gaps Gaps: (o) outer, (i) inner
