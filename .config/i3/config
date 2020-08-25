@@ -32,7 +32,7 @@ font pango:DejaVu Sans 12
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-bindsym $mod+l exec --no-startup-id ~/.scripts/lock
+bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -40,7 +40,7 @@ bindsym $mod+l exec --no-startup-id ~/.scripts/lock
 
 # Autostart scripts
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
-exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
+#exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
 exec_always --no-startup-id sh -c '~/.config/i3/scripts/polybar.sh'
 exec_always --no-startup-id sh -c '~/.scripts/background'
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
@@ -50,6 +50,7 @@ exec --no-startup-id autotiling
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
+exec --no-startup-id bluetoothvtl power on
 exec --no-startup-id blueberry-tray
 exec --no-startup-id redshift-gtk
 exec --no-startup-id /usr/lib/kdeconnectd
@@ -87,19 +88,32 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Control+Shift+h move workspace to output left
+bindsym $mod+Control+Shift+j move workspace to outputdown
+bindsym $mod+Control+Shift+k move workspace to outputup
+bindsym $mod+Control+Shift+l move workspace to outputright
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Down move workspace to outputdown
 bindsym $mod+Control+Shift+Up move workspace to outputup
@@ -266,19 +280,15 @@ for_window [class="termcalc"] floating enable; move position center
 # exec --no-startup-id feh --bg-scale /home/watcherwhale/Pictures/avatars/Background.png
 # exec_always --no-startup-id "zsh ~/.config/i3/scripts/background.sh"
 
-# Remove titlbars
-
 for_window [class=".*"] border pixel 4
 for_window [class="^.*"] border pixel 4
 smart_borders on
-# Add titlebars back for floating windows
-#exec_always --no-startup-id sh -c "~/.config/i3/scripts/floatingBorder.py"
 
 # Set gaps
 
 smart_gaps on
-gaps outer -6
-gaps inner 6
+gaps outer 0
+gaps inner 0
 
 
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -363,10 +373,10 @@ bindsym $mod+Print exec --no-startup-id "maim -u -st 9999999 | xclip -selection 
 bindsym $mod+Control+Print exec --no-startup-id "maim -u | xclip -selection clipboard -t image/png -i"
 
 # class                 border  backgr. text    indicator
-client.focused          #e5e9f0 #e5e9f0 #e5e9f0 #e5e9f0
-client.focused_inactive #5e81ac #5e81ac #eceff4 #5e81ac
-client.unfocused        #5e81ac #5e81ac #d8dee9 #5e81ac
-client.urgent           #5e81ac #5e81ac #eceff4 #5e81ac
+client.focused          #5e81ac #5e81ac #5e81ac #5e81ac
+client.focused_inactive #3b4252 #3b4252 #5e81ac #3b4252
+client.unfocused        #3b4252 #3b4252 #d8dee9 #3b4252
+client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
 
 # Calculator
 bindsym XF86Calculator exec qalculate-gtk

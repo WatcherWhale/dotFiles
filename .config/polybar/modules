@@ -28,3 +28,12 @@ format-padding = 2
 format-underline = #5e81ac
 format-background = #192632
 click-left = i3-msg exec /usr/local/bin/st yay
+
+[module/bluenord]
+type = custom/script
+exec = ~/.scripts/polybar/bluetooth
+interval = 2
+click-left = exec blueberry
+click-right = exec ~/.scripts/polybar/toggle_bluetooth
+format-padding = 1
+format-background = #192632

@@ -107,24 +107,11 @@ inoremap <silent> <C-n>     <C-O>:NERDTreeToggle<CR>
 
 let NERDTreeQuitOnOpen=1
 
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ 'Modified'  :'•',
-    \ 'Staged'    :'✚',
-    \ 'Untracked' :'✭',
-    \ 'Renamed'   :'➜',
-    \ 'Unmerged'  :'═',
-    \ 'Deleted'   :'✖',
-    \ 'Dirty'     :'✗',
-    \ 'Ignored'   :'☒',
-    \ 'Clean'     :'✔︎',
-    \ 'Unknown'   :'?',
-\ }
-
 let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_hotkey='<C-i>'
 
-let mapleader = ","
+let mapleader = "ù"
 
 noremap <silent> <leader>m      :MarkdownPreview<CR>
 vnoremap <silent> <leader>m     <C-C>:MarkdownPreview<CR>
@@ -137,6 +124,50 @@ endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
+" Coc Snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
 " Latex
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_enabled = 0
+
+" Joplin image attach
+
+augroup autocom
+    autocmd!
+    " Executes joplin command on markdown files
+    " autocmd VimLeave *.md :Joplin
+augroup END
+
+command Joplin call Joplin()
+fun Joplin()
+    let $PATH = expand("%:p")
+    !/bin/sh -c '/home/watcherwhale/.scripts/joplin-attach ${PATH}'
+endfun

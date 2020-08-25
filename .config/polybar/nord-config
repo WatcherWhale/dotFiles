@@ -48,7 +48,7 @@ top-center = date
 top-right = updates nordvpn battery
 
 # Bottom modules
-bottom-left = powermenu spacer playpause spotify
+bottom-left = spacer playpause spotify
 bottom-center =
 bottom-right = 
 

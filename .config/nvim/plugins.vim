@@ -34,4 +34,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Latex
 Plug 'lervag/vimtex'
 
+" Matlab
+Plug 'jvirtanen/vim-octave'
+
 call plug#end()

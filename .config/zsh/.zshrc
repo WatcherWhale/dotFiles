@@ -6,8 +6,10 @@ then
     exit
 fi
 
-export PATH=$PATH:~/.scripts/
+export PATH=$PATH:~/.scripts/:/opt/texlive/2020/bin/x86_64-linux/
 export EDITOR="nvim"
+export DIFFPROG="nvim -d"
+export TEXMFHOME="~/.local/share/texmf"
 
 ~/.scripts/terminalmsg
 
@@ -78,11 +80,17 @@ alias svim="sudo -e"
 alias ..="cd .."
 alias ...="cd ../.."
 
-alias ls="exa -l --git"
-alias lsa="exa -a -l --git"
+function mcd
+{
+    command mkdir -p $1 && cd $1
+}
 
-alias lss="exa"
-alias lssa="exa -a"
+# Long format
+alias ls="exa -l --color=always --group-directories-first"
+alias lsa="exa -a -l --color=always --group-directories-first"
+# Short format
+alias lss="exa --color=always --group-directories-first"
+alias lssa="exa -a --color=always --group-directories-first"
 
 alias cp="cp -i"
 
@@ -94,6 +102,8 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+alias update="yay -Syu --noconfirm"
 
 # Fun
 alias rr="~/.scripts/roll.sh"

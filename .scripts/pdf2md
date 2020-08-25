@@ -20,3 +20,5 @@ do
     echo "![$img]($img)" >> $file
     echo -e "\n" >> $file
 done
+
+echo $file
