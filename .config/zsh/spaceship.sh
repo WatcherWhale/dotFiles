@@ -35,6 +35,11 @@ export SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+export SPACESHIP_CHAR_COLOR_SUCCESS="blue"
+export SPACESHIP_CHAR_SYMBOL="  "
+
+
+
 export SPACESHIP_DIR_COLOR=blue
 
 export SPACESHIP_HOST_SHOW=always

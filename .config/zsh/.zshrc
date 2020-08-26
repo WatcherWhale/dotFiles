@@ -1,16 +1,8 @@
-tty="$(tty)"
-
-if [ "$tty" = "/dev/tty1" ];
-then
-    startx
-    exit
-fi
-
 export PATH=$PATH:~/.scripts/:/opt/texlive/2020/bin/x86_64-linux/
 export EDITOR="nvim"
 export DIFFPROG="nvim -d"
 export TEXMFHOME="~/.local/share/texmf"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4c566a"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
 ~/.scripts/terminalmsg
 
@@ -60,26 +52,34 @@ ex ()
 
 # Aliases
 
+# use bashtop instead of htop
 alias htop="bashtop"
+# Make ranger cd to the chosen directory
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+# Shorten commen commands
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
 
+# use trash instead of the default remove
 alias rm="trash"
 
+# Media
 alias ytmp3="youtube-dl -x --audio-format mp3"
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
-alias backup="sudo sh /etc/backup-service.sh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Vim
 alias vim="nvim"
 alias svim="sudo -e"
 
+# cd aliasses
 alias ..="cd .."
 alias ...="cd ../.."
 
+# mkdir & cd
 function mcd
 {
     command mkdir -p $1 && cd $1
@@ -115,7 +115,6 @@ if [ -f ~/.config/zsh/zsh-insulter/src/zsh.command-not-found ]; then
 fi
 
 # SSH Session
-
 SSHAGENT=/usr/bin/ssh-agent
 SSHAGENTARGS="-s"
 if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
