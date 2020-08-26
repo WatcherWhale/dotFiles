@@ -40,7 +40,7 @@ bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
 
 # Autostart scripts
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
-#exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
+exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
 exec_always --no-startup-id sh -c '~/.config/i3/scripts/polybar.sh'
 exec_always --no-startup-id sh -c '~/.scripts/background'
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
@@ -379,11 +379,11 @@ client.unfocused        #3b4252 #3b4252 #d8dee9 #3b4252
 client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
 
 # Calculator
-bindsym XF86Calculator exec qalculate-gtk
-bindsym Control+XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
+bindsym Control+XF86Calculator exec qalculate-gtk
+bindsym XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
 
-bindsym $mod+c exec qalculate-gtk
-bindsym $mod+Control+c exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'disp("Calculator")'
+bindsym $mod+Control+c exec qalculate-gtk
+bindsym $mod+c exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
 
 # Rofi menus
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh

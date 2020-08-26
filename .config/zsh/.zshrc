@@ -10,6 +10,7 @@ export PATH=$PATH:~/.scripts/:/opt/texlive/2020/bin/x86_64-linux/
 export EDITOR="nvim"
 export DIFFPROG="nvim -d"
 export TEXMFHOME="~/.local/share/texmf"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4c566a"
 
 ~/.scripts/terminalmsg
 
@@ -24,7 +25,6 @@ export ZSH="/usr/share/oh-my-zsh"
 
 # Theming
 ZSH_THEME="spaceship"
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4b5b69"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
@@ -104,6 +104,8 @@ alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/p
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 alias update="yay -Syu --noconfirm"
+
+alias mpv="mpv --volume=60"
 
 # Fun
 alias rr="~/.scripts/roll.sh"
