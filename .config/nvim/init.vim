@@ -1,6 +1,9 @@
 " load settings
 source /home/watcherwhale/.config/nvim/settings.vim
 
+" load shortcuts
+source /home/watcherwhale/.config/nvim/shortcuts.vim
+
 " Load plugins
 source /home/watcherwhale/.config/nvim/plugins.vim
 

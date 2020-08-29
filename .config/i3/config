@@ -72,7 +72,16 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Control brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
+bindsym Control+XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -100'
+
 bindsym XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
+bindsym Control+XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh 100'
+
+bindsym $mod+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
+bindsym $mod+Control+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -100'
+
+bindsym $mod+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
+bindsym $mod+Control+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh 100'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -121,14 +130,15 @@ bindsym $mod+Control+Shift+Right move workspace to outputright
 
 # Toggle split orientation
 bindsym $mod+t split toggle
+bindsym $mod+s exec "i3-instant-layout --list | rofi -dmenu -i -p 'Layout' | i3-instant-layout -"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+z layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -220,9 +230,6 @@ bindsym $mod+Shift+r restart
 # Reload monitor config
 bindsym $mod+Shift+m exec --no-startup-id sh -c '~/.scripts/monitor && sleep 1 && i3 restart'
 
-bindsym $mod+Shift+b exec --no-startup-id ~/.scripts/background
-bindsym $mod+b exec --no-startup-id ~/.scripts/background false
-
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagibar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+shift+e exec sh -c "~/.scripts/exit-options"
@@ -248,25 +255,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        mode invisible
-        # status_command i3blocks
-#        position top
-#        separator_symbol ‎
-#        height 25
-#        colors {
-#            background #4361b7
-#        }
-#        tray_output primary
-#}
-
-# Run Polybar
-# exec_always sh ~/.config/i3/scripts/polybar.sh &
-
-# Plasma compatibility improvements
-# exec --no-startup-id wmctrl -c Plasma
+# Floating state
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -275,10 +264,10 @@ for_window[title="Qalculate!"] floating enable, move position center
 
 for_window [class="termcalc"] floating enable; move position center
 
+for_window [class="Navigator"] floating disable
+for_window [class="firefox"] floating disable
 
-# Background
-# exec --no-startup-id feh --bg-scale /home/watcherwhale/Pictures/avatars/Background.png
-# exec_always --no-startup-id "zsh ~/.config/i3/scripts/background.sh"
+# Borders
 
 for_window [class=".*"] border pixel 4
 for_window [class="^.*"] border pixel 4
@@ -328,14 +317,10 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# Transparant background
-# exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
-
 # Window keybinds
 
 mode "quicklaunch" {
 
-    #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -h 30 -y 27 -l 10 -i -p Application: "
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym f exec firefox; mode "default"
     bindsym c exec st ~/.scripts/calendar; mode "default"
@@ -400,4 +385,3 @@ bindsym $mod+ugrave exec --no-startup-id xdotool click 6
 bindsym $mod+mu exec --no-startup-id xdotool click 7
 
 bindsym $mod+v exec --no-startup-id greenclip print | sed '/^$/d' | rofi -dmenu -p "" | xargs -r -d'\n' -I '{}' greenclip print '{}'
-

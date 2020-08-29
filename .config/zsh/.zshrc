@@ -1,4 +1,4 @@
-export PATH=$PATH:~/.scripts/:/opt/texlive/2020/bin/x86_64-linux/
+export PATH=$PATH:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/
 export EDITOR="nvim"
 export DIFFPROG="nvim -d"
 export TEXMFHOME="~/.local/share/texmf"

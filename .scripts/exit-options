@@ -1,10 +1,10 @@
 #!/bin/sh
 
-choice="$(echo -e "Lock\nLogout\nRestart\nShutdown\nSleep" | rofi -dmenu -p 'Action: ')"
+choice="$(echo -e "Lock\nLogout\nRestart\nShutdown\nSleep" | rofi -dmenu -i -p 'Action: ')"
 
 if [ "$choice" != "" ]; then
 
-    confirm="$(echo -e "No\nYes" | rofi -dmenu -p 'Are you sure?')"
+    confirm="$(echo -e "No\nYes" | rofi -dmenu -i -p 'Are you sure?')"
 
     echo $choice
     echo $confirm
