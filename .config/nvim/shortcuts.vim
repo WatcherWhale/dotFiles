@@ -1,10 +1,13 @@
+" Map other esc
+imap jj <Esc>
+
+" Leader mappings
+let mapleader = "ù"
+
 nnoremap <silent> <leader>r :source /home/watcherwhale/.config/nvim/init.vim <CR>
 
 set scrolloff=999
 :nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
-
-" Jump to insert sign
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -24,8 +27,6 @@ noremap <silent> <C-n>      :NERDTreeToggle<CR>
 vnoremap <silent> <C-n>     <C-C>:NERDTreeToggle<CR>
 inoremap <silent> <C-n>     <C-O>:NERDTreeToggle<CR>
 
-" Leader mappings
-let mapleader = "ù"
 
 noremap <silent> <leader>m      :MarkdownPreview<CR>
 vnoremap <silent> <leader>m     <C-C>:MarkdownPreview<CR>

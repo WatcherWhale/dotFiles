@@ -1,7 +1,8 @@
 call plug#begin('/home/watcherwhale/.config/nvim/plugged')
 
-"Fugitive Vim Github Wrapper
+" Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -36,5 +37,17 @@ Plug 'lervag/vimtex'
 
 " Matlab
 Plug 'jvirtanen/vim-octave'
+
+" Vim Rainbow (coloured pairs)
+Plug 'frazrepo/vim-rainbow'
+
+" Comments
+Plug 'preservim/nerdcommenter'
+
+" Fzf
+Plug 'junegunn/fzf.vim'
+
+" Documentation Generator
+Plug 'kkoomen/vim-doge'
 
 call plug#end()

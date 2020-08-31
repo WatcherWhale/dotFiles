@@ -111,3 +111,13 @@ fun Joplin()
     !/bin/sh -c '/home/watcherwhale/.scripts/joplin-attach ${PATH}'
 endfun
 
+" Vim Rainbow (Coloured pairs)
+let g:rainbow_active = 1
+let g:rainbow_ctermfgs = ['lightblue', 'yellow', 'red']
+
+let g:rainbow_load_separately = [
+    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+\ ]

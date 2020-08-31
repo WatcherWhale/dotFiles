@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 _trap_exit() 
-{ 
+{
     tmux kill-session -t $$;
 }
 
@@ -10,9 +10,14 @@ trap _trap_exit EXIT QUIT INT 30
 
 if [ -z "$1" ]; then
     st -e tmux new-session -s $$
+elif [ "$2" = "--keep" ]; then
+    name="$(echo $1 | cut -f1 -d' ')"
+    tmux new-session -d -s $$ -n $name
+    tmux send-keys -t $$:$name "$1 && clear" Enter
+    st -e tmux attach -t $$:$name
 else
     name="$(echo $1 | cut -f1 -d' ')"
     tmux new-session -d -s $$ -n $name
-    tmux send-keys -t $$:$name "$1 && tmux kill-session -t $$" Enter
+    tmux send-keys -t $$:$name "$1 && clear && tmux kill-session -t $$" Enter
     st -e tmux attach -t $$:$name
 fi

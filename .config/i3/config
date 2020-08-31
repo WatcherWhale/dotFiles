@@ -51,8 +51,8 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
 exec --no-startup-id bluetoothvtl power on
-exec --no-startup-id blueberry-tray
-exec --no-startup-id redshift-gtk
+exec --no-startup-id blueberry-tray &
+exec --no-startup-id redshift-gtk &
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id owncloud
@@ -92,11 +92,11 @@ bindsym $mod+Return exec --no-startup-id $term
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -h 30 -y 27 -l 10 -i -p Application: "
+# start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
+# Focus & move
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -112,7 +112,6 @@ bindsym $mod+Control+Shift+j move workspace to outputdown
 bindsym $mod+Control+Shift+k move workspace to outputup
 bindsym $mod+Control+Shift+l move workspace to outputright
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -130,27 +129,17 @@ bindsym $mod+Control+Shift+Right move workspace to outputright
 
 # Toggle split orientation
 bindsym $mod+t split toggle
+# Instant layout
 bindsym $mod+s exec "i3-instant-layout --list | rofi -dmenu -i -p 'Layout' | i3-instant-layout -"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+z layout tabbed
-# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-# bindsym $mod+q focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -223,20 +212,14 @@ bindsym $mod+Control+Shift+egrave move container to workspace number $ws17
 bindsym $mod+Control+Shift+exclam move container to workspace number $ws18
 bindsym $mod+Control+Shift+ccedilla move container to workspace number $ws19
 bindsym $mod+Control+Shift+agrave move container to workspace number $ws20
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# Reload monitor config
-bindsym $mod+Shift+m exec --no-startup-id sh -c '~/.scripts/monitor && sleep 1 && i3 restart'
 
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagibar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# exit i3 
 bindsym $mod+shift+e exec sh -c "~/.scripts/exit-options"
-# bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
-
-#bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,6 +230,11 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -327,10 +315,8 @@ mode "quicklaunch" {
     bindsym d exec --no-startup-id discord; mode "default"
     bindsym t exec --no-startup-id telegram-desktop; mode "default"
     bindsym s exec --no-startup-id spotify-tray -t; mode "default"
-    bindsym r exec --no-startup-id $term "ranger"; mode "default"
-    bindsym e exec --no-startup-id $term "ranger"; mode "default"
-    bindsym g exec gitkraken; mode "default"
-    bindsym w exec whatsapp-nativefier; mode "default"
+    bindsym r exec --no-startup-id $term "ranger" --keep; mode "default"
+    bindsym e exec --no-startup-id $term "ranger" --keep; mode "default"
     bindsym o exec libreoffice; mode "default"
     bindsym n exec --no-startup-id $term "joplin"; mode "default"
     bindsym Shift+n exec "joplin-desktop"; mode "default"
@@ -384,4 +370,5 @@ bindsym $mod+equal exec --no-startup-id xdotool click 5
 bindsym $mod+ugrave exec --no-startup-id xdotool click 6
 bindsym $mod+mu exec --no-startup-id xdotool click 7
 
+# Paste buffer
 bindsym $mod+v exec --no-startup-id greenclip print | sed '/^$/d' | rofi -dmenu -p "" | xargs -r -d'\n' -I '{}' greenclip print '{}'

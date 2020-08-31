@@ -1,9 +1,3 @@
 #!/bin/sh
 
-current="$(autorandr | grep -w current | cut -f1 -d' ')"
-
-if [ "$current" == "dock" ]; then
-    brillo -S 100
-fi
-
 i3 restart
