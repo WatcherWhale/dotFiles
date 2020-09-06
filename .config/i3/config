@@ -72,16 +72,16 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Control brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
-bindsym Control+XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -100'
+bindsym Control+XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
 
 bindsym XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
-bindsym Control+XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh 100'
+bindsym Control+XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
 
 bindsym $mod+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
-bindsym $mod+Control+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -100'
+bindsym $mod+Control+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
 
 bindsym $mod+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
-bindsym $mod+Control+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh 100'
+bindsym $mod+Control+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -330,6 +330,9 @@ mode "quicklaunch" {
 }
 
 bindsym $mod+a mode "quicklaunch"
+
+# Notifications
+bindsym $mod+n exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
 
 # Emoji Picker
 bindsym $mod+semicolon exec splatmoji -s dark type

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-killall dunst
-dunst &
+killall deadd-notification-center
+deadd-notification-center &

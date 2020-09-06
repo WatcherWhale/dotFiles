@@ -1,12 +1,18 @@
 #!/bin/sh
 
-negative=$(( $1 < 0 ))
-
-if [ $negative -eq 1 ]; then
-    let bright=-1*$1
-    brillo -U $bright
+if [ "$1" = "dim" ]; then
+    xbacklight -set 1
+elif [ "$1" = "bright" ]; then
+    xbacklight -set 100
 else
-    brillo -A $1
+    negative=$(( $1 < 0 ))
+
+    if [ $negative -eq 1 ]; then
+        let bright=-1*$1
+        xbacklight -dec $bright
+    else
+        xbacklight -inc $1
+    fi
 fi
 
-brillo > /tmp/brillo
+xbacklight -get > /tmp/brillo
