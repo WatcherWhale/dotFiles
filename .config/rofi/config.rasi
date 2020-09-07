@@ -11,8 +11,11 @@ configuration {
 * {
   background-color: #3b4252;
   bg-alt: #2e3440;
+  bg-light: #434c5e;
+  bg-bright: #4c566a;
   fg: #ECEFF4;
-
+ 
+  nord-blue: #5e81ac;
   nord-blue-light: #88C0D0;
   nord-yellow: #EBCB8B;
   border: 0;
@@ -29,6 +32,8 @@ window {
 
 mainbox {
   children: [inputbar, listview];
+  border: 4;
+  border-color: @nord-blue;
 }
 
 listview {
@@ -36,14 +41,29 @@ listview {
 }
 
 element {
-  padding: 12;
-  orientation: vertical;
+  padding: 0;
+  orientation: horizontal;
   text-color: @fg;
+  children: [element-icon, element-text];
+}
+
+element-text {
+  highlight: inherit;
+  padding: 12 0 12 0;
+}
+
+element-icon {
+  size: 30px;
+  padding: 12;
+  background-color: @bg-alt;
 }
 
 element selected {
-  background-color: @bg-alt;
-  text-color: @nord-blue-light;
+  background-color: @nord-blue;
+}
+
+element-icon selected {
+  background-color: @bg-bright;
 }
 
 inputbar {
@@ -54,11 +74,13 @@ inputbar {
 prompt {
   enabled: true;
   font: "SauceCodePro Nerd Font 12";
-  padding: 12 0 0 12;
+  padding: 17 17 17 17;
+  background-color: @bg-alt;
   text-color: @nord-yellow;
 }
 
 entry {
-  padding: 12;
+  padding: 17 0 17 12;
   text-color: @nord-yellow;
+  background-color: @bg-alt;
 }
