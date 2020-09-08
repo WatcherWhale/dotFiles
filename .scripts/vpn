@@ -16,3 +16,5 @@ elif [ "$1" == "t" ] || [ "$1" == "toggle" ]; then
 else
     nordvpn c $1
 fi
+
+sh ~/.scripts/vpn-status
