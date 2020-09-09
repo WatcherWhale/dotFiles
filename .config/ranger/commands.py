@@ -15,6 +15,20 @@ import os
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
 
+class topdf(Command):
+    """
+    :topdf <file>
+
+    Converts the selected file to a pdf.
+    """
+    def execute(self):
+        import subprocess
+        from os.path import join, expanduser, lexists
+
+        file = join(self.fm.thisdir.path, expanduser(self.rest(1)))
+
+        if lexists(file):
+            subprocess.getoutput("libreoffice --headless --convert-to pdf " + file)
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
