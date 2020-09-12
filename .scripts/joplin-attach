@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/usr/bin/notify-send $1
+
+if [[ $1 == *"/home/watcherwhale/.config/joplin/tmp"* ]]; then
+    note="$(/bin/head -n1 $1)"
+    /usr/bin/notify-send $note
+fi

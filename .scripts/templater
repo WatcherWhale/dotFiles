@@ -1,0 +1,60 @@
+#!/bin/env python3
+
+import argparse
+from shutil import copyfile
+from os import path
+from sys import exit
+
+parser = argparse.ArgumentParser(description="Copy the right template to the requested file.", add_help=False)
+
+helpGroup = parser.add_argument_group('Help')
+helpGroup.add_argument('-h', '--help', action='store_true', help='Shows this page.')
+helpGroup.add_argument('--templates', action='store_true', help='Get a list of all templates.')
+
+reqGroup = parser.add_argument_group('Required arguments')
+reqGroup.add_argument('file', metavar='File', type=str, help='Specify the output file name.', nargs='?')
+reqGroup.add_argument('-t', '--template', type=str, help='The template you want to use.')
+
+optGroup = parser.add_argument_group('Optional arguments')
+optGroup.add_argument('-d', '--dir', type=str, help='Use a specific template directory.')
+optGroup.add_argument('-s', '--school', action='store_true', help='Use the school templates, parses before the --dir argument.')
+
+args = parser.parse_args()
+
+def templates():
+    print('tex, latex:       A latex template to start writing documents.')
+    print('beamer:           A latex template to create presentations.')
+
+if args.help:
+    parser.print_help()
+    exit(0)
+elif args.templates:
+    templates()
+    exit(0)
+elif not args.template:
+    print('Template type is not set')
+    exit(1)
+elif not args.file:
+    print('Output filename is not set.')
+    exit(1)
+
+# Get the base directory for templates
+file = path.expanduser('~/Templates/')
+
+# Check if it is a school template
+if args.school:
+    file = path.join(file, 'school')
+
+# Parse the dir argument
+if args.dir:
+    file = path.join(file, args.dir)
+
+# Find the correct template file
+if args.template == 'tex' or args.template == 'latex':
+    file = path.join(file, 'latex.tex')
+
+elif args.template == 'beamer':
+    file = path.join(file, 'beamer.tex')
+
+# Copy the template file
+copyfile(file, path.expanduser(args.file))

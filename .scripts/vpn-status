@@ -1,0 +1,10 @@
+#!/bin/sh
+
+server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -F '.' '{ print $1 }')"
+
+
+if [ "$server" == "" ]; then
+    notify-send.py a --hint boolean:deadd-notification-center:true int:id:0 boolean:state:false type:string:buttons > /dev/null
+else
+    notify-send.py a --hint boolean:deadd-notification-center:true int:id:0 boolean:state:true type:string:buttons > /dev/null
+fi

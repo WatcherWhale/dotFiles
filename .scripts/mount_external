@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p /mnt/sdd
+mount /dev/sda1 /mnt/sdd
+

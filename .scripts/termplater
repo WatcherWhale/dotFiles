@@ -1,0 +1,14 @@
+#!/bin/env python3
+
+import argparse
+from shutil import copyfile
+
+parser = argparse.ArgumentParser(description="Copy the right template to the requested file")
+
+parser.add_argument('file', metavar='Output file name', type=str, help='Specify the output file name.')
+parser.add_argument('-t', '--template', type=str, help='The template you want to use.')
+parser.add_argument('-s', '--school', action='store_true', help='Use the school templates')
+
+args = parser.parse_args()
+
+
