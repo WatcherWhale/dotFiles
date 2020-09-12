@@ -128,7 +128,8 @@ format-charging-background = #192632
 format-charging-padding = 2
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.foreground}
+format-charging-underline = ${colors.notify}
+format-charging-foreground = ${colors.notify}
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
@@ -137,13 +138,13 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${colors.notify}
+format-discharging-underline = ${colors.orange}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.notify}
+ramp-capacity-foreground = ${colors.foreground}
 
 label-full = 
 label-full-foreground = ${colors.success}
