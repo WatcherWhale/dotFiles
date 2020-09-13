@@ -1,3 +1,8 @@
+" Italics
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+setlocal cul
+
 " Set compatibility to Vim only.
 set nocompatible
 
@@ -80,7 +85,10 @@ command! -nargs=0 Sw w !sudo tee % > /dev/null
 
 " Markdown
 "   Disable folding
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 0
+augroup foldopen
+    autocmd VimEnter *.md normal zR
+augroup END
 
 " Goyo
 let g:goyo_width = 120
