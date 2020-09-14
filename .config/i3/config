@@ -310,7 +310,7 @@ mode "quicklaunch" {
 
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym f exec firefox; mode "default"
-    bindsym c exec st ~/.scripts/calendar; mode "default"
+    bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
     bindsym d exec --no-startup-id discord; mode "default"
     bindsym t exec --no-startup-id telegram-desktop; mode "default"
     bindsym s exec --no-startup-id spotify-tray -t; mode "default"
@@ -355,10 +355,10 @@ client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
 
 # Calculator
 bindsym Control+XF86Calculator exec qalculate-gtk
-bindsym XF86Calculator exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
+bindsym XF86Calculator exec --no-startup-id kitty --class "termcalc" --name "Terminal Calculator" --title "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
 
 bindsym $mod+Control+c exec qalculate-gtk
-bindsym $mod+c exec --no-startup-id st -c "termcalc" -n "Terminal Calculator" -t "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
+bindsym $mod+c exec --no-startup-id st --class "termcalc" --name "Terminal Calculator" --title "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'
 
 # Rofi menus
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh

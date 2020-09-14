@@ -39,7 +39,7 @@ Plug 'lervag/vimtex'
 Plug 'jvirtanen/vim-octave'
 
 " Vim Rainbow (coloured pairs)
-Plug 'frazrepo/vim-rainbow'
+" Plug 'frazrepo/vim-rainbow'
 
 " Comments
 Plug 'preservim/nerdcommenter'
