@@ -50,4 +50,7 @@ Plug 'junegunn/fzf.vim'
 " Documentation Generator
 Plug 'kkoomen/vim-doge'
 
+" I3 Config
+Plug 'mboughaba/i3config.vim'
+
 call plug#end()

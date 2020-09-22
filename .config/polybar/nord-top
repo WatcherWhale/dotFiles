@@ -20,22 +20,21 @@ fuzzy-match = false
 format = <label-state> <label-mode>
 
 ; icons
-;ws-icon-0 = 1:Home;
-;ws-icon-1 = 2:Browser;
-;ws-icon-2 = 3:Coding;
-;ws-icon-3 = 4:Learning;
-;ws-icon-4 = 5:Fun;
-;ws-icon-5 = 25:Desktop;
-;ws-icon-default = 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;ﴬ
+ws-icon-default = 
 
-; color
-;label-focused = 
+label-visible = %icon%  %name%
+
+label-focused = %icon%  %name%
 label-focused-underline = ${colors.nord7}
 label-focused-foreground = ${colors.nord7}
 label-focused-padding = 2
 label-focused-background = #192632
 
-;label-unfocused = •
+label-unfocused = %icon%  %name%
 label-unfocused-underline = ${colors.nord7}
 label-unfocused-foreground = #4c566a
 ;${colors.nord9}

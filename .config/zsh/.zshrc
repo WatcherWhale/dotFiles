@@ -3,6 +3,7 @@ export EDITOR="nvim"
 export DIFFPROG="nvim -d"
 export TEXMFHOME="~/.local/share/texmf"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 ~/.scripts/terminalmsg
 
@@ -103,7 +104,10 @@ alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/p
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
+alias update-tex="sudo tlmgr update --all"
+alias update-pip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U && sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U"
 alias update="yay -Syu --noconfirm"
+alias update-all="echo '[Updater] Updating packages' && yay && echo '[Updater] Updating pip' && update-pip && echo '[Updater] Updating tex' && update-tex"
 
 alias mpv="mpv --volume=60"
 

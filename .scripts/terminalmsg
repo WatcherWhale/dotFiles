@@ -1,5 +1,10 @@
 #!/bin/sh
-fish="/home/watcherwhale/.local/share/fish/$(ls ~/.local/share/fish | sort -R | tail -1)"
+
+if [ -z "$1" ]; then
+    fish="/home/watcherwhale/.local/share/fish/$(ls ~/.local/share/fish | sort -R | tail -1)"
+else
+    fish="/home/watcherwhale/.local/share/fish/$1"
+fi
 
 echo -n -e "\e[0m\e[34m"
 cat $fish

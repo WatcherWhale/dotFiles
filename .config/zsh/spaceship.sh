@@ -43,7 +43,7 @@ export SPACESHIP_CHAR_SYMBOL=" "
 export SPACESHIP_DIR_COLOR=blue
 
 export SPACESHIP_HOST_SHOW=always
-export SPACESHIP_HOST_PREFIX='@ '
+export SPACESHIP_HOST_PREFIX="@ "
 
 export SPACESHIP_TIME_COLOR=blue
 export SPACESHIP_TIME_SHOW=false

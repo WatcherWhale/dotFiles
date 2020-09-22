@@ -8,8 +8,8 @@ nnoremap <silent> <leader>r :source /home/watcherwhale/.config/nvim/init.vim <CR
 
 set scrolloff=999
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
-nnoremap j jzz
-nnoremap k kzz
+"nnoremap j jzz
+"nnoremap k kzz
 
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
