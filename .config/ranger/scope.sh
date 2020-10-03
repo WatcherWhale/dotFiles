@@ -72,8 +72,8 @@ handle_extension() {
             #mutool draw -F txt -i -- "${FILE_PATH}" 1-10 | \
             #  fmt -w "${PV_WIDTH}" && exit 5
             #exiftool "${FILE_PATH}" && exit 5
-            #try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg}" && exit 6 || exit 1;;
-            exit 1;;
+            #try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg}" && exit 5 || exit 1;;
+            exit 5;;
 
         ## BitTorrent
         torrent)
@@ -272,7 +272,7 @@ handle_mime() {
             ## note: catdoc does not always work for .doc files
             ## catdoc: http://www.wagner.pp.ru/~vitus/software/catdoc/
             catdoc -- "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
 
         ## DOCX, ePub, FB2 (using markdown)
         ## You might want to remove "|epub" and/or "|fb2" below if you have
@@ -280,7 +280,7 @@ handle_mime() {
         *wordprocessingml.document|*/epub+zip|*/x-fictionbook+xml)
             ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
 
         ## XLS
         *ms-excel)
@@ -288,34 +288,36 @@ handle_mime() {
             ## xls2csv comes with catdoc:
             ##   http://www.wagner.pp.ru/~vitus/software/catdoc/
             xls2csv -- "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
 
         ## Text
         text/* | */xml)
             ## Syntax highlight
             pygmentize -f 256 -O style=nord "${FILE_PATH}" && exit 5
             #echo "${FILE_PATH}"
-            exit 2;;
+            exit 5;;
 
         ## DjVu
         image/vnd.djvu)
             ## Preview as text conversion (requires djvulibre)
             djvutxt "${FILE_PATH}" | fmt -w "${PV_WIDTH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
 
         ## Image
         image/*)
             ## Preview as text conversion
             # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
             exiftool "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
 
         ## Video and audio
         video/* | audio/*)
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
-            exit 1;;
+            exit 5;;
+        *)
+            exit 5;;
     esac
 }
 

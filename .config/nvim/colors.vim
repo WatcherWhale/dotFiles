@@ -15,4 +15,4 @@ hi htmlItalic cterm=italic
 hi htmlBoldItalic cterm=bolditalic
 hi htmlBol cterm=bold
 
-" hi Comment ctermfg=14
+hi Comment ctermfg=2

@@ -7,7 +7,9 @@ let mapleader = "ù"
 nnoremap <silent> <leader>r :source /home/watcherwhale/.config/nvim/init.vim <CR>
 
 set scrolloff=999
-nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+nnoremap <Leader>zzz :let &scrolloff=999-&scrolloff<CR>
+nnoremap <Leader>zzr :let &scrolloff=999<CR>
+nnoremap <Leader>zzt :let &scrolloff=10<CR>
 "nnoremap j jzz
 "nnoremap k kzz
 
@@ -68,4 +70,4 @@ endfunction
 
 let g:coc_snippet_next = '<Tab>'
 
-
+nnoremap <F5> :MundoToggle<CR>

@@ -40,8 +40,8 @@ bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
 
 # Autostart scripts
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
-exec_always --no-startup-id sh -c '~/.config/i3/scripts/picom.sh'
-exec_always --no-startup-id sh -c '~/.config/i3/scripts/polybar.sh'
+exec_always --no-startup-id sh -c '~/.scripts/picom.sh'
+exec_always --no-startup-id sh -c '~/.scripts/polybar.sh'
 exec_always --no-startup-id sh -c '~/.scripts/background'
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
 
@@ -50,7 +50,7 @@ exec --no-startup-id autotiling
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
-exec --no-startup-id sleep 2 && blueberry-tray
+exec --no-startup-id sleep 2 && blueman-applet
 #exec --no-startup-id sleep 3 && redshift-gtk
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
@@ -59,6 +59,7 @@ exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
 exec --no-startup-id jupyter lab
+exec --no-startup-id ~/.scripts/vpn uk
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -89,6 +90,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+KP_Enter exec --no-startup-id $term
 
 # kill focused window
 bindsym $mod+q kill
@@ -317,7 +319,7 @@ mode "quicklaunch" {
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym f exec firefox; mode "default"
     bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
-    bindsym d exec --no-startup-id discord; mode "default"
+    bindsym d exec --no-startup-id flatpak run com.discordapp.Discord; mode "default"
     bindsym t exec --no-startup-id telegram-desktop; mode "default"
     bindsym s exec --no-startup-id spotify-tray -t; mode "default"
     bindsym r exec --no-startup-id $term "ranger" --keep; mode "default"
@@ -386,3 +388,4 @@ bindsym $mod+mu exec --no-startup-id xdotool click 7
 # Paste buffer
 bindsym $mod+v exec --no-startup-id greenclip print | sed '/^$/d' | rofi -dmenu -p "" | xargs -r -d'\n' -I '{}' greenclip print '{}'
 bindsym $mod+Shift+v exec --no-startup-id greenclip clear
+bindsym $mod+Control+v exec --no-startup-id ~/.scripts/imgsaveauto

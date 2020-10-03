@@ -15,6 +15,24 @@ import os
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
 
+class imgsave(Command):
+    """
+    :imgsave <file>
+
+    Saves the currently copied image to a file
+    """
+    def execute(self):
+        import subprocess
+        from os.path import join, expanduser, lexists
+
+
+        file = join(self.fm.thisdir.path, expanduser(self.rest(1)))
+
+        if not lexists(file):
+            subprocess.getoutput("~/.scripts/imgsave " + file)
+        else:
+            print("File already exists")
+
 class wallpaper(Command):
     """
     :wallpaper <file>

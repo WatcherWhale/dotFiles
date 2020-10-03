@@ -53,4 +53,7 @@ Plug 'kkoomen/vim-doge'
 " I3 Config
 Plug 'mboughaba/i3config.vim'
 
+" Undo Tree
+Plug 'simnalamburt/vim-mundo'
+
 call plug#end()

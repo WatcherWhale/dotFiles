@@ -1,6 +1,6 @@
 #!/bin/sh
 
-country="ch"
+country="uk"
 
 if [ "$1" == "stop" ] || [ "$1" == "disconnect" ] || [ "$1" == "d" ]; then
     nordvpn d
