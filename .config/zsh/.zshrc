@@ -5,10 +5,12 @@ export TEXMFHOME="~/.local/share/texmf"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
+export MODE_CURSOR_VIINS="bar"
+
 ~/.scripts/terminalmsg
 
 # Set History file
-HISTFILE=~/.config/zsh/.zsh_history
+export HISTFILE=~/.config/zsh/.zsh_history
 
 # Set Auto suggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=(history)
@@ -20,7 +22,7 @@ export ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="spaceship"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions zsh-vim-mode)
 
 source $HOME/.config/zsh/spaceship.sh
 source $ZSH/oh-my-zsh.sh
@@ -104,12 +106,9 @@ alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/p
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
-alias update-tex="sudo tlmgr update --all"
-alias update-pip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U && sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 sudo pip install -U"
-alias update="yay -Syu --noconfirm"
-alias update-all="echo '[Updater] Updating packages' && yay && echo '[Updater] Updating pip' && update-pip && echo '[Updater] Updating tex' && update-tex"
-
 alias mpv="mpv --volume=60"
+
+alias cat="bat"
 
 # Fun
 alias rr="~/.scripts/roll.sh"
@@ -125,3 +124,7 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
     eval `$SSHAGENT $SSHAGENTARGS` > /dev/null
     trap "kill $SSH_AGENT_PID" 0
 fi
+
+# Limit History file
+export SAVEHIST=1000
+setopt HIST_FIND_NO_DUPS
