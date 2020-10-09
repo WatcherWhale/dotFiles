@@ -1,0 +1,4 @@
+#!/bin/sh
+
+nmcli c up Uantwerpen\ VPN
+sudo mount -t cifs -o user=s0182054@ad.ua.ac.be //fileserver.ad.ua.ac.be/Homedir_studenten/s0182054 /home/watcherwhale/HSchijf

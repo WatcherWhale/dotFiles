@@ -1,0 +1,2 @@
+#!/bin/sh
+alacritty --class "termcalc,termcalc" --title "Terminal Calculator" -e octave --no-gui -q --traditional --eval 'pkg load statistics'

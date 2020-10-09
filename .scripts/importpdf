@@ -17,5 +17,3 @@ joplin import --format md $file $2
 # Sync the client
 joplin sync
 
-rm -i $file
-rm -ri $dir
