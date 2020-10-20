@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mpv --profile=video $(xclip -o)
+

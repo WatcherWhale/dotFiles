@@ -4,6 +4,7 @@ export DIFFPROG="nvim -d"
 export TEXMFHOME="~/.local/share/texmf"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export MODE_CURSOR_VIINS="bar"
 
@@ -105,8 +106,6 @@ alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-
-alias mpv="mpv --volume=60"
 
 alias cat="bat"
 

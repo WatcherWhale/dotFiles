@@ -15,5 +15,8 @@ echo $dir
 # Import generated markdown files
 joplin import --format md $file $2
 # Sync the client
-joplin sync
+#joplin sync
+
+echo "Done."
+echo "Maybe sync the notebook"
 

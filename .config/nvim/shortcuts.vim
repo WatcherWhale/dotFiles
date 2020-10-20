@@ -22,19 +22,23 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
-" Nerdtree
-noremap <silent> <F2>      :NERDTreeToggle<CR>
-vnoremap <silent> <F2>     <C-C>:NERDTreeToggle<CR>
-inoremap <silent> <F2>     <C-O>:NERDTreeToggle<CR>
+" Ranger
+let g:ranger_map_keys = 0
+noremap <silent> <F2>      :Ranger<CR>
+vnoremap <silent> <F2>     <C-C>:Ranger<CR>
+inoremap <silent> <F2>     <C-O>:Ranger<CR>
 
 noremap <silent> <C-n>      :NERDTreeToggle<CR>
 vnoremap <silent> <C-n>     <C-C>:NERDTreeToggle<CR>
 inoremap <silent> <C-n>     <C-O>:NERDTreeToggle<CR>
 
-
 noremap <silent> <leader>m      :MarkdownPreview<CR>
 vnoremap <silent> <leader>m     <C-C>:MarkdownPreview<CR>
 inoremap <silent> <leader>m     <C-O>:MarkdownPreview<CR>
+
+nnoremap <silent> <leader>v     :VimtexCompile<CR>
+vnoremap <silent> <leader>v     <C-C>:VimtexCompile<CR>
+inoremap <silent> <leader>v     <C-O>:VimtexCompile<CR>
 
 noremap <silent> <leader>g      :Goyo<CR>
 vnoremap <silent> <leader>g     <C-C>:Goyo<CR>
@@ -71,3 +75,11 @@ endfunction
 let g:coc_snippet_next = '<Tab>'
 
 nnoremap <F5> :MundoToggle<CR>
+
+" Remap F1
+
+map <F1> <Esc>
+imap <F1> <Esc>
+
+
+

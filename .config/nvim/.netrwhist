@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/watcherwhale'
 let g:netrw_dirhist_2='/home/watcherwhale/projects/meteorTest/.meteor'
 let g:netrw_dirhist_1='/home/watcherwhale/projects/meteorTest'
 let g:netrw_dirhist_0='/home/watcherwhale/projects/meteorTest/.meteor'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_7='/home/watcherwhale/projects/EasyWiki/src'
 let g:netrw_dirhist_6='/home/watcherwhale/projects/EasyWiki'
 let g:netrw_dirhist_5='/home/watcherwhale/.config/ranger'
 let g:netrw_dirhist_4='/home/watcherwhale/.config/polybar'
-let g:netrw_dirhist_3='/home/watcherwhale/.config/polybar/scripts'

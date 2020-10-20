@@ -47,6 +47,7 @@ exec_always --no-startup-id sh -c '~/.scripts/background'
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id sh -c '~/.scripts/wacom'
+exec_always --no-startup-id setxkbmap -option caps:escape
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id xfce4-power-manager
@@ -61,7 +62,7 @@ exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
 exec --no-startup-id jupyter lab
-exec --no-startup-id ~/.scripts/vpn uk
+# exec --no-startup-id ~/.scripts/vpn uk
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -321,7 +322,7 @@ mode "quicklaunch" {
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym f exec firefox; mode "default"
     bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
-    bindsym d exec --no-startup-id flatpak run com.discordapp.Discord; mode "default"
+    bindsym d exec --no-startup-id lightcord; mode "default"
     bindsym t exec --no-startup-id telegram-desktop; mode "default"
     bindsym s exec --no-startup-id spotify-tray -t; mode "default"
     bindsym r exec --no-startup-id $term "ranger" --keep; mode "default"
@@ -332,6 +333,7 @@ mode "quicklaunch" {
     bindsym x exec xournalpp; mode "default"
     bindsym k exec kleopatra; mode "default"
     bindsym b exec blueberry; mode "default"
+    bindsym v exec --no-startup-id ~/.scripts/mpvplay; mode "default"
 
     bindsym $mod+Return exec --no-startup-id $term; mode "default"
 

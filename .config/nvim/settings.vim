@@ -96,6 +96,8 @@ let g:goyo_height = 35
 
 " Nerdtree
 let NERDTreeQuitOnOpen=1
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
 
 " Markdown preview
 let vim_markdown_preview_github=1
@@ -118,17 +120,6 @@ fun Joplin()
     let $PATH = expand("%:p")
     !/bin/sh -c '/home/watcherwhale/.scripts/joplin-attach ${PATH}'
 endfun
-
-" Vim Rainbow (Coloured pairs)
-let g:rainbow_active = 1
-let g:rainbow_ctermfgs = ['lightblue', 'yellow', 'red']
-
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-\ ]
 
 aug i3config_ft_detection
   au!
