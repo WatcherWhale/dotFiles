@@ -1,5 +1,11 @@
 call plug#begin('/home/watcherwhale/.config/nvim/plugged')
 
+" Latex
+Plug 'lervag/vimtex'
+
+" TreeSitter
+Plug 'nvim-treesitter/nvim-treesitter'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -35,8 +41,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 
-" Latex
-Plug 'lervag/vimtex'
 
 " Matlab
 Plug 'jvirtanen/vim-octave'

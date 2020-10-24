@@ -1,8 +1,0 @@
-configuration {
-    show-icons: true;
-    font: "Hack 12";
-    combi-modi: "window,drun,ssh,run";
-}
-
-@import "nor"
-@theme "Nord"

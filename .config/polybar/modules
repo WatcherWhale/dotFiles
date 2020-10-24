@@ -37,3 +37,11 @@ click-left = exec blueberry
 click-right = exec ~/.scripts/polybar/toggle_bluetooth
 format-padding = 1
 format-background = #192632
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+label-padding = 1
+tail = true

@@ -13,7 +13,7 @@ if [ -z "$1" ]; then
 elif [ "$2" = "--keep" ]; then
     name="$(echo $1 | cut -f1 -d' ')"
     env TERM=screen-256color tmux new-session -d -s $$ -n $name
-    env TERM=screen-256color tmux send-keys -t $$:$name "$1 && clear" Enter
+    env TERM=screen-256color tmux send-keys -t $$:$name "$1 && clear && clear" Enter
     alacritty -e env TERM=screen-256color tmux attach -t $$:$name
 else
     name="$(echo $1 | cut -f1 -d' ')"

@@ -70,7 +70,7 @@ alias j="joplin"
 alias rm="trash"
 
 # Media
-alias ytmp3="youtube-dl -x --audio-format mp3"
+alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata"
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
