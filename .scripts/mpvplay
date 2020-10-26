@@ -1,4 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-mpv --profile=video $(xclip -o)
+if [ -n "$1" ]; then
+    url="$1"
+else
+    url="$(xclip -o)"
+fi
 
+if [[ $url == *"crunchyroll"* ]]; then
+    mpv --profile=crunchyroll $url
+else
+    mpv --profile=video $url
+fi

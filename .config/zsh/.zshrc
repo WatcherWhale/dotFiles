@@ -65,6 +65,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
+alias push="git push"
+alias pushall="git pushall"
 
 # use trash instead of the default remove
 alias rm="trash"

@@ -49,7 +49,7 @@ top-right = nordvpn battery
 
 # Bottom modules
 bottom-left = spacer playpause spotify
-bottom-center = polywins
+bottom-center = 
 bottom-right = 
 
 systray-top = none
