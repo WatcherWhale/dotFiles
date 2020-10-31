@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-    fish="/home/watcherwhale/.local/share/fish/$(ls ~/.local/share/fish | sort -R | tail -1)"
+    ascii="/home/watcherwhale/.local/share/fish-ascii/$(ls ~/.local/share/fish-ascii | sort -R | tail -1)"
 else
-    fish="/home/watcherwhale/.local/share/fish/$1"
+    ascii="/home/watcherwhale/.local/share/fish-ascii/$1"
 fi
 
 echo -n -e "\e[0m\e[34m"
-cat $fish
+cat $ascii
 echo -n -e "\e[0m"
