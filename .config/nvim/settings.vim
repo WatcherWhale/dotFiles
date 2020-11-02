@@ -1,3 +1,17 @@
+" LEARN VIM BETTER
+
+nnoremap <up>    <nop>
+nnoremap <down>  <nop>
+nnoremap <left>  <nop>
+nnoremap <right> <nop>
+inoremap <up>    <nop>
+inoremap <down>  <nop>
+inoremap <left>  <nop>
+inoremap <right> <nop>
+
+
+
+
 " Italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m
@@ -96,8 +110,8 @@ let g:goyo_height = 35
 
 " Nerdtree
 let NERDTreeQuitOnOpen=1
-let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
+let g:NERDTreeHijackNetrw = 1
+let g:ranger_replace_netrw = 0
 
 " Markdown preview
 let vim_markdown_preview_github=1

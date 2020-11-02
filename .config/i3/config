@@ -118,20 +118,20 @@ bindsym $mod+Control+Shift+j move workspace to outputdown
 bindsym $mod+Control+Shift+k move workspace to outputup
 bindsym $mod+Control+Shift+l move workspace to outputright
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
-bindsym $mod+Control+Shift+Left move workspace to output left
-bindsym $mod+Control+Shift+Down move workspace to outputdown
-bindsym $mod+Control+Shift+Up move workspace to outputup
-bindsym $mod+Control+Shift+Right move workspace to outputright
+# bindsym $mod+Control+Shift+Left move workspace to output left
+# bindsym $mod+Control+Shift+Down move workspace to outputdown
+# bindsym $mod+Control+Shift+Up move workspace to outputup
+# bindsym $mod+Control+Shift+Right move workspace to outputright
 
 # Toggle split orientation
 bindsym $mod+t split toggle

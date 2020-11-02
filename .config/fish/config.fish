@@ -2,6 +2,7 @@ starship init fish | source
 
 source ~/.config/fish/nord.fish
 
+set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/lib/jvm/default/bin:/var/lib/snapd/snap/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/usr/local/MATLAB/R2020b/bin/:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/"
 #set -x PATH $PATH:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
