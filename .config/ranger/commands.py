@@ -49,6 +49,24 @@ class wallpaper(Command):
         if lexists(file):
             f = open("/home/watcherwhale/.local/share/background","w")
             f.write(file)
+
+class mpvplay(Command):
+    """
+    :wallpaper <file>
+
+    Sets the currently selected file as the wallpaper.
+    """
+    def execute(self):
+        import subprocess
+        from os.path import join, expanduser, lexists
+
+
+        file = join(self.fm.thisdir.path, expanduser(self.rest(1)))
+
+        if lexists(file):
+            f = open("/home/watcherwhale/.local/share/background","w")
+            f.write(file)
+            subprocess.getoutput("i3 restart")
             subprocess.getoutput("i3 restart")
 
 class topdf(Command):

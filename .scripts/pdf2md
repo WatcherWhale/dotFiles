@@ -12,7 +12,7 @@ mkdir -p $name
 touch $file
 
 # Export pdf to png's
-pdftoppm -png $1 $name/$name
+pdftoppm -png -r 500 $1 $name/$name
 
 # Add pngs to markdown file
 for img in $name/*.png

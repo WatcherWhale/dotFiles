@@ -40,9 +40,11 @@ nnoremap <silent> <leader>v     :VimtexCompile<CR>
 vnoremap <silent> <leader>v     <C-C>:VimtexCompile<CR>
 inoremap <silent> <leader>v     <C-O>:VimtexCompile<CR>
 
-noremap <silent> <leader>g      :Goyo<CR>
-vnoremap <silent> <leader>g     <C-C>:Goyo<CR>
-inoremap <silent> <leader>g     <C-O>:Goyo<CR>
+nnoremap <silent> <leader>f     :%!python -m json.tool<CR>
+
+" noremap <silent> <leader>g      :Goyo<CR>
+" vnoremap <silent> <leader>g     <C-C>:Goyo<CR>
+" inoremap <silent> <leader>g     <C-O>:Goyo<CR>
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -81,5 +83,6 @@ nnoremap <F5> :MundoToggle<CR>
 map <F1> <Esc>
 imap <F1> <Esc>
 
-
-
+" Clang
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>

@@ -354,7 +354,7 @@ bindsym $mod+semicolon exec splatmoji -s dark type
 bindsym $mod+Control+semicolon exec splatmoji -s dark copy
 
 # Disable mouse moving
-mouse_warping none
+#mouse_warping none
 
 # Printscreen
 
@@ -395,3 +395,8 @@ bindsym $mod+mu exec --no-startup-id xdotool click 7
 bindsym $mod+v exec --no-startup-id greenclip print | sed '/^$/d' | rofi -dmenu -p "" | xargs -r -d'\n' -I '{}' greenclip print '{}'
 bindsym $mod+Shift+v exec --no-startup-id greenclip clear
 bindsym $mod+Control+v exec --no-startup-id ~/.scripts/imgsaveauto
+
+
+# Mic toggle
+exec_always --no-startup-id amixer set Capture 100%
+bindsym Scroll_Lock exec --no-startup-id amixer set Capture toggle

@@ -15,6 +15,11 @@ elif [ "$2" = "--keep" ]; then
     env TERM=screen-256color tmux -2 new-session -d -s $$ -n $name
     env TERM=screen-256color tmux -2 send-keys -t $$:$name "$1 && clear && clear" Enter
     alacritty -e env TERM=screen-256color tmux attach -t $$:$name
+elif [ "$2" = "--name" ]; then
+    name="$3"
+    env TERM=screen-256color tmux -2 new-session -d -s $$ -n $name
+    env TERM=screen-256color tmux -2 send-keys -t $$:$name "$1 && clear && tmux kill-session -t $$" Enter
+    alacritty -e env TERM=screen-256color tmux attach -t $$:$name
 else
     name="$(echo $1 | cut -f1 -d' ')"
     env TERM=screen-256color tmux -2 new-session -d -s $$ -n $name

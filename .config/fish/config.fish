@@ -2,8 +2,7 @@ starship init fish | source
 
 source ~/.config/fish/nord.fish
 
-set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/lib/jvm/default/bin:/var/lib/snapd/snap/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/usr/local/MATLAB/R2020b/bin/:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/"
-#set -x PATH $PATH:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/
+set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
 set -x TEXMFHOME "~/.local/share/texmf"
@@ -14,7 +13,7 @@ set -x MODE_CURSOR_VIINS "bar"
 
 set fish_greeting
 
-sh -c '~/.scripts/terminalmsg'
+# sh -c '~/.scripts/terminalmsg'
 
 # Make ranger cd to the chosen directory
 alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
@@ -23,8 +22,6 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.range
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
-alias push="git push"
-alias pushall="git pushall"
 
 # use trash instead of the default remove
 alias rm="trash"
@@ -34,6 +31,12 @@ alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata"
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Git
+alias push="git push"
+alias pushall="git pushall"
+alias commit="git commit"
+alias pull="git pull"
 
 # Vim
 alias vim="nvim"
@@ -62,6 +65,8 @@ alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/p
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 alias cat="bat"
+
+alias cast="catt cast"
 
 # Fun
 alias rr="~/.scripts/roll.sh"

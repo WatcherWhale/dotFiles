@@ -1,0 +1,4 @@
+#!/bin/sh
+
+playlist=$(ls ~/Music | grep "$1" | head -1)
+mpv --loop-playlist --shuffle "$HOME/Music/$playlist"

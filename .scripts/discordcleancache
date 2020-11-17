@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm -rf "$HOME/.config/Lightcord/Cache"
+rm -rf "$HOME/.config/Lightcord/GPUCache"

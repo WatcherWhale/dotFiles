@@ -5,6 +5,7 @@ Plug 'lervag/vimtex'
 
 " TreeSitter
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -30,7 +31,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 " Distraction free vim
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 
 " Nerdtree
 Plug 'preservim/nerdtree'
@@ -62,5 +63,11 @@ Plug 'mboughaba/i3config.vim'
 
 " Undo Tree
 Plug 'simnalamburt/vim-mundo'
+
+" Fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" CPP
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
