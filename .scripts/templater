@@ -55,6 +55,8 @@ if args.template == 'tex' or args.template == 'latex':
 
 elif args.template == 'beamer':
     file = path.join(file, 'beamer.tex')
+elif args.template == 'Document':
+    file = path.join(file, 'Document.odt')
 
 # Copy the template file
 copyfile(file, path.expanduser(args.file))

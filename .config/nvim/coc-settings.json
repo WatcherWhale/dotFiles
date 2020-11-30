@@ -3,13 +3,17 @@
       "Goyo",
       "Leftrightarrow",
       "Rightarrow",
+      "Sexting",
       "bitsync",
       "color",
+      "definecolor",
       "framesync",
       "isclass",
       "leftarrow",
       "math",
-      "pacman"
+      "newcommand",
+      "pacman",
+      "usepackage"
     ],
     "cSpell.enabledLanguageIds": [
       "asciidoc",

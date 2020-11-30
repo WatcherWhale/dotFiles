@@ -2,7 +2,7 @@ starship init fish | source
 
 source ~/.config/fish/nord.fish
 
-set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/"
+set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.emacs.d/bin/"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
 set -x TEXMFHOME "~/.local/share/texmf"
@@ -27,7 +27,7 @@ alias j="joplin"
 alias rm="trash"
 
 # Media
-alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata"
+alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata -i"
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

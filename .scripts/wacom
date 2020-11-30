@@ -2,7 +2,7 @@
 
 stylus=$(xsetwacom --list devices | grep "type: STYLUS" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
 pad=$(xsetwacom --list devices | grep "type: PAD" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
-monitor=$(autorandr | grep -w "(current)" | cut -d' ' -f1)
+monitor=$(autorandr | grep -w "(current)\|(detected)" | cut -d' ' -f1)
 
 # Map output
 if [ "$monitor" == "dock" ];
