@@ -4,7 +4,7 @@ include-file = $HOME/.config/polybar/dark-colors
 include-file = $HOME/.config/polybar/nord-top
 include-file = $HOME/.config/polybar/nord-down
 include-file = $HOME/.config/polybar/nord-config
-include-file = $HOME/.config/polybar/spotify
+;include-file = $HOME/.config/polybar/spotify
 include-file = $HOME/.config/polybar/modules
 
 [bar/base]

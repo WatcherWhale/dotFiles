@@ -12,6 +12,6 @@ rate 60.00
 output eDP1
 crtc 0
 mode 1920x1080
-pos 1920x0
+pos 1920x360
 primary
 rate 60.00

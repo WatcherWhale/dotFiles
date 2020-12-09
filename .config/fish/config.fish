@@ -27,7 +27,7 @@ alias j="joplin"
 alias rm="trash"
 
 # Media
-alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata -i"
+alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata -i -o \"%(autonumber)s %(title)s.%(ext)s\""
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -37,6 +37,10 @@ alias push="git push"
 alias pushall="git pushall"
 alias commit="git commit"
 alias pull="git pull"
+alias checkout="git checkout"
+alias rebase="git rebase"
+alias add="git add"
+alias merge="git merge"
 
 # Vim
 alias vim="nvim"
@@ -60,9 +64,9 @@ alias q="exit"
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --verbose --latest 50 --number 20 --protocol https --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --verbose --latest 50 --number 20 --protocol https --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --verbose --latest 50 --number 20 --protocol https --sort age --save /etc/pacman.d/mirrorlist"
 
 alias cat="bat"
 

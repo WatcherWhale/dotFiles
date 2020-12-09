@@ -20,7 +20,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 export ZSH="/usr/share/oh-my-zsh"
 
 # Theming
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship"
+eval "$(starship init zsh)"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions zsh-vim-mode)

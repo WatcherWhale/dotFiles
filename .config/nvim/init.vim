@@ -1,6 +1,9 @@
 " load shortcuts
 source /home/watcherwhale/.config/nvim/shortcuts.vim
 
+" load lsp shortcuts
+source /home/watcherwhale/.config/nvim/lsp.vim
+
 " load settings
 source /home/watcherwhale/.config/nvim/settings.vim
 
@@ -12,9 +15,6 @@ source /home/watcherwhale/.config/nvim/colors.vim
 
 " Load coc settings
 source /home/watcherwhale/.config/nvim/coc.vim
-
-" Load Tree-sitter
-source /home/watcherwhale/.config/nvim/treesitter.vim
 
 " Load CtrlP
 source /home/watcherwhale/.config/nvim/fuzzy.vim

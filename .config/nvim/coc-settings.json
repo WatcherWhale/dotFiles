@@ -10,7 +10,9 @@
       "framesync",
       "isclass",
       "leftarrow",
+      "maketitle",
       "math",
+      "mutex",
       "newcommand",
       "pacman",
       "usepackage"
@@ -51,6 +53,6 @@
       "yaml",
       "yml"
     ],
-    "suggest.numberSelect": true,
+    "suggest.numberSelect": false,
     "diagnostic.virtualText": true
 }

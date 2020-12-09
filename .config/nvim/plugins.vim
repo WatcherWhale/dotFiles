@@ -3,10 +3,6 @@ call plug#begin('/home/watcherwhale/.config/nvim/plugged')
 " Latex
 Plug 'lervag/vimtex'
 
-" TreeSitter
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -69,5 +65,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " CPP
 Plug 'rhysd/vim-clang-format'
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
 
 call plug#end()

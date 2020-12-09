@@ -325,7 +325,7 @@ mode "quicklaunch" {
     bindsym f exec firefox; mode "default"
     bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
     bindsym Shift+d exec --no-startup-id /opt/Discord-linux-x64/Discord; mode "default"
-    bindsym d exec --no-startup-id lightcord; mode "default"
+    bindsym d exec --no-startup-id discord --no-sandbox; exec --no-startup-id discover-overlay; mode "default"
     bindsym t exec --no-startup-id telegram-desktop; mode "default"
     bindsym w exec --no-startup-id /opt/WhatsApp-linux-x64/WhatsApp; mode "default"
     bindsym s exec --no-startup-id spotify-tray -t; mode "default"
@@ -401,4 +401,4 @@ bindsym $mod+Control+v exec --no-startup-id ~/.scripts/imgsaveauto
 
 # Mic toggle
 exec_always --no-startup-id amixer set Capture 100%
-bindsym Scroll_Lock exec --no-startup-id amixer set Capture toggle
+bindsym Scroll_Lock exec --no-startup-id amixer set Capture toggle && notify-send.py -a Microphone "Mic mute has been toggled"

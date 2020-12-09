@@ -23,6 +23,3 @@ do
     MONITOR=$m polybar -c $HOME/.config/polybar/dark-config nord-top &
     MONITOR=$m polybar -c $HOME/.config/polybar/dark-config nord-down &
 done
-
-killall python3
-sh -c '~/.scripts/spotify/launchlistener.sh' &
