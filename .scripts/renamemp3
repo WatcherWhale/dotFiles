@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for f in *.mp3; do
+    name="$(echo $f | awk -F'.' '{print $2}')"
+    name2=${name#"\ "}
+    num="$(echo $f | awk -F'.' '{print $1}')"
+    id3 -t "$name2" -n "$num" "$f"
+done

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+idle="$(xprintidle)"
+
+if [ $idle > 30000 ];
+then
+    ~/.scripts/lock
+fi

@@ -339,6 +339,8 @@ mode "quicklaunch" {
     bindsym v exec --no-startup-id ~/.scripts/mpvplay; mode "default"
     bindsym y exec --no-startup-id freetube; mode "default"
 
+    bindsym m exec --no-startup-id ~/.scripts/playallMusic; mode "default"
+
     bindsym $mod+Return exec --no-startup-id $term; mode "default"
 
     bindsym $mod+a mode "default"
