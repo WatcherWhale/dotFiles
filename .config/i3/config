@@ -61,7 +61,7 @@ exec --no-startup-id nextcloud
 exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
-exec --no-startup-id jupyter lab
+# exec --no-startup-id jupyter lab
 # exec --no-startup-id ~/.scripts/vpn uk
 exec --no-startup-id safeeyes
 
@@ -226,7 +226,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 
-bindsym $mod+shift+e exec sh -c "~/.scripts/exit-options"
+bindsym $mod+shift+e exec arcolinux-logout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -323,6 +323,7 @@ mode "quicklaunch" {
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym $mod+q kill; mode "default"
     bindsym f exec firefox; mode "default"
+    bindsym Shift+f exec firefox --private-window; mode "default"
     bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
     bindsym Shift+d exec --no-startup-id /opt/Discord-linux-x64/Discord; mode "default"
     bindsym d exec --no-startup-id discord --no-sandbox; exec --no-startup-id discover-overlay; mode "default"

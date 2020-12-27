@@ -32,6 +32,9 @@ alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+alias play='devour mpv --loop'
+alias playfolder='devour mpv --shuffle --loop-playlist'
+
 # Git
 alias push="git push"
 alias pushall="git pushall"

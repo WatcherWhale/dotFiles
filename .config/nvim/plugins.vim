@@ -69,4 +69,6 @@ Plug 'rhysd/vim-clang-format'
 " LSP
 Plug 'prabirshrestha/vim-lsp'
 
+Plug 'cyberkov/openhab-vim'
+
 call plug#end()
