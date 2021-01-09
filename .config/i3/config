@@ -49,21 +49,19 @@ exec_always --no-startup-id autotiling
 exec_always --no-startup-id sh -c '~/.scripts/wacom'
 exec_always --no-startup-id setxkbmap -option caps:escape
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id xfce4-power-manager
+exec --no-startup-id numlockx on
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id  xfce4-power-manager
 exec --no-startup-id pa-applet
-exec --no-startup-id nm-applet
+exec --no-startup-id  nm-applet
 exec --no-startup-id sleep 2 && blueman-applet
-#exec --no-startup-id sleep 3 && redshift-gtk
+exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/kdeconnectd
-exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id nextcloud
+exec --no-startup-id  kdeconnect-indicator
+exec --no-startup-id  nextcloud
 exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
-# exec --no-startup-id jupyter lab
-# exec --no-startup-id ~/.scripts/vpn uk
-exec --no-startup-id safeeyes
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -226,7 +224,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 
-bindsym $mod+shift+e exec arcolinux-logout
+bindsym $mod+shift+e exec --no-startup-id ~/.scripts/exit-options
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

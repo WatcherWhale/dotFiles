@@ -1,9 +1,11 @@
 {
     "cSpell.userWords": [
+      "Bayes",
       "Goyo",
       "Leftrightarrow",
       "Rightarrow",
       "Sexting",
+      "Underfitting",
       "bitsync",
       "color",
       "definecolor",
@@ -15,6 +17,7 @@
       "mutex",
       "newcommand",
       "pacman",
+      "uderfitting",
       "usepackage"
     ],
     "cSpell.enabledLanguageIds": [

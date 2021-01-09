@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dur="$(( $(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$1" |cut -d\. -f1) - $2 ))"
+ffmpeg -i "$1" -t $dur -c copy "temp-$1"
+
+rm "$1"
+mv "temp-$1" "$1"

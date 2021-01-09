@@ -1,2 +1,2 @@
 #!/bin/bash
-matlab -nodesktop -sd $PWD
+matlab -nosplash -nodesktop -sd $PWD
