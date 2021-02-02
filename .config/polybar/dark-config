@@ -11,7 +11,6 @@ include-file = $HOME/.config/polybar/modules
 theme = dark
 monitor = ${env:MONITOR:}
 width = ${config.width}
-height = ${config.height}
 offset-x = ${config.offset-x}
 offset-y = ${config.offset-y}
 radius = ${config.radius}
@@ -42,12 +41,13 @@ border-color = #192632
 [bar/nord-top]
 inherit = bar/base
 
+height = ${config.height}
 module-margin = 1
 
 border-bottom-size = 2px
 
 ;font-0 = "NotoSans-Regular:size=12"
-font-0 = Noto Sans Display Regular Nerd Font Complete:pixelsize=12;1
+font-0 = NotoSans Nerd Font:pixelsize=14;1
 font-1 = FontAwesome5FreeSolid:pixelsize=12;1
 font-2 = FontAwesome5FreeRegular:pixelsize=12;1
 font-3 = FontAwesome5Brands:pixelsize=12;1
@@ -64,9 +64,30 @@ modules-right = ${config.top-right}
 
 tray-position = ${config.systray-top}
 
+[bar/nord-empty-top]
+inherit = bar/base
+
+height = ${config.height}
+module-margin = 1
+
+border-bottom-size = 2px
+
+font-0 = NotoSans Nerd Font:pixelsize=14;1
+font-1 = FontAwesome5FreeSolid:pixelsize=12;1
+font-2 = FontAwesome5FreeRegular:pixelsize=12;1
+font-3 = FontAwesome5Brands:pixelsize=12;1
+font-4 = WenQuanYiMicroHei:size=12
+font-5 = FontAwesome5:pixelsize=12;1
+font-6 = NotoSans:pixelsize=12;1
+
+modules-left = ${config.top-empty-left}
+modules-center = ${config.top-empty-center}
+modules-right = ${config.top-empty-right}
+
 [bar/nord-down]
 inherit = bar/base
 
+height = 40
 bottom = true
 
 border-top-size = 2px
@@ -74,11 +95,13 @@ border-top-size = 2px
 padding = 2
 module-margin = 2
 
-font-0 = WenQuanYiMicroHei:size=12
+font-0 = NotoSans Nerd Font:pixelsize=14;1
 font-1 = FontAwesome5FreeSolid:pixelsize=12;1
-font-2 = FontAwesome5Brands:pixelsize=8;1
-font-3 = Weather Icons:style=Regular:size=12;1
-font-4 = FiraCodeRegular:pixelsize=12
+font-2 = FontAwesome5FreeRegular:pixelsize=12;1
+font-3 = FontAwesome5Brands:pixelsize=12;1
+font-4 = WenQuanYiMicroHei:size=12
+font-5 = FontAwesome5:pixelsize=12;1
+font-6 = NotoSans:pixelsize=12;1
 
 modules-left = ${config.bottom-left}
 modules-center = ${config.bottom-center}

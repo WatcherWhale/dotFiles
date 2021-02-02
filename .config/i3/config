@@ -55,7 +55,7 @@ exec --no-startup-id  xfce4-power-manager
 exec --no-startup-id pa-applet
 exec --no-startup-id  nm-applet
 exec --no-startup-id sleep 2 && blueman-applet
-exec --no-startup-id redshift
+#exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id  kdeconnect-indicator
 exec --no-startup-id  nextcloud
@@ -148,18 +148,18 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1: 1"
+set $ws2 "2:切 2"
+set $ws3 "3:  3"
+set $ws4 "4:  4"
+set $ws5 "5: 5"
+set $ws6 "6: 6"
+set $ws7 "7: 7"
+set $ws8 "8: 8"
+set $ws9 "9: 9"
+set $ws10 "10: 10"
 set $ws11 "11"
-set $ws12 "12"
+set $ws12 "12:ﭮ 12"
 set $ws13 "13"
 set $ws14 "14"
 set $ws15 "15"
@@ -167,56 +167,56 @@ set $ws16 "16"
 set $ws17 "17"
 set $ws18 "18"
 set $ws19 "19"
-set $ws20 "20"
+set $ws20 "20: 20"
 
 # switch to workspace
-bindsym $mod+ampersand workspace number $ws1
-bindsym $mod+eacute workspace number $ws2
-bindsym $mod+quotedbl workspace number $ws3
-bindsym $mod+apostrophe workspace number $ws4
-bindsym $mod+parenleft workspace number $ws5
-bindsym $mod+section workspace number $ws6
-bindsym $mod+egrave workspace number $ws7
-bindsym $mod+exclam workspace number $ws8
-bindsym $mod+ccedilla workspace number $ws9
-bindsym $mod+agrave workspace number $ws10
+bindsym $mod+ampersand workspace $ws1
+bindsym $mod+eacute workspace $ws2
+bindsym $mod+quotedbl workspace $ws3
+bindsym $mod+apostrophe workspace $ws4
+bindsym $mod+parenleft workspace $ws5
+bindsym $mod+section workspace $ws6
+bindsym $mod+egrave workspace $ws7
+bindsym $mod+exclam workspace $ws8
+bindsym $mod+ccedilla workspace $ws9
+bindsym $mod+agrave workspace $ws10
 
-bindsym $mod+Control+ampersand workspace number $ws11
-bindsym $mod+Control+eacute workspace number $ws12
-bindsym $mod+Control+quotedbl workspace number $ws13
-bindsym $mod+Control+apostrophe workspace number $ws14
-bindsym $mod+Control+parenleft workspace number $ws15
-bindsym $mod+Control+section workspace number $ws16
-bindsym $mod+Control+egrave workspace number $ws17
-bindsym $mod+Control+exclam workspace number $ws18
-bindsym $mod+Control+ccedilla workspace number $ws19
-bindsym $mod+Control+agrave workspace number $ws20
+bindsym $mod+Control+ampersand workspace $ws11
+bindsym $mod+Control+eacute workspace $ws12
+bindsym $mod+Control+quotedbl workspace $ws13
+bindsym $mod+Control+apostrophe workspace $ws14
+bindsym $mod+Control+parenleft workspace $ws15
+bindsym $mod+Control+section workspace $ws16
+bindsym $mod+Control+egrave workspace $ws17
+bindsym $mod+Control+exclam workspace $ws18
+bindsym $mod+Control+ccedilla workspace $ws19
+bindsym $mod+Control+agrave workspace $ws20
 
 bindsym Control+$mod+Left workspace next
 bindsym Control+$mod+Right workspace prev
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand move container to workspace number $ws1
-bindsym $mod+Shift+eacute move container to workspace number $ws2
-bindsym $mod+Shift+quotedbl move container to workspace number $ws3
-bindsym $mod+Shift+apostrophe move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+section move container to workspace number $ws6
-bindsym $mod+Shift+egrave move container to workspace number $ws7
-bindsym $mod+Shift+exclam move container to workspace number $ws8
-bindsym $mod+Shift+ccedilla move container to workspace number $ws9
-bindsym $mod+Shift+agrave move container to workspace number $ws10
+bindsym $mod+Shift+ampersand move container to workspace $ws1
+bindsym $mod+Shift+eacute move container to workspace $ws2
+bindsym $mod+Shift+quotedbl move container to workspace $ws3
+bindsym $mod+Shift+apostrophe move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+section move container to workspace $ws6
+bindsym $mod+Shift+egrave move container to workspace $ws7
+bindsym $mod+Shift+exclam move container to workspace $ws8
+bindsym $mod+Shift+ccedilla move container to workspace $ws9
+bindsym $mod+Shift+agrave move container to workspace $ws10
 
-bindsym $mod+Control+Shift+ampersand move container to workspace number $ws11
-bindsym $mod+Control+Shift+eacute move container to workspace number $ws12
-bindsym $mod+Control+Shift+quotedbl move container to workspace number $ws13
-bindsym $mod+Control+Shift+apostrophe move container to workspace number $ws14
-bindsym $mod+Control+Shift+5 move container to workspace number $ws15
-bindsym $mod+Control+Shift+section move container to workspace number $ws16
-bindsym $mod+Control+Shift+egrave move container to workspace number $ws17
-bindsym $mod+Control+Shift+exclam move container to workspace number $ws18
-bindsym $mod+Control+Shift+ccedilla move container to workspace number $ws19
-bindsym $mod+Control+Shift+agrave move container to workspace number $ws20
+bindsym $mod+Control+Shift+ampersand move container to workspace $ws11
+bindsym $mod+Control+Shift+eacute move container to workspace $ws12
+bindsym $mod+Control+Shift+quotedbl move container to workspace $ws13
+bindsym $mod+Control+Shift+apostrophe move container to workspace $ws14
+bindsym $mod+Control+Shift+5 move container to workspace $ws15
+bindsym $mod+Control+Shift+section move container to workspace $ws16
+bindsym $mod+Control+Shift+egrave move container to workspace $ws17
+bindsym $mod+Control+Shift+exclam move container to workspace $ws18
+bindsym $mod+Control+Shift+ccedilla move container to workspace $ws19
+bindsym $mod+Control+Shift+agrave move container to workspace $ws20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -239,7 +239,7 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-        
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -316,29 +316,36 @@ mode "$mode_gaps_outer" {
 
 # Window keybinds
 
-mode "quicklaunch" {
+set $quicklaunch  Quick Launch
+mode "$quicklaunch" {
 
     bindsym $mod+d exec --no-startup-id rofi -show drun; mode "default"
     bindsym $mod+q kill; mode "default"
+
     bindsym f exec firefox; mode "default"
     bindsym Shift+f exec firefox --private-window; mode "default"
-    bindsym c exec alacritty -e ~/.scripts/calendar; mode "default"
-    bindsym Shift+d exec --no-startup-id /opt/Discord-linux-x64/Discord; mode "default"
-    bindsym d exec --no-startup-id discord --no-sandbox; exec --no-startup-id discover-overlay; mode "default"
-    bindsym t exec --no-startup-id telegram-desktop; mode "default"
+
+    bindsym d exec --no-startup-id i3-msg "workspace $ws12"; exec --no-startup-id /opt/Discord-linux-x64/Discord; mode "default"
+    bindsym Shift+d exec --no-startup-id i3-msg "workspace $ws12"; exec --no-startup-id discord --no-sandbox; exec --no-startup-id discover-overlay; mode "default"
+
+    bindsym t exec --no-startup-id i3-msg "workspace $ws2"; exec --no-startup-id telegram-desktop; mode "default"
     bindsym w exec --no-startup-id /opt/WhatsApp-linux-x64/WhatsApp; mode "default"
-    bindsym s exec --no-startup-id spotify-tray -t; mode "default"
+
+    bindsym s exec --no-startup-id i3-msg "workspace $ws7"; exec --no-startup-id spotify-tray -t; mode "default"
+    bindsym m exec --no-startup-id i3-msg "workspace $ws7"; exec --no-startup-id ~/.scripts/playallMusic; mode "default"
+
     bindsym r exec --no-startup-id $term "ranger" --keep; mode "default"
+
     bindsym o exec libreoffice; mode "default"
     bindsym n exec --no-startup-id $term "joplin"; mode "default"
     bindsym Shift+n exec "joplin-desktop"; mode "default"
     bindsym x exec xournalpp; mode "default"
-    bindsym k exec kleopatra; mode "default"
-    bindsym b exec blueberry; mode "default"
-    bindsym v exec --no-startup-id ~/.scripts/mpvplay; mode "default"
-    bindsym y exec --no-startup-id freetube; mode "default"
 
-    bindsym m exec --no-startup-id ~/.scripts/playallMusic; mode "default"
+    bindsym b exec --no-startup-id rofi-bluetooth; mode "default"
+
+    bindsym v exec --no-startup-id ~/.scripts/mpvplay; mode "default"
+    bindsym y exec --no-startup-id freetube-bin; mode "default"
+
 
     bindsym $mod+Return exec --no-startup-id $term; mode "default"
 
@@ -347,7 +354,7 @@ mode "quicklaunch" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+a mode "quicklaunch"
+bindsym $mod+a mode "$quicklaunch"
 
 # Notifications
 bindsym $mod+n exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)

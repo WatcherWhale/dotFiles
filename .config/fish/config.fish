@@ -28,6 +28,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.range
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
+alias latexcompile="latexmk -f -pdf -interaction=nonstopmode"
 
 # use trash instead of the default remove
 alias rm="trash"

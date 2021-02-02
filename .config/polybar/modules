@@ -1,42 +1,30 @@
-[module/corona]
-type = custom/script
-interval = 3600
-exec = ~/.scripts/corona
-format-padding = 2
-format-underline = #bf616a
-format-background = #192632
-
 [module/spacer]
 type = custom/text
 content = " "
+label-margin = 0
+padding = 0
 
 [module/nordvpn]
 type = custom/script
 exec= ~/.scripts/nordvpn.sh
 interval = 10
-label-underline = ${colors.nord8}
+label-underline = ${colors.nord0}
+label-overline = ${colors.nord0}
 label = %output%
-label-background = #192632
-label-padding = 2
+label-background = ${colors.nord1}
+label-padding = 3
 click-left = i3-msg exec ~/.scripts/vpn t
-
-[module/updates]
-type = custom/script
-interval = 600
-exec = ~/.scripts/updates 2> /dev/null
-format-padding = 2
-format-underline = #5e81ac
-format-background = #192632
-click-left = i3-msg exec /usr/local/bin/st yay
 
 [module/bluenord]
 type = custom/script
-exec = ~/.scripts/polybar/bluetooth
-interval = 2
-click-left = exec blueberry
-click-right = exec ~/.scripts/polybar/toggle_bluetooth
-format-padding = 1
-format-background = #192632
+exec = ~/.scripts/bluetooth-status
+interval = 1
+click-left = rofi-bluetooth &
+label-underline = ${colors.nord0}
+label-overline = ${colors.nord0}
+label = %output%
+label-background = ${colors.nord1}
+label-padding = 2
 
 [module/polywins]
 type = custom/script

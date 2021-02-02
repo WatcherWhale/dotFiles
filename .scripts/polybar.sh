@@ -13,7 +13,7 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 for m in $(xrandr --query | grep " connected" | grep -v " primary" | cut -d" " -f1); 
 do
     echo $m
-    MONITOR=$m polybar -c $HOME/.config/polybar/dark-config nord-top &
+    MONITOR=$m polybar -c $HOME/.config/polybar/dark-config nord-empty-top &
 done
 
 

@@ -5,7 +5,7 @@ type = custom/menu
 expand-right = true
 
 label-open = 
-label-close =  |
+label-close =   |
 
 menu-0-0 = 
 menu-0-0-foreground = ${colors.urgent}
@@ -18,22 +18,48 @@ menu-0-1-exec = systemctl reboot
 menu-0-2 = 
 menu-0-2-foreground = ${colors.warning}
 menu-0-2-padding = 2
-menu-0-2-exec = sh -c '~/.scripts/i3exit'
+menu-0-2-exec = i3-msg exit
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 
-format = <ramp-load> <label>
+format = <label>  <ramp-load>
+label = 龍
+label-foreground = ${colors.yellow}
 
-ramp-load-0 = 
-ramp-load-0-foreground = ${colors.success}
+format-padding = 2
+format-background = ${colors.nord1}
+format-underline = ${colors.nord0}
+format-overline = ${colors.nord0}
 
-ramp-load-1 = 
-ramp-load-1-foreground = ${colors.warning}
+;ramp-load-0 = 
+;ramp-load-0-foreground = ${colors.success}
+;
+;ramp-load-1 = 
+;ramp-load-1-foreground = ${colors.warning}
+;
+;ramp-load-2 = 
+;ramp-load-2-foreground = ${colors.urgent}
 
-ramp-load-2 = 
-ramp-load-2-foreground = ${colors.urgent}
+ramp-load-0 = ▁
+ramp-load-0-foreground = ${colors.nord1}
+ramp-load-1 = ▁
+ramp-load-1-foreground = ${colors.success}
+ramp-load-2 = ▂
+ramp-load-2-foreground = ${colors.success}
+ramp-load-3 = ▃
+ramp-load-3-foreground = ${colors.warning}
+ramp-load-4 = ▄
+ramp-load-4-foreground = ${colors.warning}
+ramp-load-5 = ▅
+ramp-load-5-foreground = ${colors.warning}
+ramp-load-6 = ▆
+ramp-load-6-foreground = ${colors.urgent}
+ramp-load-7 = ▇
+ramp-load-7-foreground = ${colors.urgent}
+ramp-load-8 = █
+ramp-load-8-foreground = ${colors.urgent}
 
 [module/show-desktop]
 type = custom/text
@@ -46,18 +72,44 @@ click-left = i3-msg workspace 25:Desktop
 type = internal/memory
 interval = 3
 
-format = <ramp-used> <label>
+format = <label>  <ramp-used>
 
-label = %gb_used%/%gb_total%
+label = 
+label-foreground = ${colors.yellow}
 
-ramp-used-0 = 
-ramp-used-0-foreground = ${colors.success}
+format-padding = 2
+format-background = ${colors.nord1}
+format-underline = ${colors.nord0}
+format-overline = ${colors.nord0}
 
-ramp-used-1 = 
-ramp-used-1-foreground = ${colors.warning}
 
-ramp-used-2 = 
-ramp-used-2-foreground = ${colors.urgent}
+ramp-used-0 = ▁
+ramp-used-0-foreground = ${colors.nord1}
+ramp-used-1 = ▁
+ramp-used-1-foreground = ${colors.success}
+ramp-used-2 = ▂
+ramp-used-2-foreground = ${colors.success}
+ramp-used-3 = ▃
+ramp-used-3-foreground = ${colors.warning}
+ramp-used-4 = ▄
+ramp-used-4-foreground = ${colors.warning}
+ramp-used-5 = ▅
+ramp-used-5-foreground = ${colors.warning}
+ramp-used-6 = ▆
+ramp-used-6-foreground = ${colors.urgent}
+ramp-used-7 = ▇
+ramp-used-7-foreground = ${colors.urgent}
+ramp-used-8 = █
+ramp-used-8-foreground = ${colors.urgent}
+
+;ramp-used-0 = 
+;ramp-used-0-foreground = ${colors.success}
+;
+;ramp-used-1 = 
+;ramp-used-1-foreground = ${colors.warning}
+;
+;ramp-used-2 = 
+;ramp-used-2-foreground = ${colors.urgent}
 
 [module/github]
 type= internal/github
@@ -130,12 +182,16 @@ ramp-4-foreground = ${colors.warning}
 
 [module/info-hackspeed]
 type = custom/script
-exec = ~/.config/polybar/scripts/info-hackspeed.sh
+exec = python ~/Projects/wpm/wpm
 tail = true
 
 [module/weather]
-type = custom/script
-exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
-interval = 600
+type = custom/text
+click-left = ~/.config/polybar/scripts/weather.sh
+content = 
+content-background = ${colors.nord1}
+content-padding = 3
+content-underline = ${colors.nord0}
+content-overline = ${colors.nord0}
 
-label-font = 4
+

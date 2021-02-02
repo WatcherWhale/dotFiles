@@ -26,40 +26,61 @@ ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-default = 
 
-label-visible = %icon%  %name%
+label-underline = ${colors.nord0}
+label-overline = ${colors.nord0}
 
-label-focused = %icon%  %name%
-label-focused-underline = ${colors.nord7}
-label-focused-foreground = ${colors.nord7}
-label-focused-padding = 2
-label-focused-background = #192632
+label-visible = %name%
 
-label-unfocused = %icon%  %name%
-label-unfocused-underline = ${colors.nord7}
-label-unfocused-foreground = #4c566a
+label-focused = %name%
+; label-focused-underline = ${colors.nord7}
+;label-focused-background = ${colors.nord4}
+
+label-focused-foreground = ${colors.nord6}
+label-focused-padding = 3
+label-focused-margin = 1
+label-focused-background = ${colors.nord3}
+label-focused-underline = ${colors.nord0}
+label-focused-overline = ${colors.nord0}
+
+label-unfocused = %name%
+; label-unfocused-underline = ${colors.nord7}
+label-unfocused-foreground = #838fa5
+;${colors.nord7}
 ;${colors.nord9}
-label-unfocused-padding = 2
-label-unfocused-background = #192632
+label-unfocused-padding = 3
+label-unfocused-margin = 1
+label-unfocused-background = ${colors.nord1}
+label-unfocused-underline = ${colors.nord0}
+label-unfocused-overline = ${colors.nord0}
 
-label-visible-underline = ${colors.nord7}
-label-visible-foreground = ${colors.nord7}
-label-visible-padding = 2
-label-visible-background = #192632
+; label-visible-underline = ${colors.nord7}
+label-visible-foreground = ${colors.nord4}
+label-visible-padding = 3
+label-visible-margin = 1
+label-visible-background = ${colors.nord1}
+label-visible-underline = ${colors.nord0}
+label-visible-overline = ${colors.nord0}
 
-;label-urgent = 
-label-urgent-foreground = ${colors.urgent}
-;label-urgent-underline : ${colors.urgent}
-label-urgent-background = ${colors.foreground}
-label-urgent-padding = 2
+label-urgent = %name%
+label-urgent-foreground = ${colors.nord0}
+label-urgent-background = ${colors.nord13}
+label-urgent-underline = ${colors.nord0}
+label-urgent-overline = ${colors.nord0}
+label-urgent-padding = 3
+label-urgent-margin = 1
 
 ; seperator
 label-separator = 
-label-separator-foreground = ${colors.buffer}
+label-separator-foreground = ${colors.nord0}
+label-separator-background = ${colors.nord4}
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-foreground = #2e3440
+label-mode-foreground = ${colors.nord0}
 label-mode-background = ${colors.nord9}
+label-mode-underline = ${colors.nord0}
+label-mode-overline = ${colors.nord0}
+label-mode-margin-left = 1
 
 [module/workspace-name]
 type = internal/i3
@@ -94,7 +115,7 @@ type = internal/date
 interval = 1.0
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = %a %d %b %Y  %H:%M:%S
+date =  %a %d %b %Y    %H:%M:%S
 
 ;date-alt = %a %d/%m/%Y %H:%M:%S
 
@@ -116,160 +137,76 @@ full-at = ${config.battery-full-at}
 battery = ${config.battery-bat}
 adapter = ${config.battery-adp}
 
+format-full = <label-full>
+format-full-background = ${colors.nord1}
+label-full-padding = 3
 
-format-full-background = #192632
-label-full-padding = 2
+format-discharging-background = ${colors.nord1}
+format-discharging-padding = 3
 
-format-discharging-background = #192632
-format-discharging-padding = 2
-
-format-charging-background = #192632
-format-charging-padding = 2
+format-charging-background = ${colors.nord1}
+format-charging-padding = 3
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.notify}
-format-charging-foreground = ${colors.notify}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
+format-charging-underline = ${colors.nord0}
+format-charging-overline = ${colors.nord0}
+format-charging-foreground = ${colors.nord4}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
+animation-charging-9 = 
+animation-charging-10 = 
+animation-charging-framerate = 200
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${colors.orange}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+format-discharging-underline = ${colors.nord0}
+format-discharging-overline = ${colors.nord0}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
 ramp-capacity-foreground = ${colors.foreground}
 
-label-full = 
+label-full = 
 label-full-foreground = ${colors.success}
-label-full-underline = ${colors.success}
+label-full-underline = ${colors.nord0}
+label-full-overline = ${colors.nord0}
 
-[module/keyboard]
-type = internal/xkeyboard
+[module/network-ethernet]
+type = internal/network
+interface = ${config.ethernet}
 
-; List of indicators to ignore
-bufferlist-0 = num lock
-bufferlist-1 = scroll lock
+interval = 1
 
-; Format
-format = <label-indicator>
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
 
-label-indicator-on-capslock =  CL
-label-indicator-on-capslock-foreground = ${colors.warning}
-label-indicator-on-capslock-underline = ${colors.warning}
+label-connected = 
+label-connected-foreground = ${colors.success}
+label-connected-background = ${colors.nord1}
+label-connected-padding = 3
+label-connected-underline = ${colors.nord0}
+label-connected-overline = ${colors.nord0}
 
-; Icons
-layout-icon-default = 
-
-[module/alsa]
-type = internal/alsa
-
-master-soundcard = ${config.master-soundcard}
-speaker-soundcard = ${config.speaker-soundcard}
-headphone-soundcard = ${config.headphone-soundcard}
-
-master-mixer = ${config.master-mixer}
-
-; Format 
-format-volume = <ramp-volume> <label-volume>
-format-volume-underline = ${colors.function}
-
-format-volume-background = #192632
-format-volume-padding = 2
-
-label-muted =  muted
-label-muted-foreground = ${colors.urgent}
-label-muted-underline = ${colors.urgent}
-label-muted-background = #192632
-label-muted-padding = 2
-
-ramp-volume-0 = 
-ramp-volume-0-foreground = ${colors.success}
-ramp-volume-1 = 
-ramp-volume-1-foreground = ${colors.notify}
-ramp-volume-2 = 
-ramp-volume-2-foreground = ${colors.urgent}
-
-ramp-headphones-0 = 
-
-ramp-volume-foreground = ${colors.nord7}
-
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-
-enable-scroll = true
-
-; Format
-format = <ramp> <label>
-format-underline = ${colors.nord9}
-format-padding = 2
-format-background = #192632
-
-ramp-0 = 
-
-label = %{A1:$HOME/.config/polybar/scripts/toggle-redshift.sh:}%percentage%%%{A}
-ramp-foreground = ${colors.nord9}
-
-[module/mpd]
-type = internal/mpd
-
-host = ${config.mpd-host}
-port = ${config.mpd-port}
-
-; Format
-format-online = <toggle> <icon-prev> <label-song> <icon-next> <icon-stop> | <bar-progress> | <icon-repeat> <icon-random>
-format-paused = <toggle> <icon-prev> <label-song> <icon-next> <icon-stop>
-format-stopped =  <toggle>
-
-label-song-underline = ${colors.nord8}
-label-song = %artist:0:10:...% - %title:0:10:...%
-
-icon-play = 
-icon-play-foreground = ${colors.success}
-icon-play-margin = 1
-icon-pause = 
-icon-pause-foreground = ${colors.warning}
-icon-pause-margin = 1
-icon-stop = 
-icon-stop-foreground = ${colors.urgent}
-icon-stop-margin = 1
-icon-prev = 
-icon-prev-foreground = ${colors.function}
-icon-prev-margin = 1
-icon-next = 
-icon-next-foreground = ${colors.function}
-icon-next-margin = 1
-icon-repeat = 
-icon-repeat-margin = 1
-icon-random = 
-icon-random-margin = 1
-
-toggle-on-foreground = ${colors.success}
-toggle-off-foreground = ${colors.urgent}
-
-bar-progress-width = 20
-bar-progress-indicator = |
-bar-progress-fill = -
-bar-progress-empty = -
-bar-progress-gradient = true
-bar-progress-foreground-0 = ${colors.nord7}
-bar-progress-foreground-1 = ${colors.nord8}
-bar-progress-foreground-2 = ${colors.nord9}
-
-[module/notify]
-type = custom/text
-content = 
-content-foreground = ${colors.warning}
-content-underline = ${colors.warning}
-content-padding = 1
-
-click-left = ${config.notify-click-left}
+label-disconnected = 
+label-disconnected-foreground = ${colors.nord7}
+label-disconnected-background = ${colors.nord1}
+label-disconnected-padding = 3
+label-disconnected-underline = ${colors.nord0}
+label-disconnected-overline = ${colors.nord0}
 
 [module/network-short]
 type = internal/network
@@ -277,50 +214,42 @@ interface = ${config.interface}
 
 interval = 1
 
-format-connected = %{A1:networkmanager_dmenu:}<ramp-signal>%{A}
-format-disconnected = %{A1:networkmanager_dmenu:}<label-disconnected>%{A}
+format-connected = %{A1:rofi-wifi-menu:}<ramp-signal>%{A}
+format-disconnected = %{A1:rofi-wifi-menu:}<label-disconnected>%{A}
 
-label-disconnected = 
-label-disconnected-foreground = ${colors.urgent}
+label-disconnected = 睊
+label-disconnected-foreground = ${colors.nord7}
+label-disconnected-background = ${colors.nord1}
+label-disconnected-padding = 3
+label-disconnected-underline = ${colors.nord0}
+label-disconnected-overline = ${colors.nord0}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
+
+ramp-signal-0 = 直
+ramp-signal-1 = 直
+ramp-signal-2 = 直
+ramp-signal-3 = 直
 
 ramp-signal-0-foreground = ${colors.urgent}
-ramp-signal-0-underline = ${colors.urgent}
+ramp-signal-0-background = ${colors.nord1}
+ramp-signal-0-underline = ${colors.nord0}
+ramp-signal-0-overline = ${colors.nord0}
+ramp-signal-0-padding = 3
 
 ramp-signal-1-foreground = ${colors.notify}
-ramp-signal-1-underline = ${colors.notify}
+ramp-signal-1-background = ${colors.nord1}
+ramp-signal-1-underline = ${colors.nord0}
+ramp-signal-1-overline = ${colors.nord0}
+ramp-signal-1-padding = 3
 
 ramp-signal-2-foreground = ${colors.nord7}
-ramp-signal-2-underline = ${colors.nord7}
+ramp-signal-2-background = ${colors.nord1}
+ramp-signal-2-underline = ${colors.nord0}
+ramp-signal-2-overline = ${colors.nord0}
+ramp-signal-2-padding = 3
 
 ramp-signal-3-foreground = ${colors.success}
-ramp-signal-3-underline = ${colors.success}
-
-[module/clash-widget]
-type = custom/script
-
-exec = ~/.config/polybar/scripts/clash.sh
-interval = 0
-
-click-left = ~/.config/polybar/scripts/clash.sh toggle
-
-[module/onedrive-widget]
-type = custom/script
-
-exec = ~/.config/polybar/scripts/onedrive.sh
-interval = 0
-
-click-left = ~/.config/polybar/scripts/onedrive.sh toggle
-
-[module/clipmenu-widget]
-type = custom/script
-
-exec = ~/.config/polybar/scripts/clipmenu.sh
-interval = 0
-
-click-left = ~/.config/polybar/scripts/clipmenu.sh menu
-click-right = ~/.config/polybar/scripts/clipmenu.sh toggle
+ramp-signal-3-background = ${colors.nord1}
+ramp-signal-3-underline = ${colors.nord0}
+ramp-signal-3-overline = ${colors.nord0}
+ramp-signal-3-padding = 3
