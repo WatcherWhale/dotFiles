@@ -1,19 +1,19 @@
-output DP2
+output DP-2
 off
 output VIRTUAL1
 off
-output DP1
+output DP-1
 crtc 2
 mode 1920x1080
 pos 0x0
 rate 60.00
-output DP3
+output DP-3
 crtc 0
 mode 2560x1440
 pos 1920x0
 primary
 rate 74.60
-output eDP1
+output eDP-1
 crtc 1
 mode 1920x1080
 pos 4480x360

@@ -1,2 +1,2 @@
 #!/bin/sh
-yay -S --rebuild qt5-styleplugins
+paru -S --rebuild qt5-styleplugins

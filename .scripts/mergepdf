@@ -1,0 +1,18 @@
+#!/bin/sh
+
+outputname="$(basename "$PWD").pdf"
+
+tp="/tmp/tmp.pdf"
+td="/tmp/data"
+for i in *.pdf; do
+    echo "Bookmarking $i"
+    filename="${i%.*}"
+    chapter="$(echo "$filename" | sed 's/^0*//')"
+    printf "BookmarkBegin\nBookmarkTitle: %s\nBookmarkLevel: 1\nBookmarkPageNumber: 1\n" "$chapter"> "$td"
+    pdftk "$i" update_info "$td" output "$tp"
+    mv "$tp" "$i"
+done
+sleep 1
+
+pdftk *.pdf cat output "$outputname"
+

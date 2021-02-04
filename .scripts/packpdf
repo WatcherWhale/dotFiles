@@ -1,0 +1,8 @@
+#!/bin/sh
+
+filename="$(basename "$PWD").pdf"
+files="$(ls *.png | sort -n | tr '\n' ' ')"
+
+convert $files "$filename"
+
+cp "$filename" "../$filename"

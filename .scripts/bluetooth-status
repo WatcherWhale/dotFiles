@@ -1,0 +1,11 @@
+#!/bin/bash
+
+status=$(rofi-bluetooth --status | awk '{print $1}')
+device=$(rofi-bluetooth --status | grep "WH-1000XM3")
+
+if [ "$status" == "" ]  && [ -n "$device" ];
+then
+    echo "%{F#5e81ac}$status"
+else
+    echo "%{F#8fbcbb}$status"
+fi
