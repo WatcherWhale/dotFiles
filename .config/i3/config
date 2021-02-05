@@ -36,7 +36,7 @@ font pango:DejaVu Sans 12
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
 bindsym Control_R+$alt+l exec --no-startup-id ~/.scripts/lock
-bindsym ISO_Level3_Shift exec --no-startup-id ~/.scripts/lock
+bindsym ISO_Level3_Shift+l exec --no-startup-id ~/.scripts/lock
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
