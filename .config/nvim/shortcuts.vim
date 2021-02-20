@@ -1,3 +1,6 @@
+" Set mouse on
+" set mouse=a
+
 " Map other esc
 imap jj <Esc>
 

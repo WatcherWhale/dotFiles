@@ -1,5 +1,3 @@
-# These are the default i3/sway settings settings
-
 set $mod Mod4
 set $alt Mod1
 
@@ -15,22 +13,11 @@ set $bright 5
 # Font
 font pango:DejaVu Sans 12
 
-# Borders
-set $bordersize 2
-#smart_borders on
-#default_border none
+# Lock
+bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
+bindsym Control_R+$alt+l exec --no-startup-id ~/.scripts/lock
+bindsym ISO_Level3_Shift+l exec --no-startup-id ~/.scripts/lock
 
-# Gaps
-gaps outer 0
-gaps inner 8
-#smart_gaps on
-
-# Colours
-# class                 border  backgr. text    indicator
-client.focused          #5e81ac #5e81ac #5e81ac #5e81ac
-client.focused_inactive #3b4252 #3b4252 #5e81ac #3b4252
-client.unfocused        #3b4252 #3b4252 #d8dee9 #3b4252
-client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
 # Autostart scripts
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
 exec_always --no-startup-id sh -c '~/.scripts/picom.sh'
@@ -55,41 +42,45 @@ exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
 exec --no-startup-id mailspring -b
-# Workspace names
-set $ws1 "1: 1"
-set $ws2 "2:切 2"
-set $ws3 "3:  3"
-set $ws4 "4:  4"
-set $ws5 "5: 5"
-set $ws6 "6: 6"
-set $ws7 "7: 7"
-set $ws8 "8: 8"
-set $ws9 "9: 9"
-set $ws10 "10: 10"
-set $ws11 "11"
-set $ws12 "12:ﭮ 12"
-set $ws13 "13"
-set $ws14 "14"
-set $ws15 "15"
-set $ws16 "16"
-set $ws17 "17"
-set $ws18 "18"
-set $ws19 "19"
-set $ws20 "20: 20"
 
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [class="(?i)*nextcloud*"] floating enable
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-for_window [title="Qalculate!"] floating enable, move position center
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-for_window [class="^termcalc$"] floating enable; move position center
+# Control brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
+bindsym Control+XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
 
-for_window [class="Navigator"] floating disable
-#for_window [class="firefox"] floating disable
-for_window [title="「.*」 - Mozilla Firefox"] floating disable
+bindsym XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
+bindsym Control+XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
 
-for_window [title=".*Spectacle"] move scratchpad
+bindsym $mod+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
+bindsym $mod+Control+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
+
+bindsym $mod+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
+bindsym $mod+Control+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+KP_Enter exec --no-startup-id $term
+
+# kill focused window
+bindsym $mod+q kill
+
+# start rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
 # Focus & move
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -121,7 +112,39 @@ bindsym $mod+Control+Shift+l move workspace to outputright
 # bindsym $mod+Control+Shift+Up move workspace to outputup
 # bindsym $mod+Control+Shift+Right move workspace to outputright
 
-# Workspaces
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Workspace names
+
+set $ws1 "1: 1"
+set $ws2 "2:切 2"
+set $ws3 "3:  3"
+set $ws4 "4:  4"
+set $ws5 "5: 5"
+set $ws6 "6: 6"
+set $ws7 "7: 7"
+set $ws8 "8: 8"
+set $ws9 "9: 9"
+set $ws10 "10: 10"
+set $ws11 "11"
+set $ws12 "12:ﭮ 12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20: 20"
+
+# switch to workspace
 bindsym $mod+ampersand workspace $ws1
 bindsym $mod+eacute workspace $ws2
 bindsym $mod+quotedbl workspace $ws3
@@ -170,15 +193,105 @@ bindsym $mod+Control+Shift+exclam move container to workspace $ws18; workspace $
 bindsym $mod+Control+Shift+ccedilla move container to workspace $ws19; workspace $ws19
 bindsym $mod+Control+Shift+agrave move container to workspace $ws20; workspace $ws20
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 
-# Exit
+# exit i3 
 bindsym $mod+shift+e exec --no-startup-id ~/.scripts/exit-options
 
-# App launch
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-# Quicklaunch keybinds
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Floating state
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="(?i)*nextcloud*"] floating enable
+
+for_window [title="Qalculate!"] floating enable, move position center
+
+for_window [class="^termcalc$"] floating enable; move position center
+
+for_window [class="Navigator"] floating disable
+#for_window [class="firefox"] floating disable
+for_window [title="「.*」 - Mozilla Firefox"] floating disable
+
+for_window [title=".*Spectacle"] move scratchpad
+
+# Borders
+set $bordersize 2
+for_window [class=".*"] border pixel $bordersize
+for_window [class="^.*"] border pixel $bordersize
+#smart_borders on
+#default_border none
+
+# Set gaps
+
+#smart_gaps on
+gaps outer 0
+gaps inner 8
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Window keybinds
+
 set $quicklaunch  Quick Launch
 mode "$quicklaunch" {
 
@@ -218,110 +331,34 @@ mode "$quicklaunch" {
 
 bindsym $mod+a mode "$quicklaunch"
 
-# Floating & Fullscreen
-floating_modifier $mod
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+f fullscreen toggle
-
-# start a terminal
-bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+KP_Enter exec --no-startup-id $term
-
-# kill focused window
-bindsym $mod+q kill
-
-# Control brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
-bindsym Control+XF86MonBrightnessDown exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
-
-bindsym XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
-bindsym Control+XF86MonBrightnessUp exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
-
-bindsym $mod+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh -$bright'
-bindsym $mod+Control+Shift+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh dim'
-bindsym $mod+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh $bright'
-bindsym $mod+Control+b exec --no-startup-id sh -c '~/.scripts/xob/brillo.sh bright'
-
-# Resizing
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Audio & Playback control
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-
-# Gaps
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
+# Notifications
+bindsym $mod+n exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
 
 # Emoji Picker
 bindsym $mod+semicolon exec splatmoji -s dark type
 bindsym $mod+Control+semicolon exec splatmoji -s dark copy
 
+# Disable mouse moving
+#mouse_warping none
+
+# Printscreen
+
+bindsym Print exec --no-startup-id ~/.scripts/screenshot
+
+#bindsym Print exec --no-startup-id "maim -s -u -D | xclip -selection clipboard -t image/png -i"
+#bindsym $mod+Print exec --no-startup-id "maim -u -st 9999999 | xclip -selection clipboard -t image/png -i"
+#bindsym $mod+Control+Print exec --no-startup-id "maim -u | xclip -selection clipboard -t image/png -i"
+
+# class                 border  backgr. text    indicator
+client.focused          #5e81ac #5e81ac #5e81ac #5e81ac
+client.focused_inactive #3b4252 #3b4252 #5e81ac #3b4252
+client.unfocused        #3b4252 #3b4252 #d8dee9 #3b4252
+client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
+
 # Calculator
 bindsym Control+XF86Calculator exec qalculate-gtk
 bindsym XF86Calculator exec --no-startup-id ~/.scripts/calculator
+
 bindsym $mod+Control+c exec qalculate-gtk
 bindsym $mod+c exec --no-startup-id ~/.scripts/calculator
 
@@ -333,29 +370,12 @@ bindsym $mod+Shift+Tab exec --no-startup-id rofi -show windowcd
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+p exec --no-startup-id bwmenu
 
-# Mic toggle
-exec_always --no-startup-id amixer set Capture 100%
-bindsym Scroll_Lock exec --no-startup-id amixer set Capture toggle && notify-send.py -a Microphone "Mic mute has been toggled"
-# Restart & Reload
-bindsym $mod+Shift+r exec cat ~/.config/i3/conf.d/* > ~/.config/i3/config && i3-msg restart
-bindsym $mod+Shift+c exec cat ~/.config/i3/conf.d/* > ~/.config/i3/config && i3-msg reload
-
-# Lock
-bindsym Control+$alt+l exec --no-startup-id ~/.scripts/lock
-bindsym Control_R+$alt+l exec --no-startup-id ~/.scripts/lock
-bindsym ISO_Level3_Shift+l exec --no-startup-id ~/.scripts/lock
-
-# Notifications
-bindsym $mod+n exec --no-startup-id kill -s USR1 $(pidof deadd-notification-center)
-
-# Printscreen
-bindsym Print exec --no-startup-id ~/.scripts/screenshot
-
 # Paste buffer
 bindsym $mod+v exec --no-startup-id greenclip print | sed '/^$/d' | rofi -dmenu -p "" | xargs -r -d'\n' -I '{}' greenclip print '{}'
 bindsym $mod+Shift+v exec --no-startup-id greenclip clear
 bindsym $mod+Control+v exec --no-startup-id ~/.scripts/imgsaveauto
 
-# Update window rules
-for_window [class=".*"] border pixel $bordersize
-for_window [class="^.*"] border pixel $bordersize
+
+# Mic toggle
+exec_always --no-startup-id amixer set Capture 100%
+bindsym Scroll_Lock exec --no-startup-id amixer set Capture toggle && notify-send.py -a Microphone "Mic mute has been toggled"

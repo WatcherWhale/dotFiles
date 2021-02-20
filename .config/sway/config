@@ -1,0 +1,4 @@
+# Sway config file (v4)
+
+include /etc/sway/config.d/*
+include /home/watcherwhale/.config/sway/conf.d/*

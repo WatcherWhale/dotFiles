@@ -1,0 +1,19 @@
+profile dock {
+    output DP-3 mode 2560x1440 position 1920,0
+    output DP-1 mode 1920x1080 position 0,0
+    output eDP-1 mode 1920x1080 position 4480,360
+
+    exec swaymsg workspace "1: 1", move workspace to DP-3
+    exec swaymsg workspace "2:切 2", move workspace to eDP-1
+    exec swaymsg workspace "3:  3", move workspace to DP-1
+    exec swaymsg workspace "1: 1"
+}
+
+profile standalone {
+    output DP-3 disable
+    output DP-1 disable
+    output eDP-1 mode 1920x1080 position 4480,360
+
+    exec swaymsg workspace "1: 1", move workspace to eDP-1
+    exec swaymsg workspace "1: 1"
+}

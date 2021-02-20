@@ -18,6 +18,7 @@ format = """\
 [character]
 success_symbol = "[ 🐳](bold blue)"
 error_symbol = "[ 🐋](bold red)"
+vicmd_symbol = "[ 🐟️](bold blue)"
 
 [time]
 disabled = true

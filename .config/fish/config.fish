@@ -1,25 +1,31 @@
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty
-    end
-end
-
-starship init fish | source
-
-source ~/.config/fish/nord.fish
-
 set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.emacs.d/bin/"
+set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
 set -x TEXMFHOME "~/.local/share/texmf"
 set -x JUPYTERLAB_DIR $HOME/.local/share/jupyter/lab
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
-set -x MODE_CURSOR_VIINS "bar"
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty
+    else if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
+        set -x MOZ_ENABLE_WAYLAND 1
+        set -x QT_QPA_PLATFORM wayland-egl
+        set -x GDK_BACKEND wayland
+        set -x CLUTTER_BACKEND wayland
+        set -x XDG_CURRENT_DESKTOP Unity
+
+        set -x QT_QPA_PLATFORMTHEME gtk2
+        set -x QT_SCALE_FACTOR 1
+
+        exec sway
+    end
+end
+
+source ~/.config/fish/nord.fish
 
 set fish_greeting
-
-# sh -c '~/.scripts/terminalmsg'
 
 # Make ranger cd to the chosen directory
 alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
@@ -28,6 +34,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.range
 alias r="ranger"
 alias r2="radare2 -A"
 alias j="joplin"
+alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
 alias latexcompile="latexmk -f -pdf -interaction=nonstopmode"
 
 # use trash instead of the default remove
@@ -39,8 +46,8 @@ alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias play='devour mpv --loop'
-alias playfolder='devour mpv --shuffle --loop-playlist'
+alias play='i3-swallow mpv --loop'
+alias playfolder='i3-swallow mpv --shuffle --loop-playlist'
 
 # Git
 alias push="git push"
@@ -84,3 +91,6 @@ alias cast="catt cast"
 
 # Fun
 alias rr="~/.scripts/roll.sh"
+
+terminalmsg
+starship init fish | source

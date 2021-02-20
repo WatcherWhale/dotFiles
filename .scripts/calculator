@@ -1,2 +1,2 @@
 #!/bin/sh
-alacritty --class "termcalc,termcalc" --title "Terminal Calculator" -e mathere
+alacritty --class "termcalc,termcalc" --title "Terminal Calculator" -e octave -q

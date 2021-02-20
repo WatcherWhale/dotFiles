@@ -1,0 +1,132 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: NotoSans Nerd Font, FontAwesome5FreeSolid, FontAwesome5FreeRegular, FontAwesome5Brands, FontAwesome5;
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #2E3440;
+    color: #D8DEE9;
+    transition-property: background-color;
+    transition-duration: .1s;
+}
+
+window#waybar.topbar {
+    border-bottom: 1px solid #3B4252;
+}
+
+window#waybar.bottombar {
+    border-top: 1px solid #3B4252;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+#workspaces button {
+    padding: 0px 10px;
+    background-color: transparent;
+    background: #3B4252;
+    color: #D8DEE9;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    border-radius: 5px;
+}
+
+#workspaces button:hover {
+    background: #434C5E;
+    box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button.visible {
+    background-color: #434c5e;
+    box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button.focused {
+    background-color: #4c566a;
+    box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button.urgent {
+    background-color: #d08770;
+}
+
+#mode {
+    background-color: #5e81ac;
+    border-radius: 5px;
+    color: #D8DEE9;
+
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#idle_inhibitor,
+#workspaces button,
+#mode,
+#mpd {
+    padding: 0 10px;
+    color: #D8DEE9;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+    margin-left:10px;
+    border-radius: 3px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#tray {
+    margin-right: 10px;
+}
+
+#battery {
+    background-color: #434c5e;
+    color: #D8DEE9;
+    margin-right: 10px;
+}
+
+#cpu {
+    background-color: #434c5e;
+}
+
+#memory {
+    background-color: #434c5e;
+}
+
+#backlight {
+    background-color: #434c5e;
+}

@@ -1,0 +1,78 @@
+[{
+    "name": "topbar",
+    //"layer": "top",
+    "position": "top",
+    "height": 45,
+
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "backlight", "battery"],
+
+    "sway/workspaces": {
+        "format": "{icon} {name}",
+        "format-icons": {
+            "default": "",
+            "urgent": ""
+        }
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{: %a %d %b %Y    %H:%M:%S}",
+        "interval": 1,
+        "on-click-middle": "firefox https://calendar.google.com"
+
+    },
+    "cpu": {
+        "format": "<span color='#ebcb8b'>龍</span> {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "<span color='#ebcb8b'></span> {}%",
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "<span color='#ebcb8b'>{icon}</span> {percent}%",
+        "format-icons": ["", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 85,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color=\"#ebcb8b\">{icon}</span> {capacity}%",
+        "format-critical": "<span color=\"#bf616a\">{icon}</span> {capacity}%",
+        "format-warning": "<span color=\"#d08770\">{icon}</span> {capacity}%",
+        "format-good": "<span color=\"#a3be8c\">{icon}</span> {capacity}%",
+        "format-charging": "<span color=\"#ebcb8b\"></span> {capacity}%",
+        "format-plugged": "<span color=\"#a3be8c\"></span> {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["","","","","","","","","","",""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    }
+},
+{
+    "name": "bottombar",
+
+    //"layer": "top",
+    "position": "bottom",
+    "height": 40,
+
+    "output": ["DP-3", "eDP-1"],
+
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": ["tray"],
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+}]
