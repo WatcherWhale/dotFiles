@@ -122,6 +122,9 @@ let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_enabled = 0
 
+" Bracey
+let g:bracey_browser_command = 'firefox'
+
 " Joplin image attach
 
 augroup autocom

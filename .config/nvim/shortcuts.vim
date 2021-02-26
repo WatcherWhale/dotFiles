@@ -45,6 +45,9 @@ inoremap <silent> <leader>v     <C-O>:VimtexCompile<CR>
 
 nnoremap <silent> <leader>f     :%!python -m json.tool<CR>
 
+nnoremap <silent> <leader>b     :Bracey<CR>
+nnoremap <silent> <leader>B     :BraceyStop<CR>
+
 " noremap <silent> <leader>g      :Goyo<CR>
 " vnoremap <silent> <leader>g     <C-C>:Goyo<CR>
 " inoremap <silent> <leader>g     <C-O>:Goyo<CR>

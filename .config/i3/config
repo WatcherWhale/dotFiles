@@ -13,7 +13,7 @@ set $browser firefox
 set $bright 5
 
 # Font
-font pango:DejaVu Sans 12
+font pango:NotoSansMono Nerd Font 12
 
 # Borders
 set $bordersize 2
@@ -44,7 +44,7 @@ exec_always --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id numlockx on
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id volumeicon
+exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 2 && blueman-applet
 exec --no-startup-id gammastep-indicator
@@ -196,6 +196,7 @@ mode "$quicklaunch" {
     bindsym s exec --no-startup-id i3-msg "workspace $ws7"; exec --no-startup-id spotify-tray -t; mode "default"
 
     bindsym r exec --no-startup-id $kterm ranger; mode "default"
+    bindsym Shift+r exec --no-startup-id rofi -show file-browser-extended; mode "default"
 
     bindsym o exec libreoffice; mode "default"
     bindsym n exec --no-startup-id $pterm "joplin"; mode "default"

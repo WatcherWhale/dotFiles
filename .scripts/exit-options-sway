@@ -1,0 +1,25 @@
+#!/bin/sh
+
+choice="$(echo -e "Lock\0icon\x1flock\nLogout\0icon\x1fuser\nRestart\0icon\x1freboot\nShutdown\0icon\x1fpower\nSleep\0icon\x1fsleep" | rofi -lines 5 -dmenu -i -p '')"
+
+if [ "$choice" != "" ]; then
+
+    confirm="$(echo -e "No\0icon\x1ferror\nYes\0icon\x1ftask-complete" | rofi -dmenu -i -p '')"
+
+    echo $choice
+    echo $confirm
+
+    if [ "$confirm" == "Yes" ]; then
+        if [ "$choice" == "Logout" ]; then
+            sway exit
+        elif [ "$choice" == "Restart" ]; then
+            systemctl reboot
+        elif [ "$choice" == "Shutdown" ]; then
+            systemctl poweroff
+        elif [ "$choice" == "Lock" ]; then
+            ~/.scripts/lock
+        elif [ $choice == "Sleep" ]; then
+            betterlockscreen -s
+        fi
+    fi
+fi

@@ -69,6 +69,13 @@ Plug 'rhysd/vim-clang-format'
 " LSP
 Plug 'prabirshrestha/vim-lsp'
 
+" Openhab Syntax
 Plug 'cyberkov/openhab-vim'
+
+" CamelCaseWordMoving
+Plug 'chaoren/vim-wordmotion'
+
+" Live browser
+Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
 call plug#end()
