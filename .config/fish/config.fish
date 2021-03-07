@@ -36,6 +36,7 @@ alias r2="radare2 -A"
 alias j="joplin"
 alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
 alias latexcompile="latexmk -f -pdf -interaction=nonstopmode"
+alias fm="i3-swallow pcmanfm"
 
 # use trash instead of the default remove
 alias rm="trash"
