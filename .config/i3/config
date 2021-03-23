@@ -46,7 +46,7 @@ exec_always --no-startup-id sh -c 'find ~/.config/mpv/watch_later -mtime +30 -pr
 exec --no-startup-id numlockx on
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pa-applet
+exec --no-startup-id sleep 2 && pa-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 2 && blueman-applet
 exec --no-startup-id gammastep-indicator
@@ -192,8 +192,11 @@ mode "$quicklaunch" {
 
     bindsym d exec --no-startup-id i3-msg "workspace $ws12"; exec --no-startup-id /opt/Discord-linux-x64/Discord; mode "default"
     bindsym Shift+d exec --no-startup-id i3-msg "workspace $ws12"; exec --no-startup-id discord --no-sandbox; exec --no-startup-id discover-overlay; mode "default"
+
     bindsym t exec --no-startup-id i3-msg "workspace $ws2"; exec --no-startup-id telegram-desktop; mode "default"
+
     bindsym m exec --no-startup-id mailspring; mode "default"
+    bindsym Shift+m exec --no-startup-id $kterm "ranger ~/Music"; mode "default"
 
     bindsym s exec --no-startup-id i3-msg "workspace $ws7"; exec --no-startup-id spotify-tray -t; mode "default"
 
@@ -210,7 +213,6 @@ mode "$quicklaunch" {
 
     bindsym v exec --no-startup-id ~/.scripts/mpvplay; mode "default"
     bindsym y exec --no-startup-id freetube-bin; mode "default"
-
 
     bindsym $mod+Return exec --no-startup-id $term; mode "default"
 
@@ -334,7 +336,7 @@ bindsym $alt+Shift+Tab exec --no-startup-id rofi -show windowcd
 bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+Shift+Tab exec --no-startup-id rofi -show windowcd
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-bindsym $mod+p exec --no-startup-id bwmenu
+bindsym $mod+p exec --no-startup-id ~/.scripts/togglepolybar
 
 # Mic toggle
 exec_always --no-startup-id amixer set Capture 100%

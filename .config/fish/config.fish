@@ -28,10 +28,18 @@ source ~/.config/fish/nord.fish
 set fish_greeting
 
 # Make ranger cd to the chosen directory
-alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
+#alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
+
+function ranger
+    command ranger --choosedir=$HOME/.rangerdir $argv; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"
+end
+
+function r
+    ranger $argv
+end
 
 # Shorten commen commands
-alias r="ranger"
+#alias r="rangercd"
 alias r2="radare2 -A"
 alias j="joplin"
 alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
