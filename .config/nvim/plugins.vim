@@ -77,5 +77,6 @@ Plug 'chaoren/vim-wordmotion'
 
 " Live browser
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'alvan/vim-closetag'
 
 call plug#end()

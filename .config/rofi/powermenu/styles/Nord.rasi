@@ -1,0 +1,21 @@
+/* -- Blue -- */
+
+* {
+shade1: #5e81ac;
+shade2: #81a1c1;
+shade3: #3b4252;
+shade4: #5e81ac;
+}
+
+/**** Comment One First To Use Another ****/
+
+/* -- Dark -- */
+* {
+    border:               			@shade1;
+    border-alt:               		@shade2;
+    background:                     @shade3;
+    background-alt:                 @shade3;
+    selected:               		@shade4;
+    foreground:                     #eceff4;
+    urgent:                         #ebcb8b;
+}

@@ -9,6 +9,9 @@ font:
   normal:
     family: Hack Nerd Font Mono
 
+shell:
+  program: /bin/fish
+
 # Nord colors
 colors:
   primary:

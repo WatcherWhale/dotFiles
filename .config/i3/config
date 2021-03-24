@@ -174,7 +174,7 @@ bindsym $mod+Control+Shift+agrave move container to workspace $ws20; workspace $
 
 
 # Exit
-bindsym $mod+shift+e exec --no-startup-id ~/.scripts/exit-options
+bindsym $mod+shift+e exec --no-startup-id ~/.config/rofi/bin/powermenu
 
 # App launch
 bindsym $mod+d exec --no-startup-id rofi -show drun
