@@ -85,7 +85,8 @@ window#waybar.chromium {
 #idle_inhibitor,
 #workspaces button,
 #mode,
-#mpd {
+#mpd,
+#custom-bluetooth{
     padding: 0 10px;
     color: #D8DEE9;
     margin-top: 7.5px;
@@ -119,14 +120,10 @@ window#waybar.chromium {
     margin-right: 10px;
 }
 
-#cpu {
-    background-color: #434c5e;
-}
-
-#memory {
-    background-color: #434c5e;
-}
-
-#backlight {
+#cpu,
+#memory,
+#backlight,
+#network,
+#custom-bluetooth {
     background-color: #434c5e;
 }

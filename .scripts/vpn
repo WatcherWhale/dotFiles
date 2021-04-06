@@ -1,9 +1,16 @@
 #!/bin/sh
 
 country="uk"
+connlen="$(cat /usr/local/share/vpn)"
 
 if [ "$1" == "stop" ] || [ "$1" == "disconnect" ] || [ "$1" == "d" ]; then
     nordvpn d
+    if [ "$connlen" != "0" ]; then
+        sudo wg-quick down wg0-client
+        sudo /usr/local/share/scripts/vpn-get &
+        sleep 1
+        sudo killall vpn-get
+    fi
 elif [ "$1" == "t" ] || [ "$1" == "toggle" ]; then
     server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -F '.' '{ print $1}')"
 
@@ -12,7 +19,12 @@ elif [ "$1" == "t" ] || [ "$1" == "toggle" ]; then
     else
         nordvpn d
     fi
-
+elif [ "$1" == "home" ] || [ "$1" == "h" ];
+then
+    sudo wg-quick up wg0-client
+    sudo /usr/local/share/scripts/vpn-get &
+    sleep 1
+    sudo killall vpn-get
 else
     nordvpn c $1
 fi

@@ -13,7 +13,6 @@ label-overline = ${colors.nord0}
 label = %output%
 label-background = ${colors.nord1}
 label-padding = 3
-click-left = i3-msg exec ~/.scripts/vpn t
 
 [module/bluenord]
 type = custom/script

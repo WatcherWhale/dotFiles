@@ -4,13 +4,54 @@ window:
     y: 10
   dynamic_padding: true
 font:
-  size: 16
+  size: 15
 
   normal:
     family: Hack Nerd Font Mono
 
 shell:
   program: /bin/fish
+
+# Murz Colors
+#colors:
+#  primary:
+#    background: '#18181b'
+#    foreground: '#f8f8f8'
+#  cursor:
+#    text: '#18181b'
+#    cursor: '#f8f8f8'
+#  vi_mode_cursor:
+#    text: '#18181b'
+#    cursor: '#f8f8f8'
+#  selection:
+#    text: CellForeground
+#    background: '#5D5E72'
+#  search:
+#    matches:
+#      foreground: CellBackground
+#      background: '#88c0d0'
+#    bar:
+#      background: '#434c5e'
+#      foreground: '#d8dee9'
+#  normal:
+#    black: '#18181B'
+#    red: '#FF7575'
+#    green: '#96F7C8'
+#    yellow: '#FFFF39'
+#    blue: '#6BA2FF'
+#    magenta: '#E66AFC'
+#    cyan: '#45FFFF'
+#    white: '#CACACE'
+#  bright:
+#     black: '#5D5E72'
+#     red: '#FF7575'
+#     green: '#96F7C8'
+#     yellow: '#FFFF39'
+#     blue: '#6BA2FF'
+#     magenta: '#E66AFC'
+#     cyan: '#45FFFF'
+#     white: '#F8F8F8'
+
 
 # Nord colors
 colors:
@@ -51,4 +92,3 @@ colors:
     magenta: '#b48ead'
     cyan: '#8fbcbb'
     white: '#eceff4'
-

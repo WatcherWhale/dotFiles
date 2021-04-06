@@ -5,7 +5,17 @@ device=$(rofi-bluetooth --status | grep "WH-1000XM3")
 
 if [ "$status" == "" ]  && [ -n "$device" ];
 then
-    echo "%{F#5e81ac}"
+    if [ "$1" == "wayland" ];
+    then
+        echo "<span color='#5e81ac'></span>"
+    else
+        echo "%{F#5e81ac}"
+    fi
 else
-    echo "%{F#8fbcbb}$status"
+    if [ "$1" == "wayland" ];
+    then
+        echo "<span color='#8fbcbb'>$status</span>"
+    else
+        echo "%{F#8fbcbb}$status"
+    fi
 fi

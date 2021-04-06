@@ -43,7 +43,7 @@ end
 alias r2="radare2 -A"
 alias j="joplin"
 alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
-alias latexcompile="latexmk -f -pdf -interaction=nonstopmode"
+alias latexcompile="latexmk -pdflatex=lualatex -f -pdf -interaction=nonstopmode"
 alias fm="i3-swallow pcmanfm"
 
 # use trash instead of the default remove
@@ -101,5 +101,6 @@ alias cast="catt cast"
 # Fun
 alias rr="~/.scripts/roll.sh"
 
-terminalmsg
+#terminalmsg
+ponysay -o
 starship init fish | source

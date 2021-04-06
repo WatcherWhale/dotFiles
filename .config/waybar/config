@@ -6,7 +6,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "backlight", "battery"],
+    "modules-right": ["cpu", "memory", "backlight", "custom/spacer" ,"custom/bluetooth", "network#wifi" ,"network#eth", "custom/spacer", "battery"],
 
     "sway/workspaces": {
         "format": "{icon} {name}",
@@ -49,13 +49,24 @@
         "format-alt": "{time} {icon}",
         "format-icons": ["","","","","","","","","","",""]
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "network#wifi": {
+        "interface": "wlp59s0",
+        "format": "<span color='#a3be8c'>直</span>  {signalStrength}%",
+        "format-disconnected": "<span color='#bf616a'>睊</span>",
+    },
+    "network#eth": {
+        "interface": "enp0s20f0u5u1",
+        "format-wifi": "<span color='#a3be8c'></span>  {signalStrength}%",
+        "format-ethernet": "<span color='#a3be8c'></span>",
+        "format-disconnected": "<span color='#bf616a'></span>",
+    },
+    "custom/bluetooth": {
+        "format": "{}",
+        "exec": "$HOME/.scripts/bluetooth-status wayland",
+        "interval": 10
+    },
+    "custom/spacer": {
+        "format": "  "
     }
 },
 {
