@@ -6,23 +6,6 @@ set -x TEXMFHOME "~/.local/share/texmf"
 set -x JUPYTERLAB_DIR $HOME/.local/share/jupyter/lab
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty
-    else if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
-        set -x MOZ_ENABLE_WAYLAND 1
-        set -x QT_QPA_PLATFORM wayland-egl
-        set -x GDK_BACKEND wayland
-        set -x CLUTTER_BACKEND wayland
-        set -x XDG_CURRENT_DESKTOP Unity
-
-        set -x QT_QPA_PLATFORMTHEME gtk2
-        set -x QT_SCALE_FACTOR 1
-
-        exec sway
-    end
-end
-
 source ~/.config/fish/nord.fish
 
 set fish_greeting

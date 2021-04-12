@@ -35,7 +35,7 @@ client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
 exec_always --no-startup-id sh -c '~/.scripts/picom.sh'
 exec_always --no-startup-id sh -c '~/.scripts/polybar.sh'
-exec_always --no-startup-id sh -c '~/.scripts/background'
+exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id sh -c '~/.scripts/xob/start.sh'
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id sh -c '~/.scripts/wacom'
@@ -92,6 +92,7 @@ for_window [class="Navigator"] floating disable
 for_window [title="「.*」 - Mozilla Firefox"] floating disable
 
 for_window [title=".*Spectacle"] move scratchpad
+for_window [instance="yakuake"] floating enable; border 0px
 # Focus & move
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -232,6 +233,7 @@ bindsym $mod+f fullscreen toggle
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+KP_Enter exec --no-startup-id $term
+bindsym $mod+Control+Return exec yakuake
 
 # kill focused window
 bindsym $mod+q kill

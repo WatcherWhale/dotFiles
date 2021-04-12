@@ -7,7 +7,7 @@ monitor=$(autorandr | grep -w "(current)\|(detected)" | cut -d' ' -f1)
 # Map output
 if [ "$monitor" == "dock" ];
 then
-    xsetwacom set "Wacom Intuos S Pen stylus" MapToOutput 2560x1440+1920+0
+    xsetwacom set "Wacom Intuos S Pen stylus" MapToOutput 2560x1440+2560+0
 elif [ "$monitor" == "dual" ]
 then
     xsetwacom set "Wacom Intuos S Pen stylus" MapToOutput 1920x1080+1920+0

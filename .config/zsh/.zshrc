@@ -1,3 +1,22 @@
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]];
+then
+  exec startx;
+elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]];
+then
+  export MOZ_ENABLE_WAYLAND=1
+  export QT_QPA_PLATFORM="wayland-egl"
+  export GDK_BACKEND="wayland"
+  export CLUTTER_BACKEND="wayland"
+  export XDG_CURRENT_DESKTOP="Unity"
+
+  export QT_QPA_PLATFORMTHEME="gtk2"
+  export QT_SCALE_FACTOR=1
+
+  exec sway
+fi
+
+
+
 export PATH=$PATH:/home/watcherwhale/.local/bin:/home/watcherwhale/.scripts/:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/
 export EDITOR="nvim"
 export DIFFPROG="nvim -d"
