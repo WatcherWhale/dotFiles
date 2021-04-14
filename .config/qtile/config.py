@@ -5,7 +5,7 @@ from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
 from widgets.ConditionalWidget import ConditionalWidget
-from widgets.BatteryIcon import BatteryIcon
+from widgets.DynamicIcons import BatteryIconWidget, BrightnessIconWidget
 from settings import colors
 from settings.groups import groups, group_names, group_keys, focus_group
 
@@ -240,8 +240,8 @@ def getTopBar():
             font="NotoSansMono Nerd Font",
         ),
         widget.Sep(padding=20, foreground=colors[0]),
-        widget.TextBox(
-            text="盛",
+        BrightnessIconWidget(
+            #text="盛",
             foreground=colors[13],
             background=colors[1],
             font="NotoSansMono Nerd Font",
@@ -255,7 +255,7 @@ def getTopBar():
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
         widget.Sep(padding=10, foreground=colors[0]),
-        BatteryIcon(
+        BatteryIconWidget(
             font="NotoSansMono Nerd Font",
             background=colors[1],
             update_interval = 1,
