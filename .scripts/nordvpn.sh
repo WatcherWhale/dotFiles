@@ -4,7 +4,17 @@ server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -
 connlen="$(cat /usr/local/share/vpn)"
 
 if [ "$server" == "" ] && [ "$connlen" == "0" ]; then
-    echo "%{F#bf616a}"
+    if [ "$1" == "clean" ];
+    then
+        echo ""
+    else
+        echo "%{F#bf616a}"
+    fi
 else
-    echo "%{F#a3be8c}"
+    if [ "$1" == "clean" ];
+    then
+        echo ""
+    else
+        echo "%{F#a3be8c}"
+    fi
 fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z "$1" ];
+then
+    echo "kali start|stop"
+elif [ "$1" == "start" ];
+then
+    vboxmanage startvm "Kali Linux" --type headless
+elif [ "$1" == "stop" ];
+then
+    vboxmanage controlvm "Kali Linux" savestate
+elif [ "$1" == "ssh" ];
+then
+    ssh -p 2222 localhost
+elif [ "$1" == "resume" ];
+then
+    vboxmanage controlvm "Kali Linux" resume
+elif [ "$1" == "pause" ];
+then
+    vboxmanage controlvm "Kali Linux" pause
+fi

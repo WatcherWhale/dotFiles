@@ -4,9 +4,17 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
+from widgets.ConditionalWidget import ConditionalWidget
+from widgets.BatteryIcon import BatteryIcon
+from settings import colors
+from settings.groups import groups, group_names, group_keys, focus_group
+
+from Xlib import display as xdisplay
+
 import os
 import os.path
 import subprocess
+
 
 terminal = "alacritty"
 def kterm(cmd):
@@ -48,24 +56,33 @@ keys = [
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_nmaster(),
         desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
+
+    Key([mod, "control"], "l",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_nmaster(),
         desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(),
+
+    Key([mod, "control"], "j",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_nmaster(),
         desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+
+    Key([mod, "control"], "k",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.increase_nmaster(),
+        desc="Grow window up"),
+
+    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "Tab", lazy.layout.flip()),
 
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -80,17 +97,21 @@ keys = [
     Key([mod, "shift"], "d", lazy.spawn("rofi -show run"), desc="Run Application runner"),
     Key([mod], "v", lazy.spawn("showclipboard")),
     Key([mod, "shift"], "v", lazy.spawn("greenclip clear")),
+    Key([mod], "n", lazy.spawn("bash -c \"kill -s USR1 $(pidof deadd-notification-center)\"")),
 
 
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([], "Print", lazy.spawn("screenshot")),
 
-    KeyChord([mod], "a", [
+
+   KeyChord([mod], "a", [
+        Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
         Key([], "f", lazy.spawn("firefox")),
         Key(["shift"], "f", lazy.spawn("firefox --private-window")),
 
-        Key([], "t", lazy.spawn("telegram-desktop")),
-        Key([], "d", lazy.spawn("/opt/Discord-linux-x64/Discord")),
-        Key(["shift"], "d", lazy.spawn("discord")),
+        Key([], "t", lazy.spawn("telegram-desktop"), lazy.function(focus_group, group_names[1])),
+        Key([], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[1])),
+        Key(["shift"], "d", lazy.spawn("discord"), lazy.function(focus_group, group_names[1])),
 
         Key([], "m", lazy.spawn("mailspring")),
         Key(["shift"], "m", lazy.spawn(kterm("ranger ~/Music"))),
@@ -99,7 +120,7 @@ keys = [
         Key([], "s", lazy.spawn("spotify-tray -t")),
 
 
-        Key([], "r", lazy.spawn(kterm("sleep 1 && ranger"))),
+        Key([], "r", lazy.spawn(kterm("ranger"))),
 
         Key([], "n", lazy.spawn(pterm("joplin"))),
         Key(["shift"], "n", lazy.spawn("joplin-desktop")),
@@ -108,62 +129,22 @@ keys = [
     ])
 ]
 
-
-def focus_group(qtile, group_name):
-    try:
-        qtile.cmd_to_screen(qtile.groups_map[group_name].screen.index)
-    except Exception:
-        qtile.groups_map[group_name].cmd_toscreen(toggle=False)
-
-group_names = [" 1", "切 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10"]
-groups = [ Group(i) for i in group_names]
-
-groups[1].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord-nativefier-6ae157")]
-groups[1].layout = "max"
-groups[6].matches = [Match(wm_class="spotify")]
-
-group_keys = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave"]
-
-
 for i in range(len(group_names)):
-
 
     keys.extend([
         Key([mod], group_keys[i], lazy.function(focus_group, group_names[i]), desc="Switch to group {}".format(group_names[i])),
 
-        Key([mod, "shift"], group_keys[i], lazy.window.togroup(group_names[i], switch_group=False), lazy.function(focus_group, group_names[i]),
-            desc="Switch & Move to group {}".format(group_names[i])),
+        Key([mod, "shift"], group_keys[i], lazy.window.togroup(group_names[i], switch_group=False), lazy.function(focus_group, group_names[i])),
 
         Key([mod, "control"], group_keys[i], lazy.group[group_names[i]].toscreen())
     ])
-
-
-
-colors = [
-    "#2e3440",
-    "#3b4252",
-    "#434c5e",
-    "#4c566a",
-    "#d8dee9",
-    "#e5e9f0",
-    "#eceff4",
-    "#8fbcbb",
-    "#88c0d0",
-    "#81a1c1",
-    "#5e81ac",
-    "#bf616a",
-    "#d08770",
-    "#ebcb8b",
-    "#a3be8c",
-    "#b48ead"
-]
-
 
 layout_theme = {
     "margin" : 4,
     "border_width": 2,
     "border_focus": colors[10],
-    "border_normal": colors[3]
+    "border_normal": colors[3],
+    "shift_widnows": True
 }
 
 layouts = [
@@ -172,82 +153,191 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='NotoSansMono Nerd Font',
+    font='NotoSans Nerd Font',
     fontsize=18,
     padding=3
 )
 extension_defaults = widget_defaults.copy()
 
-
 def getTopBar():
     return bar.Bar([
-            widget.Sep(padding=10, foreground=colors[0]),
-            widget.GroupBox(
-                highlight_method="block",
-                this_current_screen_border=colors[10],
-                this_screen_border=colors[10],
-                other_current_screen_border=colors[1],
-                other_screen_border=colors[1],
-                inactive=colors[3],
-                active=colors[6],
-                foreground=colors[6],
-                padding_x=7
-            ),
-            widget.WindowName(foreground=colors[0]),
-            widget.Sep(padding=20, foreground=colors[0]),
-            #龍
-            widget.TextBox(
-                text="",
-                foreground=colors[13],
-                background=colors[1],
-                padding=5
-            ),
-            widget.Memory(
-                format="{MemPercent}%",
-                background=colors[1],
-                padding=10
-            ),
-            widget.Sep(padding=10, foreground=colors[0]),
-            widget.TextBox(
-                text="龍",
-                foreground=colors[13],
-                background=colors[1],
-                padding=5
-            ),
-            widget.CPU(
-                format="{load_percent}%",
-                background=colors[1],
-                padding=10
-            ),
-            widget.Sep(padding=20, foreground=colors[0]),
-            widget.TextBox(
-                text="",
-                foreground=colors[10],
-                background=colors[1],
-                padding=10
-            ),
-            widget.Clock(
-                format='%H:%M:%S',
-                background=colors[1],
-            ),
-            widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+        widget.Sep(padding=10, foreground=colors[0]),
+        widget.CurrentScreen(
+            active_text="",
+            inactive_text="",
+            active_color=colors[6],
+            inactive_color=colors[3],
+            font="NotoSansMono Nerd Font",
+        ),
+        widget.GroupBox(
+            highlight_method="block",
+            this_current_screen_border=colors[10],
+            this_screen_border=colors[10],
+            other_current_screen_border=colors[1],
+            other_screen_border=colors[1],
+            inactive=colors[6],
+            active=colors[6],
+            foreground=colors[6],
+            padding_x = 7,
+            padding_y = 15,
+            rounded = False,
+            margin_y = 0,
+            margin_x = 5,
+            disable_drag = True,
+            hide_unused = True,
+            font="NotoSansMono Nerd Font",
+        ),
+        widget.Spacer(foreground=colors[0]),
+        widget.Sep(padding=20, foreground=colors[0]),
+        widget.TextBox(
+            text="ﱖ",
+            foreground=colors[14],
+            background=colors[1],
+            font="NotoSansMono Nerd Font",
+            padding=5
+        ),
+        widget.CurrentLayout(
+            background=colors[1],
+            foreground= colors[6],
+            padding = 7
+        ),
+        widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
 
-            ], 45, background=colors[0])
+        widget.Sep(padding=20, foreground=colors[0]),
+
+        ConditionalWidget(
+            cmd=["nordvpn.sh", "clean"],
+            conditions = ["", ""],
+            condition_foregrounds = [colors[11], colors[14]],
+            other_foreground = colors[7],
+            background=colors[1],
+            padding=10,
+            update_interval = 10,
+            font="NotoSansMono Nerd Font",
+        ),
+
+        widget.Sep(padding=10, foreground=colors[0]),
+        ConditionalWidget(
+            cmd=["wifi-status", "clean"],
+            conditions = ["直"],
+            condition_foregrounds = [colors[14], colors[11]],
+            other_foreground = colors[7],
+            background=colors[1],
+            padding=10,
+            update_interval = 10,
+            font="NotoSansMono Nerd Font",
+        ),
+
+        widget.Sep(padding=10, foreground=colors[0]),
+        ConditionalWidget(
+            cmd=["bluetooth-status", "clean"],
+            conditions = [""],
+            condition_foregrounds = [colors[10]],
+            other_foreground = colors[7],
+            background=colors[1],
+            padding=10,
+            update_interval = 10,
+            font="NotoSansMono Nerd Font",
+        ),
+        widget.Sep(padding=20, foreground=colors[0]),
+        widget.TextBox(
+            text="盛",
+            foreground=colors[13],
+            background=colors[1],
+            font="NotoSansMono Nerd Font",
+            padding=5
+        ),
+        widget.Backlight(
+            backlight_name="intel_backlight",
+            change_command="brillo -S {0}",
+            foreground=colors[6],
+            background=colors[1],
+        ),
+        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+        widget.Sep(padding=10, foreground=colors[0]),
+        BatteryIcon(
+            font="NotoSansMono Nerd Font",
+            background=colors[1],
+            update_interval = 1,
+            padding=5
+        ),
+
+        widget.Battery(
+            format="{char}{percent:2.0%}",
+            show_short_text=False,
+            charge_char= "",
+            empty_char = "",
+            discharge_char = "",
+            full_char = "",
+            background=colors[1],
+            padding=0
+        ),
+        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+        widget.Sep(padding=20, foreground=colors[0]),
+        widget.TextBox(
+            text="",
+            foreground=colors[10],
+            background=colors[1],
+            font="NotoSansMono Nerd Font",
+            padding=5
+        ),
+        widget.Clock(
+            format='%H:%M:%S',
+            background=colors[1],
+        ),
+        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+
+
+    ], 45, background=colors[0])
+
+
+def getNumScreens():
+    num_monitors = 0
+    try:
+        display = xdisplay.Display()
+        screen = display.screen()
+        resources = screen.root.xrandr_get_screen_resources()
+
+        for output in resources.outputs:
+            monitor = display.xrandr_get_output_info(output, resources.config_timestamp)
+            preferred = False
+            if hasattr(monitor, "preferred"):
+                preferred = monitor.preferred
+            elif hasattr(monitor, "num_preferred"):
+                preferred = monitor.num_preferred
+            if preferred:
+                num_monitors += 1
+    except Exception:
+        # always setup at least one monitor
+        return 1
+    else:
+        return num_monitors
+
+def getAdditionalScreen():
+    return Screen(top = getTopBar())
 
 screens = [
      Screen(
         top=getTopBar(),
 
          bottom = bar.Bar([
-            widget.WindowName(foreground=colors[0]),
+            widget.Spacer(foreground=colors[0]),
             widget.Systray(icon_size=25, padding=10),
-            widget.Sep(padding=20, foreground=colors[0]),
+            widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
+            widget.Clock(
+                format='%H:%M:%S\n%a %d/%m/%y',
+                fontsize=15,
+            ),
+            widget.Sep(padding=10, foreground=colors[0] ),
 
          ],45, background=colors[0])
-    ),
-    Screen(top=getTopBar()),
-    Screen(top = getTopBar())
+    )
 ]
+
+for i in range(getNumScreens() - 1):
+    screens.append(getAdditionalScreen())
+
+
 
 # Drag floating layouts.
 mouse = [
@@ -271,6 +361,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
+    Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

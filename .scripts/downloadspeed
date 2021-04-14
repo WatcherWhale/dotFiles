@@ -1,0 +1,2 @@
+#!/bin/bash
+speedtest | grep Download | awk '{print $3" "$4}'

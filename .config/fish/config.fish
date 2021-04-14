@@ -6,6 +6,9 @@ set -x TEXMFHOME "~/.local/share/texmf"
 set -x JUPYTERLAB_DIR $HOME/.local/share/jupyter/lab
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
+set --unexport COLUMNS
+set --unexport LINES
+
 source ~/.config/fish/nord.fish
 
 set fish_greeting
@@ -84,6 +87,6 @@ alias cast="catt cast"
 # Fun
 alias rr="~/.scripts/roll.sh"
 
-#terminalmsg
-ponysay -o
+terminalmsg
+#ponysay -o
 starship init fish | source

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+file="$(printf '%s' "$1" | md5sum | awk '{print toupper($1)}')"
+rm -f "/home/watcherwhale/.config/mpv/watch_later/$file"

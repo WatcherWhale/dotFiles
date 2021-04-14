@@ -1,0 +1,9 @@
+#!/bin/bash
+connected="$(iwgetid)"
+
+if [ -z "$connected" ];
+then
+    echo "睊"
+else
+    echo "直"
+fi

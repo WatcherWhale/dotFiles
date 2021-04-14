@@ -1,0 +1,3 @@
+#!/bin/bash
+
+deemix -p $PWD $1
