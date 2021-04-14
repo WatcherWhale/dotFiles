@@ -1,4 +1,4 @@
-from libqtile.config import Group, Key, KeyChord, Match, Screen
+from libqtile.config import Group, ScratchPad, Key, KeyChord, Match, Screen
 
 def focus_group(qtile, group_name):
     try:
@@ -7,6 +7,8 @@ def focus_group(qtile, group_name):
         qtile.groups_map[group_name].cmd_toscreen(toggle=False)
 
 group_names = [" 1", "切 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10"]
+group_keys = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave"]
+
 groups = [ Group(i) for i in group_names]
 
 groups[1].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord-nativefier-6ae157"), Match(wm_class="discord"),
@@ -14,4 +16,6 @@ groups[1].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord
 groups[1].layout = "max"
 groups[6].matches = [Match(wm_class="spotify")]
 
-group_keys = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave"]
+scratchpad = ScratchPad("scratchpad")
+scratchpad.matches = [Match(wm_class="spectacle")]
+groups.append(scratchpad)
