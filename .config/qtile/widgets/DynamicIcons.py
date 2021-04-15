@@ -10,6 +10,43 @@ colors = [
     "#a3be8c",
 ]
 
+def getProcessOutput(cmd):
+    return subprocess.run(cmd, stdout=subprocess.PIPE).stdout.decode("utf-8")[:-1]
+
+class WifiSignalWidget(widget.base.ThreadPoolText):
+    defaults = [
+        ("icons", ["", "", "", "", ""], "All battery icon states."),
+        ("colors", [colors[0], colors[1], colors[2], colors[3], "#8fbcbb"], "All icon states."),
+    ]
+
+    def __init__(self, **config):
+        super().__init__("", **config)
+        self.add_defaults(WifiSignalWidget.defaults)
+
+    def poll(self):
+        if getProcessOutput(["iwgetid"]) == "":
+            self.foreground = self.colors[-1]
+            return self.icons[-1]
+
+        wifi_info = getProcessOutput(["iwconfig"])
+        start = wifi_info.index("Signal level=") + len("Signal level=")
+        stop = wifi_info.index(" dBm", start)
+
+        wifi_level = float(wifi_info[start:stop])
+
+        if wifi_level > -50:
+            self.foreground = self.colors[3]
+            return self.icons[3]
+        elif wifi_level > -60:
+            self.foreground = self.colors[2]
+            return self.icons[2]
+        elif wifi_level > -70:
+            self.foreground = self.colors[1]
+            return self.icons[1]
+        else:
+            self.foreground = self.colors[0]
+            return self.icons[0]
+
 class BatteryIconWidget(widget.base.ThreadPoolText):
 
     defaults = [
@@ -64,28 +101,4 @@ class BrightnessIconWidget(widget.base.ThreadPoolText):
                 return self.icons[i]
 
         return self.icons[-1]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -11,10 +11,12 @@ if [ "$choice" != "" ]; then
 
     if [ "$confirm" == "Yes" ]; then
         if [ "$choice" == "Logout" ]; then
-            killall qtile
+            qtile cmd-obj -o cmd -f shutdown
         elif [ "$choice" == "Restart" ]; then
+            qtile cmd-obj -o cmd -f shutdown &
             systemctl reboot
         elif [ "$choice" == "Shutdown" ]; then
+            qtile cmd-obj -o cmd -f shutdown &
             systemctl poweroff
         elif [ "$choice" == "Lock" ]; then
             ~/.scripts/lock

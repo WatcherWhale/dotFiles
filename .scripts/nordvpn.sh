@@ -6,14 +6,14 @@ connlen="$(cat /usr/local/share/vpn)"
 if [ "$server" == "" ] && [ "$connlen" == "0" ]; then
     if [ "$1" == "clean" ];
     then
-        echo ""
+        echo ""
     else
         echo "%{F#bf616a}"
     fi
 else
     if [ "$1" == "clean" ];
     then
-        echo ""
+        echo ""
     else
         echo "%{F#a3be8c}"
     fi

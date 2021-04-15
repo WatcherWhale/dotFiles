@@ -5,16 +5,16 @@ from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
 from widgets.ConditionalWidget import ConditionalWidget
-from widgets.DynamicIcons import BatteryIconWidget, BrightnessIconWidget
+from widgets.DynamicIcons import BatteryIconWidget, BrightnessIconWidget, WifiSignalWidget
 from settings import colors
 from settings.groups import groups, group_names, group_keys, focus_group
 
 from Xlib import display as xdisplay
 
 import os
-import os.path
 import subprocess
 
+home = os.path.expanduser("~")
 
 terminal = "alacritty"
 def kterm(cmd):
@@ -35,7 +35,11 @@ def autostart_always():
 mod = "mod4"
 
 keys = [
-    # Switch between windows
+
+    ##################
+    # Window Control #
+    ##################
+
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
@@ -43,8 +47,6 @@ keys = [
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
 
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
         desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
@@ -53,8 +55,11 @@ keys = [
         desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
+
+    ##################
+    # Layout Control #
+    ##################
+
     Key([mod, "control"], "h", lazy.layout.grow_left(),
         lazy.layout.shrink(),
         lazy.layout.decrease_nmaster(),
@@ -79,7 +84,7 @@ keys = [
         desc="Grow window up"),
 
     Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "Tab", lazy.layout.flip()),
 
 
@@ -93,12 +98,36 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),
 
+
+    ##############
+    #    Menus   #
+    ##############
+
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Run Application runner"),
     Key([mod, "shift"], "d", lazy.spawn("rofi -show run"), desc="Run Application runner"),
     Key([mod], "v", lazy.spawn("showclipboard")),
     Key([mod, "shift"], "v", lazy.spawn("greenclip clear")),
     Key([mod], "n", lazy.spawn("bash -c \"kill -s USR1 $(pidof deadd-notification-center)\"")),
 
+
+    ########################
+    # Backlight Brightness #
+    ########################
+
+    Key([], "XF86MonBrightnessUp", lazy.spawn(home + "/.scripts/xob/brillo.sh 5")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(home + "/.scripts/xob/brillo.sh -5")),
+    Key([mod], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh 5")),
+    Key([mod, "shift"], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh -5")),
+
+    Key(["control"], "XF86MonBrightnessUp", lazy.spawn(home + "/.scripts/xob/brillo.sh bright")),
+    Key(["control"], "XF86MonBrightnessDown", lazy.spawn(home + "/.scripts/xob/brillo.sh dim")),
+    Key([mod, "control"], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh bright")),
+    Key([mod, "control", "shift"], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh dim")),
+
+
+    #######################
+    # Launch applications #
+    #######################
 
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([], "Print", lazy.spawn("screenshot")),
@@ -129,6 +158,10 @@ keys = [
     ])
 ]
 
+#####################
+# Group KeyBindings #
+#####################
+
 for i in range(len(group_names)):
 
     keys.extend([
@@ -138,6 +171,11 @@ for i in range(len(group_names)):
 
         Key([mod, "control"], group_keys[i], lazy.group[group_names[i]].toscreen())
     ])
+
+
+###########
+# Layouts #
+###########
 
 layout_theme = {
     "margin" : 4,
@@ -151,6 +189,11 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme)
 ]
+
+
+###########################
+# Widgets, Bars & Screens #
+###########################
 
 widget_defaults = dict(
     font='NotoSans Nerd Font',
@@ -207,25 +250,21 @@ def getTopBar():
 
         ConditionalWidget(
             cmd=["nordvpn.sh", "clean"],
-            conditions = ["", ""],
+            conditions = ["", ""],
             condition_foregrounds = [colors[11], colors[14]],
             other_foreground = colors[7],
             background=colors[1],
             padding=10,
             update_interval = 10,
-            font="NotoSansMono Nerd Font",
+            font="Font Awesome 6 Pro Solid",
         ),
 
         widget.Sep(padding=10, foreground=colors[0]),
-        ConditionalWidget(
-            cmd=["wifi-status", "clean"],
-            conditions = ["直"],
-            condition_foregrounds = [colors[14], colors[11]],
-            other_foreground = colors[7],
-            background=colors[1],
+        WifiSignalWidget(
+            font="Font Awesome 6 Pro Solid",
             padding=10,
-            update_interval = 10,
-            font="NotoSansMono Nerd Font",
+            background=colors[1],
+            update_interval=10,
         ),
 
         widget.Sep(padding=10, foreground=colors[0]),
@@ -337,9 +376,10 @@ screens = [
 for i in range(getNumScreens() - 1):
     screens.append(getAdditionalScreen())
 
+###########
+#  Mouse  #
+###########
 
-
-# Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -348,11 +388,16 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
+##################
+# Other Settings #
+##################
+
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = True
+
 floating_layout = layout.Floating(float_rules=[
     *layout.Floating.default_float_rules,
     Match(wm_class='confirmreset'),  # gitk
@@ -362,7 +407,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
-])
+], border_width=2, border_focus=colors[10], border_normal=colors[3])
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

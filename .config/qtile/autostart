@@ -2,7 +2,7 @@
 
 numlockx on &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-xfce4-power-manager &
+#xfce4-power-manager &
 nm-applet &
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
@@ -14,5 +14,5 @@ mailspring -b &
 
 sleep 2
 
-pa-applet &
 blueman-applet &
+pa-applet &

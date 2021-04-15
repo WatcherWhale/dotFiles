@@ -3,7 +3,7 @@ connected="$(iwgetid)"
 
 if [ -z "$connected" ];
 then
-    echo "睊"
+    echo ""
 else
-    echo "直"
+    echo ""
 fi
