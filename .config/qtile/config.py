@@ -48,8 +48,8 @@ for i in range(len(group_names)):
 ###########
 
 layout_theme = {
-    "margin" : 4,
-    "border_width": 2,
+    "margin" : 8,
+    "border_width": 4,
     "border_focus": colors[10],
     "border_normal": colors[3],
     "shift_widnows": True
@@ -88,7 +88,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = True
+cursor_warp = False
 
 floating_layout = layout.Floating(float_rules=[
     *layout.Floating.default_float_rules,

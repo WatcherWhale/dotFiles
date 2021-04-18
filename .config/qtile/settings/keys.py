@@ -10,11 +10,17 @@ home = os.path.expanduser("~")
 mod = "mod4"
 terminal = "alacritty"
 
-def kterm(cmd):
-    return terminal + ' -e fish -C "' + cmd + '"'
+def kterm(cmd, cls=None):
+    if cls != None:
+        return terminal + ' --class "' + cls + '" -e fish -C "' + cmd + '"'
+    else:
+        return terminal + ' -e fish -C "' + cmd + '"'
 
-def pterm(cmd):
-    return terminal + ' -e "' + cmd + '"'
+def pterm(cmd, cls=None):
+    if cls != None:
+        return terminal + ' --class "' + cls + '" -e "' + cmd + '"'
+    else:
+        return terminal + ' -e "' + cmd + '"'
 
 keys = [
     ##################
@@ -28,11 +34,14 @@ keys = [
     Key([mod], "space", lazy.layout.next(),
         desc="Move window focus to other window"),
 
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+    Key([mod, "shift"], "h",
+        lazy.layout.shuffle_left(),
         desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+    Key([mod, "shift"], "l",
+        lazy.layout.shuffle_right(),
         desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
+    Key([mod, "shift"], "j",
+        lazy.layout.shuffle_down(),
         desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
@@ -63,9 +72,9 @@ keys = [
         lazy.layout.increase_nmaster(),
         desc="Grow window up"),
 
-    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, "shift"], "Tab", lazy.layout.flip()),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod], "Tab", lazy.layout.flip()),
 
 
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -123,10 +132,9 @@ keys = [
         Key(["shift"], "d", lazy.spawn("discord"), lazy.function(focus_group, group_names[1])),
 
         Key([], "m", lazy.spawn("mailspring")),
-        Key(["shift"], "m", lazy.spawn(kterm("ranger ~/Music"))),
 
-
-        Key([], "s", lazy.spawn("spotify-tray -t")),
+        Key(["shift"], "m",  lazy.function(focus_group, group_names[6]), lazy.spawn(kterm("ranger ~/Music", "music_terminal"))),
+        Key([], "s", lazy.spawn("spotify"), lazy.function(focus_group, group_names[6])),
 
 
         Key([], "r", lazy.spawn(kterm("ranger"))),

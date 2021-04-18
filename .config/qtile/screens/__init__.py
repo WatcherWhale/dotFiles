@@ -15,7 +15,7 @@ widget_defaults = dict(
 
 def getTopBar():
     return bar.Bar([
-        widget.Sep(padding=10, foreground=colors[0]),
+        widget.Sep(padding=20, foreground=colors[0]),
         widget.CurrentScreen(
             active_text="",
             inactive_text="",
@@ -23,6 +23,7 @@ def getTopBar():
             inactive_color=colors[3],
             font="NotoSansMono Nerd Font",
         ),
+        widget.Sep(padding=20, foreground=colors[0]),
         widget.GroupBox(
             highlight_method="block",
             this_current_screen_border=colors[10],
@@ -34,11 +35,11 @@ def getTopBar():
             urgent_alert_method="block",
             urgent_text=colors[12],
             foreground=colors[6],
-            padding_x = 7,
+            padding_x = 10,
             padding_y = 15,
             rounded = False,
             margin_y = 0,
-            margin_x = 5,
+            margin_x = 0,
             disable_drag = True,
             hide_unused = True,
             font="NotoSansMono Nerd Font",
@@ -146,8 +147,14 @@ def getTopBar():
 
 def getBottomBar():
     return bar.Bar([
-        widget.Spacer(foreground=colors[0]),
-        widget.Systray(icon_size=25, padding=10),
+        widget.Spacer(
+            foreground=colors[0]
+        ),
+        widget.Systray(
+            icon_size=25,
+            padding=10,
+            background=colors[0]
+        ),
         widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
         widget.Clock(
             format='%H:%M:%S\n%a %d/%m/%y',

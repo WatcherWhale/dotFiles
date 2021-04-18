@@ -90,3 +90,12 @@ alias rr="~/.scripts/roll.sh"
 terminalmsg
 #ponysay -o
 starship init fish | source
+
+function fish_command_not_found
+    set_color -o red
+    shuf -n 1 ~/.config/fish/insults.txt
+    set_color normal
+end
+
+
+
