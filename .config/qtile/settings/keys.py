@@ -119,13 +119,23 @@ keys = [
     #######################
 
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, "control"], "Return", lazy.group["scratchpad"].dropdown_toggle("terminal")),
+
     Key([], "Print", lazy.spawn("screenshot")),
+
+    Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("calculator")),
+    Key([], "XF86Calculator", lazy.group["scratchpad"].dropdown_toggle("calculator")),
+    Key([mod, "shift"], "c", lazy.spawn("qalculate-gtk")),
+    Key(["shift"], "XF86Calculator", lazy.spawn("qalculate-gtk")),
 
 
    KeyChord([mod], "a", [
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
         Key([], "f", lazy.spawn("firefox")),
         Key(["shift"], "f", lazy.spawn("firefox --private-window")),
+
+       Key([], "b", lazy.spawn("rofi-bluetooth")),
+       Key([], "w", lazy.spawn("rofi-wifi-menu")),
 
         Key([], "t", lazy.spawn("telegram-desktop"), lazy.function(focus_group, group_names[1])),
         Key([], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[1])),
