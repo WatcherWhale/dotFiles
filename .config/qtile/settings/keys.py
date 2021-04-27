@@ -8,7 +8,7 @@ from settings.groups import focus_group, group_names
 home = os.path.expanduser("~")
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 def kterm(cmd, cls=None):
     if cls != None:

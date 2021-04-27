@@ -1,9 +1,6 @@
 " load shortcuts
 source /home/watcherwhale/.config/nvim/shortcuts.vim
 
-" load lsp shortcuts
-source /home/watcherwhale/.config/nvim/lsp.vim
-
 " load settings
 source /home/watcherwhale/.config/nvim/settings.vim
 

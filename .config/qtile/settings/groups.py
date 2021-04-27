@@ -25,6 +25,7 @@ groups = [ Group(i) for i in group_names]
 groups[1].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord-nativefier-6ae157"), Match(wm_class="discord"),
                      Match(wm_class="signal"), Match(wm_class="whatsapp-nativefier-d40211")]
 groups[1].layout = "max"
+groups[6].layout = "max"
 groups[6].matches = [Match(wm_class="spotify"), Match(wm_class="music_terminal")]
 
 wm_classes = ["spectacle"]
