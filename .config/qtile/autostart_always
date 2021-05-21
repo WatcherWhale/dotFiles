@@ -1,5 +1,6 @@
 #!/bin/bash
 
+nitrogen --restore &
 sh -c '~/.scripts/notifications' &
 sh -c '~/.scripts/picom.sh' &
 sh -c '~/.scripts/xob/start.sh' &
@@ -7,4 +8,3 @@ autotiling &
 sh -c '~/.scripts/wacom' &
 setxkbmap -option caps:escape &
 sh -c 'find ~/.config/mpv/watch_later -mtime +30 -print | xargs rm -f' &
-nitrogen --restore &

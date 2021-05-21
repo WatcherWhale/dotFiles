@@ -1,5 +1,6 @@
 #!/bin/bash
 
+find /home/watcherwhale/Downloads/* -mtime +50 -exec rm {} \; &
 numlockx on &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #xfce4-power-manager &
@@ -11,8 +12,11 @@ trash-empty 30 &
 unclutter &
 greenclip daemon &
 mailspring -b &
+pulseeffects --gapplication-service &
+telegram-desktop &
 
 sleep 2
 
 blueman-applet &
-pa-applet &
+#pa-applet &
+gammastep-indicator &

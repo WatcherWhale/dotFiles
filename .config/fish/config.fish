@@ -1,4 +1,4 @@
-set -x PATH "/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.local/share/gem/ruby/3.0.0/bin"
+set -x PATH "/usr/bin:/usr/local/bin:/bin:/sbin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.local/share/gem/ruby/3.0.0/bin"
 set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
@@ -41,8 +41,8 @@ alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias play='i3-swallow mpv --loop'
-alias playfolder='i3-swallow mpv --shuffle --loop-playlist'
+alias play='devour mpv --loop'
+alias playfolder='devour mpv --shuffle --loop-playlist'
 
 # Git
 alias push="git push"
@@ -83,6 +83,12 @@ alias mirrora="sudo reflector --verbose --latest 50 --number 20 --protocol https
 alias cat="bat"
 
 alias cast="catt cast"
+
+# Kitty Alias
+if test "$TERM" = "xterm-kitty"
+    alias kssh="kitty +kitten ssh"
+    alias pssh="kitty +kitten ssh use-python"
+end
 
 # Fun
 alias rr="~/.scripts/roll.sh"

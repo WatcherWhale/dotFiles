@@ -33,7 +33,7 @@ wm_classes = ["spectacle"]
 scratchpad = ScratchPad("scratchpad", [
     DropDown(
         "calculator",
-        "alacritty -e calculator",
+        "kitty -e calculator",
         width=0.8,
         height=0.55,
         opacity=1,
@@ -41,7 +41,7 @@ scratchpad = ScratchPad("scratchpad", [
     ),
     DropDown(
         "terminal",
-        "alacritty",
+        "kitty",
         width=0.8,
         height=0.55,
         opacity=1,

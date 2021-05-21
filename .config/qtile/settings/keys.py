@@ -8,7 +8,7 @@ from settings.groups import focus_group, group_names
 home = os.path.expanduser("~")
 
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 
 def kterm(cmd, cls=None):
     if cls != None:
@@ -97,6 +97,7 @@ keys = [
     Key([mod], "v", lazy.spawn("showclipboard")),
     Key([mod, "shift"], "v", lazy.spawn("greenclip clear")),
     Key([mod], "n", lazy.spawn("bash -c \"kill -s USR1 $(pidof deadd-notification-center)\"")),
+    Key([mod], "semicolon", lazy.spawn("splatmoji copy")),
 
 
     ########################
@@ -112,6 +113,14 @@ keys = [
     Key(["control"], "XF86MonBrightnessDown", lazy.spawn(home + "/.scripts/xob/brillo.sh dim")),
     Key([mod, "control"], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh bright")),
     Key([mod, "control", "shift"], "b", lazy.spawn(home + "/.scripts/xob/brillo.sh dim")),
+
+    ##################
+    # Volume Control #
+    ##################
+
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
 
 
     #######################

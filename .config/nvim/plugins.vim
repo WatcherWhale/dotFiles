@@ -3,10 +3,6 @@ call plug#begin('/home/watcherwhale/.config/nvim/plugged')
 " Latex
 Plug 'lervag/vimtex'
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -26,8 +22,7 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
-" Distraction free vim
-" Plug 'junegunn/goyo.vim'
+Plug 'vim-voom/VOoM'
 
 " Nerdtree
 Plug 'preservim/nerdtree'
@@ -42,17 +37,11 @@ Plug 'rbgrouleff/bclose.vim'
 " Matlab
 Plug 'jvirtanen/vim-octave'
 
-" Vim Rainbow (coloured pairs)
-" Plug 'frazrepo/vim-rainbow'
-
 " Comments
 Plug 'preservim/nerdcommenter'
 
 " Fzf
 Plug 'junegunn/fzf.vim'
-
-" Documentation Generator
-Plug 'kkoomen/vim-doge'
 
 " I3 Config
 Plug 'mboughaba/i3config.vim'
@@ -78,5 +67,8 @@ Plug 'chaoren/vim-wordmotion'
 " Live browser
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'alvan/vim-closetag'
+
+" Spelling & Grammar
+Plug 'dpelle/vim-LanguageTool'
 
 call plug#end()

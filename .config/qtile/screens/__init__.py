@@ -108,6 +108,19 @@ def getTopBar():
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
         widget.Sep(padding=10, foreground=colors[0]),
+        widget.Volume(
+            font="Hack Nerd Font",
+            emoji=True,
+            foreground=colors[6],
+            background=colors[1],
+            padding=5
+        ),
+        widget.Volume(
+            foreground=colors[6],
+            background=colors[1],
+        ),
+        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+        widget.Sep(padding=10, foreground=colors[0]),
         BatteryIconWidget(
             font="NotoSansMono Nerd Font",
             background=colors[1],

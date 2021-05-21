@@ -9,6 +9,11 @@
 " inoremap <left>  <nop>
 " inoremap <right> <nop>
 
+map j gj
+map k gk
+map <up> gk
+map <down> gj
+
 set clipboard^=unnamed
 
 set ignorecase
@@ -24,13 +29,14 @@ set nocompatible
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " Helps force plug-ins to load correctly when it is turned back on below.
-filetype off
+filetype plugin on
 
 " Turn off modelines
 set modelines=0
 
 " Wrap around text when line is full
 set wrap
+set linebreak
 
 " Vim's auto indentation feature does not work properly with text copied from
 " outside of Vim. Press the <F2> key to toggle paste mode on/off.
@@ -150,3 +156,9 @@ aug i3config_ft_detection
   au!
   au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
 aug end
+
+" Set Spell checker
+set spelllang=en,nl
+
+let g:languagetool_lang = "en-GB"
+let g:languagetool_cmd = "/sbin/languagetool"

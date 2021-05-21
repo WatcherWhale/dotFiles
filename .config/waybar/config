@@ -80,10 +80,13 @@
 
     "modules-left": [],
     "modules-center": [],
-    "modules-right": ["tray"],
+    "modules-right": ["tray", "custom/spacer"],
 
     "tray": {
-        "icon-size": 20,
+        "icon-size": 25,
         "spacing": 10
     },
+    "custom/spacer": {
+        "format": "  "
+    }
 }]

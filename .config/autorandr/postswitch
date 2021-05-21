@@ -1,4 +1,4 @@
 #!/bin/sh
 
-i3 restart &
 qtile cmd-obj -o cmd -f restart &
+i3 restart &
