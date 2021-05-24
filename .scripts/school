@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 $HOME/.scripts/sterm "cd ~/School/$1 && ranger" --keep

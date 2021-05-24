@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 name="$(echo "$1" | cut -f1 -d'.')"
 file="$name.md"

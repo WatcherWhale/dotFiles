@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 state=$(echo "$1" | cut -d " " -f 3)
 

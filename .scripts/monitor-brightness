@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 while true
 do
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1);

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 name="$HOME/Pictures/clipboard/$(date +%Y%m%d-%H:%M:%S).png"
 xclip -selection clipboard -t image/png -o > $name

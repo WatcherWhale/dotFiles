@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 filename="$(basename "$PWD").pdf"
 files="$(ls *.png | sort -n | tr '\n' ' ')"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 country="uk"
 connlen="$(cat /usr/local/share/vpn)"

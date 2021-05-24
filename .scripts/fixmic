@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env bash
 amixer set Capture 100%

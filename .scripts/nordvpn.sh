@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -F '.' '{ print $1 }' | cut -c1-2 | tr [a-z] [A-Z])"
 connlen="$(cat /usr/local/share/vpn)"

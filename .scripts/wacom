@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 stylus=$(xsetwacom --list devices | grep "type: STYLUS" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
 pad=$(xsetwacom --list devices | grep "type: PAD" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')

@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env bash
 paru -S --rebuild qt5-styleplugins

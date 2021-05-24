@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 
 ffmpeg -y -i "$1" -vf fps=15,scale=320:-1:flags=lanczos,palettegen palette.png

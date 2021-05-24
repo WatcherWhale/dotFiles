@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 nmcli c up Uantwerpen\ VPN
 mount -t cifs -o user=s0182054@ad.ua.ac.be //fileserver.ad.ua.ac.be/Homedir_studenten/s0182054 /home/watcherwhale/HSchijf

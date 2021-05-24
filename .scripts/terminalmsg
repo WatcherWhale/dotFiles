@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if [ -z "$1" ]; then
     ascii="/home/watcherwhale/.local/share/fish-ascii/$(ls ~/.local/share/fish-ascii | sort -R | tail -1)"

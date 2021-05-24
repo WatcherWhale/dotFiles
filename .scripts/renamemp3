@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 for f in *.mp3; do
     name="$(echo $f | awk -F'.' '{print $2}')"

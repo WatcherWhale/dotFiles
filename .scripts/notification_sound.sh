@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 SOUND="~/Music/Notifications/juntos.ogg"
 EXCEPTIONS[0]="Spotify"
 

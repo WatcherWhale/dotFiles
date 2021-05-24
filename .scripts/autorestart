@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #sh -c '~/.config/i3/scripts/picom.sh' &
 #sh -c '~/.config/i3/scripts/polybar.sh' &

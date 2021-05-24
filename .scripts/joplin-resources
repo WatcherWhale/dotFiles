@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 RESOURCES_LINK="/home/watcherwhale/.config/joplin/tmp/resources"
 RESOURCES_DIR="/home/watcherwhale/.config/joplin/resources"

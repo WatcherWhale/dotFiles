@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 matlab -nosplash -nodesktop -sd $PWD

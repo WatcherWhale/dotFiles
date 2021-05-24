@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 url="http://coronavirus-tracker-api.herokuapp.com/v2/locations/23"
 json=$(curl -Ss $url)

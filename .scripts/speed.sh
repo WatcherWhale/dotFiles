@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # speed.sh: a very tiny utility to measure typing speed.
 prompt="Start typing a piece of text. Press Ctrl-d twice to finish."
 echo "\n$prompt \n"

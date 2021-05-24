@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 status=$(rofi-bluetooth --status | awk '{print $1}')
 device=$(rofi-bluetooth --status | grep "WH-1000XM3")

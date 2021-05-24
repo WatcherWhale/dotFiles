@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 sudo mount /dev/sda1 /mnt/ssd
 ln -s /mnt/ssd ~/ssd
