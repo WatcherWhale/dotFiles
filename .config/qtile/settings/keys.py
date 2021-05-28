@@ -147,8 +147,8 @@ keys = [
        Key([], "w", lazy.spawn("rofi-wifi-menu")),
 
         Key([], "t", lazy.spawn("telegram-desktop"), lazy.function(focus_group, group_names[1])),
-        Key([], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[1])),
-        Key(["shift"], "d", lazy.spawn("discord"), lazy.function(focus_group, group_names[1])),
+        Key(["shift"], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[1])),
+        Key([], "d", lazy.spawn("discord"), lazy.function(focus_group, group_names[1])),
 
         Key([], "m", lazy.spawn("mailspring")),
 

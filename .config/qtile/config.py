@@ -12,7 +12,9 @@ from screens import getScreens, widget_defaults
 
 from settings.keys import mod, keys
 from settings.groups import groups, group_names, group_keys, focus_group
-from settings import colors
+from settings import getColors
+
+colors = getColors()
 
 home = os.path.expanduser("~")
 

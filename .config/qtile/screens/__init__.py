@@ -2,15 +2,19 @@ from libqtile import bar, widget
 from libqtile.config import Screen
 from Xlib import display as xdisplay
 
-from settings import colors
+from settings import getColors
 
 from screens.ConditionalWidget import ConditionalWidget
 from screens.DynamicIcons import BatteryIconWidget, BrightnessIconWidget, WifiSignalWidget
 
+
+colors = getColors()
+
 widget_defaults = dict(
     font='NotoSans Nerd Font',
     fontsize=18,
-    padding=3
+    padding=3,
+    foreground=colors[6]
 )
 
 def getTopBar():
@@ -136,6 +140,7 @@ def getTopBar():
             discharge_char = "",
             full_char = "",
             background=colors[1],
+            foreground=colors[6],
             padding=0
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
@@ -150,6 +155,7 @@ def getTopBar():
         widget.Clock(
             format='%H:%M:%S',
             background=colors[1],
+            foreground=colors[6],
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
 

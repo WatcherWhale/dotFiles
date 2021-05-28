@@ -31,4 +31,4 @@ style = "bold blue"
 
 [hostname]
 ssh_only = false
-format = "[@ ](bold white)[$hostname](bold blue) "
+format = "[@ ](bold)[$hostname](bold blue) "

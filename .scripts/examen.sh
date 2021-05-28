@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-xrandr --output eDP1 --off
-xrandr --output DP1 --off
+xrandr --output eDP-1 --off
+xrandr --output DP-1 --off
 
 stylus=$(xsetwacom --list devices | grep "type: STYLUS" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')
 pad=$(xsetwacom --list devices | grep "type: PAD" | awk -F'id:' '{print $1}' | awk '{$1=$1};1' | awk -F'\n' '{ print "\""$1"\"" }')

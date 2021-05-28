@@ -9,7 +9,7 @@ set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set --unexport COLUMNS
 set --unexport LINES
 
-source ~/.config/fish/nord.fish
+#source ~/.config/fish/nord.fish
 
 set fish_greeting
 
@@ -43,6 +43,10 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias play='devour mpv --loop'
 alias playfolder='devour mpv --shuffle --loop-playlist'
+
+# Theme
+alias light="/home/watcherwhale/.scripts/switch light"
+alias dark="/home/watcherwhale/.scripts/switch dark"
 
 # Git
 alias push="git push"

@@ -13,8 +13,9 @@ Plug 'ap/vim-css-color'
 " Lightline
 Plug 'itchyny/lightline.vim'
 
-" Nord
+" Themes
 Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Markdown
 Plug 'godlygeek/tabular'

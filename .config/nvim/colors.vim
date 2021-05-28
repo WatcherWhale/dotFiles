@@ -1,5 +1,6 @@
 let g:nord_italic_comments = 0 
 colorscheme nord
+set background=dark
 
 let g:lightline = {
     \ 'colorscheme': 'nord',

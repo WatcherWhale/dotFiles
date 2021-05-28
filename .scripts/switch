@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "light" ];
+then
+    cp ~/.config/alacritty/alacritty-light.yml ~/.config/alacritty/alacritty.yml
+
+    sed -i "s/Nordic-bluish-accent/Arc/g" ~/.xsettingsd
+    sed -i "s/Surfn-Arch-Blue/Bibata-Modern-Ice/g" ~/.xsettingsd
+
+    sed -i "s/colorscheme\ nord/colorscheme\ PaperColor/g" ~/.config/nvim/colors.vim
+    sed -i "s/=dark/=light/g" ~/.config/nvim/colors.vim
+
+    sed -i "s/<property\ name=\"darkTheme\"\ value=\"true\"\/>/<property\ name=\"darkTheme\"\ value=\"false\"\/>/g" ~/.config/xournalpp/settings.xml
+
+    #mv ~/.mozilla/firefox/hm0qby53.default-release/chrome ~/.mozilla/firefox/hm0qby53.default-release/chrome-disabled
+
+    echo "light" > ~/.config/theme
+
+
+elif [ "$1" == "dark" ];
+then
+    cp ~/.config/alacritty/alacritty-nord.yml ~/.config/alacritty/alacritty.yml
+
+    sed -i "s/Arc/Nordic-bluish-accent/g" ~/.xsettingsd
+    sed -i "s/Bibata-Modern-Ice/Surfn-Arch-Blue/g" ~/.xsettingsd
+
+    sed -i "s/colorscheme\ PaperColor/colorscheme\ nord/g" ~/.config/nvim/colors.vim
+    sed -i "s/=light/=dark/g" ~/.config/nvim/colors.vim
+
+    sed -i "s/<property\ name=\"darkTheme\"\ value=\"false\"\/>/<property\ name=\"darkTheme\"\ value=\"true\"\/>/g" ~/.config/xournalpp/settings.xml
+
+    #mv ~/.mozilla/firefox/hm0qby53.default-release/chrome-disabled ~/.mozilla/firefox/hm0qby53.default-release/chrome
+
+    echo "dark" > ~/.config/theme
+
+fi
+
+pkill -1 xsettingsd &
+qtile cmd-obj -o cmd -f restart &

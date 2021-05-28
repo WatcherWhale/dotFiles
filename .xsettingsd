@@ -1,0 +1,19 @@
+Net/ThemeName "Nordic-bluish-accent"
+Net/IconThemeName "Surfn-Arch-Blue"
+
+Gtk/EnableAnimations 1
+Gtk/FontName "NotoSans Nerd Font,  14"
+
+Gtk/CursorThemeName "Breeze Dark_Hacked"
+Gtk/CursorThemeSize 16
+
+Gtk/DecorationLayout ":minimize,maximize,close"
+Gtk/PrimaryButtonWarpsSlider 0
+Gtk/ToolbarStyle 3
+Gtk/MenuImages 1
+Gtk/ButtonImages 1
+
+Xft/Hinting 1
+Xft/HintStyle "hintslight"
+Xft/Antialias 1
+Xft/RGBA "rgb"

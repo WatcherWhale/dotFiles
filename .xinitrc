@@ -32,6 +32,8 @@ export TERMINAL="st"
 export BROWSER="firefox"
 export DIFFPROG="nvim -d"
 
+xsettingsd &
+
 #exec i3
 exec qtile start
 #exec herbstluftwm

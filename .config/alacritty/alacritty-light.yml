@@ -1,0 +1,49 @@
+window:
+  padding:
+    x: 10
+    y: 10
+  dynamic_padding: true
+font:
+  size: 16
+
+  normal:
+    #family: Hack Nerd Font Mono
+    family: FiraCode Nerd Font Mono
+
+shell:
+  program: /bin/fish
+
+env:
+  TERM: xterm-256color
+
+colors:
+  # Default colors
+  primary:
+    background: '#E3EAF5'
+    foreground: '#3B4252'
+
+  cursor:
+    text: '#E3EAF5'
+    cursor: '#899ba6'
+
+  # Normal colors
+  normal:
+    black: '#3B4252'
+    red: '#BF616A'
+    green: '#A3BE8C'
+    yellow: '#EBCB8B'
+    blue: '#81A1C1'
+    magenta: '#B48EAD'
+    cyan: '#88C0D0'
+    white: '#ECEFF4'
+
+  # Bright colors
+  bright:
+    black: '#899BA6'
+    red: '#F2C38F'
+    green: '#4F894C'
+    yellow: '#DADA93'
+    blue: '#83AFE5'
+    magenta: '#D18EC2'
+    cyan: '#7FC1CA'
+    white: '#E6EEF3'
