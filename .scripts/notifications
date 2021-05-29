@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-killall deadd-notification-center
-deadd-notification-center &
+killall dunst
+dunst &
