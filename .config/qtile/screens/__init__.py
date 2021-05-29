@@ -2,7 +2,7 @@ from libqtile import bar, widget
 from libqtile.config import Screen
 from Xlib import display as xdisplay
 
-from settings import getColors
+from settings import getColors, dark_colors
 
 from screens.ConditionalWidget import ConditionalWidget
 from screens.DynamicIcons import BatteryIconWidget, BrightnessIconWidget, WifiSignalWidget
@@ -32,8 +32,8 @@ def getTopBar():
             highlight_method="block",
             this_current_screen_border=colors[10],
             this_screen_border=colors[10],
-            other_current_screen_border=colors[1],
-            other_screen_border=colors[1],
+            other_current_screen_border=colors[16],
+            other_screen_border=colors[16],
             inactive=colors[6],
             active=colors[6],
             urgent_alert_method="block",

@@ -16,7 +16,8 @@ dark_colors = [
     "#d08770",
     "#ebcb8b",
     "#a3be8c",
-    "#b48ead"
+    "#b48ead",
+    "#3b4252"
 ]
 
 light_colors = [
@@ -35,7 +36,8 @@ light_colors = [
     "#d08770",
     "#ebcb8b",
     "#a3be8c",
-    "#b48ead"
+    "#b48ead",
+    "#88c0d0"
 ]
 
 def getTheme():
