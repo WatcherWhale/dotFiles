@@ -3,6 +3,7 @@
 if [ "$1" == "light" ];
 then
     cp ~/.config/alacritty/alacritty-light.yml ~/.config/alacritty/alacritty.yml
+    cp ~/.config/dunst/dunstrc-light ~/.config/dunst/dunstrc
 
     sed -i "s/Nordic-bluish-accent/Arc/g" ~/.xsettingsd
     sed -i "s/Surfn-Arch-Blue/Bibata-Modern-Ice/g" ~/.xsettingsd
@@ -20,6 +21,7 @@ then
 elif [ "$1" == "dark" ];
 then
     cp ~/.config/alacritty/alacritty-nord.yml ~/.config/alacritty/alacritty.yml
+    cp ~/.config/dunst/dunstrc-nord ~/.config/dunst/dunstrc
 
     sed -i "s/Arc/Nordic-bluish-accent/g" ~/.xsettingsd
     sed -i "s/Bibata-Modern-Ice/Surfn-Arch-Blue/g" ~/.xsettingsd

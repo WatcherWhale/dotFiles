@@ -96,7 +96,6 @@ keys = [
     Key([mod, "shift"], "d", lazy.spawn("rofi -show run"), desc="Run Application runner"),
     Key([mod], "v", lazy.spawn("showclipboard")),
     Key([mod, "shift"], "v", lazy.spawn("greenclip clear")),
-    Key([mod], "n", lazy.spawn("bash -c \"kill -s USR1 $(pidof deadd-notification-center)\"")),
     Key([mod], "semicolon", lazy.spawn("splatmoji copy")),
 
 
