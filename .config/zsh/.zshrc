@@ -1,9 +1,12 @@
+clear
+~/.scripts/terminalmsg
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]];
 then
-  echo "1) Xorg (QTile)"
-  echo "2) Wayland (Sway)"
+  #echo "1) Xorg (QTile)"
+  #echo "2) Wayland (Sway)"
 
-  read de
+  #read de
 
   if [ "$de" = "2" ];
   then
@@ -18,7 +21,9 @@ then
 
     exec sway
   else
-    exec startx;
+    startx
+    sudo /usr/bin/prime-switch
+    exit
   fi
 elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]];
 then
@@ -44,7 +49,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export MODE_CURSOR_VIINS="bar"
 
-~/.scripts/terminalmsg
+#~/.scripts/terminalmsg
 
 # Set History file
 export HISTFILE=~/.config/zsh/.zsh_history

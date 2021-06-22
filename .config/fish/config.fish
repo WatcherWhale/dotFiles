@@ -1,4 +1,4 @@
-set -x PATH "/usr/bin:/usr/local/bin:/bin:/sbin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2020/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.local/share/gem/ruby/3.0.0/bin"
+set -x PATH "/usr/bin:/usr/local/bin:/bin:/sbin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/watcherwhale/.scripts/:/home/watcherwhale/.local/bin:/opt/texlive/2021/bin/x86_64-linux/:/usr/local/MATLAB/R2020b/bin/:/var/lib/snapd/snap/bin/:~/.local/share/gem/ruby/3.0.0/bin"
 set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
@@ -42,7 +42,7 @@ alias cpimg="xclip -selection clipboard -t image/png -i"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias play='devour mpv --loop'
-alias playfolder='devour mpv --shuffle --loop-playlist'
+alias playfolder='devour mpv --x11-name=music --shuffle --loop-playlist'
 
 # Theme
 alias light="/home/watcherwhale/.scripts/switch light"
@@ -77,6 +77,8 @@ alias cp="cp -i"
 
 alias :q="exit"
 alias q="exit"
+
+alias battery="acpi -i -b"
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"

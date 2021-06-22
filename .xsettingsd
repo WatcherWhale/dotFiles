@@ -1,5 +1,4 @@
 Net/ThemeName "Nordic-bluish-accent"
-Net/IconThemeName "Surfn-Arch-Blue"
 
 Gtk/EnableAnimations 1
 Gtk/FontName "NotoSans Nerd Font,  14"

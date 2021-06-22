@@ -4,4 +4,3 @@ p="$PWD"
 
 cd /home/watcherwhale/Projects/destreamer
 node --max-http-header-size 32768 build/src/destreamer.js "$@"
-mv videos/* $p

@@ -1,7 +1,7 @@
 configuration {
 	font:							"NotoSans Nerd Font 14";
     show-icons:                     true;
-	icon-theme: 					"Papirus";
+	icon-theme: 					"Surfn";
     display-drun: 					"🔍";
     display-run: 					"🔍";
     drun-display-format:            "{name}";

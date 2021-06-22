@@ -31,6 +31,25 @@ client.focused          #5e81ac #5e81ac #5e81ac #5e81ac
 client.focused_inactive #3b4252 #3b4252 #5e81ac #3b4252
 client.unfocused        #3b4252 #3b4252 #d8dee9 #3b4252
 client.urgent           #3b4252 #3b4252 #5e81ac #3b4252
+
+
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable; move scratchpad
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"]
 # Autostart scripts
 exec_always --no-startup-id sh -c '~/.scripts/notifications'
 exec_always --no-startup-id sh -c '~/.scripts/picom.sh'
@@ -57,6 +76,8 @@ exec --no-startup-id trash-empty 30
 exec --no-startup-id unclutter
 exec --no-startup-id greenclip daemon
 exec --no-startup-id mailspring -b
+
+exec --no-startup-id yakuake
 # Workspace names
 set $ws1 "1: 1"
 set $ws2 "2:切 2"
@@ -233,7 +254,7 @@ bindsym $mod+f fullscreen toggle
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+KP_Enter exec --no-startup-id $term
-bindsym $mod+Control+Return exec yakuake
+#bindsym $mod+Control+Return exec yakuake
 
 # kill focused window
 bindsym $mod+q kill
@@ -323,8 +344,8 @@ mode "$mode_gaps_outer" {
 
 
 # Emoji Picker
-bindsym $mod+semicolon exec splatmoji -s dark type
-bindsym $mod+Control+semicolon exec splatmoji -s dark copy
+bindsym $mod+semicolon exec splatmoji type
+bindsym $mod+Control+semicolon exec splatmoji copy
 
 # Calculator
 bindsym Control+XF86Calculator exec qalculate-gtk

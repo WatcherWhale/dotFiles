@@ -14,6 +14,7 @@ xsetwacom set "Wacom Intuos S Pad pad" Button 2 "key ctrl" "key s"
 xsetwacom set "Wacom Intuos S Pad pad" Button 3 "key Print"
 
 i3 restart
+qtile cmd-obj -o cmd -f restart
 
 killall kdeconnect-indi
 killall kdeconnectd

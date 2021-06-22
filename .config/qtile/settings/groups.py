@@ -26,7 +26,7 @@ groups[1].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord
                      Match(wm_class="signal"), Match(wm_class="whatsapp-nativefier-d40211")]
 groups[1].layout = "max"
 groups[6].layout = "max"
-groups[6].matches = [Match(wm_class="spotify"), Match(wm_class="music_terminal")]
+groups[6].matches = [Match(wm_class="spotify"), Match(wm_class="music_terminal"), Match(wm_class="music")]
 
 wm_classes = ["spectacle"]
 

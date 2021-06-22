@@ -1,4 +1,7 @@
 #!/bin/sh
+
+/usr/bin/prime-offload
+
 #
 # ~/.xinitrc
 #
@@ -13,12 +16,16 @@ fi
 
 #if [systemd-detect-virt = "oracle"];
 #	/usr/bin/VBoxClient-all
+
 #fi
 
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
 
 autorandr --change
 xrandr --dpi 96
@@ -32,11 +39,14 @@ export TERMINAL="st"
 export BROWSER="firefox"
 export DIFFPROG="nvim -d"
 
-xsettingsd &
+#xsettingsd &
 
 #exec i3
 exec qtile start
 #exec herbstluftwm
+
+#export KDEWM="/usr/bin/i3"
+#exec startplasma-x11
 
 # Exit the tty
 #exit

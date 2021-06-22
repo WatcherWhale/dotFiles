@@ -5,6 +5,7 @@ from Xlib import display as xdisplay
 from settings import getColors, dark_colors
 
 from screens.ConditionalWidget import ConditionalWidget
+from screens.ScriptWidget import ScriptWidget
 from screens.DynamicIcons import BatteryIconWidget, BrightnessIconWidget, WifiSignalWidget
 
 
@@ -19,15 +20,16 @@ widget_defaults = dict(
 
 def getTopBar():
     return bar.Bar([
-        widget.Sep(padding=20, foreground=colors[0]),
+        widget.Sep(padding=10, foreground=colors[0]),
         widget.CurrentScreen(
-            active_text="",
-            inactive_text="",
+            active_text="",
+            inactive_text="",
             active_color=colors[6],
             inactive_color=colors[3],
             font="NotoSansMono Nerd Font",
+            fontsize=30
         ),
-        widget.Sep(padding=20, foreground=colors[0]),
+        widget.Sep(padding=10, foreground=colors[0]),
         widget.GroupBox(
             highlight_method="block",
             this_current_screen_border=colors[10],
@@ -50,6 +52,8 @@ def getTopBar():
         ),
         widget.Spacer(foreground=colors[0]),
         widget.Sep(padding=20, foreground=colors[0]),
+
+        #widget.Sep(padding=6, foreground=colors[10], background=colors[10]),
         widget.TextBox(
             text="ﱖ",
             foreground=colors[14],
@@ -66,6 +70,8 @@ def getTopBar():
 
         widget.Sep(padding=20, foreground=colors[0]),
 
+        #widget.Sep(padding=6, foreground=colors[10], background=colors[10]),
+
         ConditionalWidget(
             cmd=["nordvpn.sh", "clean"],
             conditions = ["", ""],
@@ -77,7 +83,7 @@ def getTopBar():
             font="Font Awesome 6 Pro Solid",
         ),
 
-        widget.Sep(padding=10, foreground=colors[0]),
+        #widget.Sep(padding=10, foreground=colors[0]),
         WifiSignalWidget(
             font="Font Awesome 6 Pro Solid",
             padding=10,
@@ -85,18 +91,20 @@ def getTopBar():
             update_interval=10,
         ),
 
-        widget.Sep(padding=10, foreground=colors[0]),
+        #widget.Sep(padding=10, foreground=colors[0]),
         ConditionalWidget(
             cmd=["bluetooth-status", "clean"],
             conditions = [""],
             condition_foregrounds = [colors[10]],
             other_foreground = colors[7],
             background=colors[1],
-            padding=10,
+            padding=5,
             update_interval = 10,
             font="NotoSansMono Nerd Font",
+            fontsize=20,
         ),
-        widget.Sep(padding=20, foreground=colors[0]),
+        widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
+        #widget.Sep(padding=20, foreground=colors[0]),
         BrightnessIconWidget(
             #text="盛",
             foreground=colors[13],
@@ -110,11 +118,11 @@ def getTopBar():
             foreground=colors[6],
             background=colors[1],
         ),
-        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
-        widget.Sep(padding=10, foreground=colors[0]),
+        widget.Sep(padding=15, foreground=colors[1], background=colors[1]),
+        #widget.Sep(padding=10, foreground=colors[0]),
         widget.Volume(
             font="Hack Nerd Font",
-            emoji=True,
+            theme_path="/home/watcherwhale/.config/qtile/themes/sound",
             foreground=colors[6],
             background=colors[1],
             padding=5
@@ -124,7 +132,9 @@ def getTopBar():
             background=colors[1],
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
-        widget.Sep(padding=10, foreground=colors[0]),
+
+        widget.Sep(padding=20, foreground=colors[0]),
+        #widget.Sep(padding=6, foreground=colors[10], background=colors[10]),
         BatteryIconWidget(
             font="NotoSansMono Nerd Font",
             background=colors[1],
@@ -144,7 +154,7 @@ def getTopBar():
             padding=0
         ),
         widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
-        widget.Sep(padding=20, foreground=colors[0]),
+        #widget.Sep(padding=20, foreground=colors[0]),
         widget.TextBox(
             text="",
             foreground=colors[10],
@@ -228,6 +238,13 @@ def getScreens():
     ]
 
     for i in range(getNumScreens() - 1):
+        screens.append(getAdditionalScreen())
+
+    return screens
+
+def getScreensPlasma():
+    screens = []
+    for i in range(getNumScreens()):
         screens.append(getAdditionalScreen())
 
     return screens
