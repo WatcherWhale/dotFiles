@@ -5,7 +5,7 @@ device=$(rofi-bluetooth --status | grep "WH-1000XM3")
 
 if [ "$status" == "" ]  && [ -n "$device" ];
 then
-    BAT="$(~/.local/bin/hdbatt)"
+    #BAT="$(~/.local/bin/hdbatt)"
     if [ "$1" == "wayland" ];
     then
         echo "<span color='#5e81ac'></span>"

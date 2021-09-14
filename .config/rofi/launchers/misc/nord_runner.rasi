@@ -6,8 +6,8 @@ configuration {
     display-run: 					"🔍";
     drun-display-format:            "{name}";
     disable-history:                false;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
+    /*fullscreen:                     false;
+	hide-scrollbar: 				true;*/
 	sidebar-mode: 					false;
     modi:                           "run,drun,ssh";
 }
@@ -27,7 +27,7 @@ configuration {
 
 window {
     transparency:                   "real";
-    background-color:               @background;
+    background-color:               @background-alt;
     text-color:                     @foreground;
 	border:							4px;
 	border-color:					@outer-border;
@@ -76,6 +76,8 @@ listview {
     cycle:                          false;
     dynamic:                        true;
     layout:                         vertical;
+    border:                         none;
+    scrollbar:                      false;
 }
 
 mainbox {
@@ -96,6 +98,22 @@ element {
     padding:                        1% 0% 1% 0%;
 }
 
+element.normal.normal {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0%;
+    padding:                        1% 0% 1% 0%;
+}
+
+element.alternate.normal {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0%;
+    padding:                        1% 0% 1% 0%;
+}
+
 element-icon {
     size:                           32px;
     border:                         0px;
@@ -109,7 +127,7 @@ element-text {
     margin:                         0.1% 0.1% 0.1% 1%;
 }
 
-element selected {
+element.selected.normal {
     background-color:               @selected;
     text-color:                     @foreground;
 	border:							0% 0% 0.3% 0%;

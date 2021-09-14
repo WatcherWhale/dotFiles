@@ -3,6 +3,7 @@ from libqtile.config import Screen
 from Xlib import display as xdisplay
 
 from settings import getColors, dark_colors
+from settings.groups import group_names
 
 from screens.ConditionalWidget import ConditionalWidget
 from screens.ScriptWidget import ScriptWidget
@@ -18,7 +19,30 @@ widget_defaults = dict(
     foreground=colors[6]
 )
 
-def getTopBar():
+def getTopBar(third = False):
+
+    groupBox = widget.GroupBox(
+        highlight_method="block",
+        this_current_screen_border=colors[10],
+        this_screen_border=colors[10],
+        other_current_screen_border=colors[16],
+        other_screen_border=colors[16],
+        inactive=colors[6],
+        active=colors[6],
+        urgent_alert_method="block",
+        urgent_text=colors[12],
+        foreground=colors[6],
+        highlight_color = [colors[6], colors[12]],
+        padding_x = 10,
+        padding_y = 15,
+        rounded = False,
+        margin_y = 0,
+        margin_x = 0,
+        disable_drag = True,
+        hide_unused = True,
+        font="NotoSansMono Nerd Font",
+    )
+
     return bar.Bar([
         widget.Sep(padding=10, foreground=colors[0]),
         widget.CurrentScreen(
@@ -30,26 +54,7 @@ def getTopBar():
             fontsize=30
         ),
         widget.Sep(padding=10, foreground=colors[0]),
-        widget.GroupBox(
-            highlight_method="block",
-            this_current_screen_border=colors[10],
-            this_screen_border=colors[10],
-            other_current_screen_border=colors[16],
-            other_screen_border=colors[16],
-            inactive=colors[6],
-            active=colors[6],
-            urgent_alert_method="block",
-            urgent_text=colors[12],
-            foreground=colors[6],
-            padding_x = 10,
-            padding_y = 15,
-            rounded = False,
-            margin_y = 0,
-            margin_x = 0,
-            disable_drag = True,
-            hide_unused = True,
-            font="NotoSansMono Nerd Font",
-        ),
+        groupBox,
         widget.Spacer(foreground=colors[0]),
         widget.Sep(padding=20, foreground=colors[0]),
 
@@ -68,6 +73,24 @@ def getTopBar():
         ),
         widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
 
+        widget.Sep(padding=20, foreground=colors[0]),
+
+        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+        ScriptWidget(
+            cmd=["/home/watcherwhale/.local/bin/temp_bureau"],
+            foreground=colors[6],
+            background=colors[1],
+            update_interval = 10,
+            padding=0
+        ),
+        widget.TextBox(
+            text="糖",
+            foreground=colors[6],
+            background=colors[1],
+            font="NotoSansMono Nerd Font",
+            padding=0
+        ),
+        widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
         widget.Sep(padding=20, foreground=colors[0]),
 
         #widget.Sep(padding=6, foreground=colors[10], background=colors[10]),
@@ -104,7 +127,7 @@ def getTopBar():
             fontsize=20,
         ),
         widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
-        #widget.Sep(padding=20, foreground=colors[0]),
+        widget.Sep(padding=20, foreground=colors[0]),
         BrightnessIconWidget(
             #text="盛",
             foreground=colors[13],
@@ -176,6 +199,7 @@ def getTopBar():
 
 def getBottomBar():
     return bar.Bar([
+        #widget.WindowTabs(),
         widget.Spacer(
             foreground=colors[0]
         ),
@@ -215,36 +239,28 @@ def getNumScreens():
     else:
         return num_monitors
 
-def getAdditionalScreen():
-    return Screen(top = getTopBar())
+def getAdditionalScreen(i):
+    if i is not 2:
+        return Screen(top = getTopBar())
+    else:
+        return Screen(top = getTopBar(True))
 
 def getScreens():
     screens = [
          Screen(
             top=getTopBar(),
-
-             bottom = bar.Bar([
-                widget.Spacer(foreground=colors[0]),
-                widget.Systray(icon_size=25, padding=10),
-                widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
-                widget.Clock(
-                    format='%H:%M:%S\n%a %d/%m/%y',
-                    fontsize=15,
-                ),
-                widget.Sep(padding=10, foreground=colors[0] ),
-
-             ],45, background=colors[0])
-        )
+            bottom = getBottomBar()
+         )
     ]
 
     for i in range(getNumScreens() - 1):
-        screens.append(getAdditionalScreen())
+        screens.append(getAdditionalScreen(i + 1))
 
     return screens
 
 def getScreensPlasma():
     screens = []
     for i in range(getNumScreens()):
-        screens.append(getAdditionalScreen())
+        screens.append(getAdditionalScreen(i))
 
     return screens

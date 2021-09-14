@@ -7,4 +7,4 @@ rm -f /tmp/brillo
 mkfifo /tmp/brillo
 tail -f /tmp/brillo | xob -s brillo &
 
-~/.scripts/xob/audio.py | xob -s audio &
+#~/.scripts/xob/audio.py | xob -s audio &

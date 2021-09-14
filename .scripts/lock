@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-betterlockscreen -l dim &
-sleep 1
-xset dpms force off &
+#XDG_SEAT_PATH="/org/freedesktop/DisplayManager/Seat0" dm-tool lock
+betterlockscreen -l dim

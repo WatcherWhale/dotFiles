@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/usr/bin/prime-offload
+#/usr/bin/prime-offload
 
 #
 # ~/.xinitrc
@@ -42,7 +42,7 @@ export DIFFPROG="nvim -d"
 #xsettingsd &
 
 #exec i3
-exec qtile start
+exec sh -c "qtile start > ~/.logqtile"
 #exec herbstluftwm
 
 #export KDEWM="/usr/bin/i3"

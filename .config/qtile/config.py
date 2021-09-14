@@ -8,7 +8,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
-from screens import getScreens, widget_defaults
+from screens import getScreens, widget_defaults, getNumScreens
 
 from settings.keys import mod, keys
 from settings.groups import groups, group_names, group_keys, focus_group

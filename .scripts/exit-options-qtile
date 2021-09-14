@@ -11,7 +11,9 @@ if [ "$choice" != "" ]; then
 
     if [ "$confirm" == "Yes" ]; then
         if [ "$choice" == "Logout" ]; then
-            qtile cmd-obj -o cmd -f shutdown
+            qtile cmd-obj -o cmd -f shutdown &
+            sleep 3
+            killall qtile
         elif [ "$choice" == "Restart" ]; then
             qtile cmd-obj -o cmd -f shutdown &
             systemctl reboot
@@ -19,9 +21,10 @@ if [ "$choice" != "" ]; then
             qtile cmd-obj -o cmd -f shutdown &
             systemctl poweroff
         elif [ "$choice" == "Lock" ]; then
-            ~/.scripts/lock
+            #~/.scripts/lock
+            dm-tool lock
         elif [ $choice == "Sleep" ]; then
-            betterlockscreen -s
+            systemctl suspend
         fi
     fi
 fi

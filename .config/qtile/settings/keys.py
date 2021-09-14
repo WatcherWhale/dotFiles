@@ -79,8 +79,8 @@ keys = [
 
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
-    Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "shift"], "r", lazy.spawn("qtile cmd-obj -o cmd -f restart"), desc="Restart Qtile"),
+    #Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "shift"], "e", lazy.spawn("exit-options-qtile")),
     Key(["control", "mod1"], "l", lazy.spawn("lock")),
 
@@ -120,6 +120,9 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+    KeyChord([mod], "p", [
+        Key([], "a", lazy.spawn("/usr/bin/pavucontrol"))
+    ]),
 
 
     #######################
@@ -129,37 +132,40 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, "control"], "Return", lazy.group["scratchpad"].dropdown_toggle("terminal")),
 
-    Key([], "Print", lazy.spawn("screenshot")),
+    Key([], "Print", lazy.spawn(home + "/.scripts/screenshot")),
 
     Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("calculator")),
     Key([], "XF86Calculator", lazy.group["scratchpad"].dropdown_toggle("calculator")),
     Key([mod, "shift"], "c", lazy.spawn("qalculate-gtk")),
-    Key(["shift"], "XF86Calculator", lazy.spawn("qalculate-gtk")),
+    Key(["shift"], "XF86Calculator", lazy.spawn("/usr/bin/qalculate-gtk")),
 
 
    KeyChord([mod], "a", [
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-        Key([], "f", lazy.spawn("firefox")),
-        Key(["shift"], "f", lazy.spawn("firefox --private-window")),
+        Key([], "f", lazy.spawn("/usr/bin/firefox")),
+        Key(["shift"], "f", lazy.spawn("/usr/bin/firefox --private-window")),
 
        Key([], "b", lazy.spawn("rofi-bluetooth")),
-       Key([], "w", lazy.spawn("rofi-wifi-menu")),
+       #Key([], "w", lazy.spawn("rofi-wifi-menu")),
 
-        Key([], "t", lazy.spawn("telegram-desktop"), lazy.function(focus_group, group_names[1])),
-        Key(["shift"], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[1])),
-        Key([], "d", lazy.spawn("discord"), lazy.function(focus_group, group_names[1])),
+        Key([], "t", lazy.spawn("/usr/bin/telegram-desktop"), lazy.function(focus_group, group_names[2])),
+        Key(["shift"], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[2])),
+        Key([], "d", lazy.spawn("/usr/bin/discord"), lazy.function(focus_group, group_names[2])),
 
-        Key([], "m", lazy.spawn("mailspring")),
+        Key([], "m", lazy.spawn("/usr/bin/mailspring")),
 
+        Key(["shift"], "j",  lazy.function(focus_group, group_names[6]), lazy.spawn("jellyfinmediaplayer")),
         Key(["shift"], "m",  lazy.function(focus_group, group_names[6]), lazy.spawn(kterm("ranger ~/Music", "music_terminal"))),
-        Key([], "s", lazy.spawn("spotify"), lazy.function(focus_group, group_names[6])),
 
 
         Key([], "r", lazy.spawn(kterm("ranger"))),
+        Key(["shift"], "r", lazy.spawn("thunar")),
+
+        Key([], "w", lazy.spawn("nitrogen --restore")),
 
         Key([], "n", lazy.spawn(pterm("joplin"))),
-        Key(["shift"], "n", lazy.spawn("joplin-desktop")),
-        Key([], "x", lazy.spawn("xournalpp")),
+        Key(["shift"], "n", lazy.spawn("/usr/bin/joplin-desktop")),
+        Key([], "x", lazy.spawn("/usr/bin/xournalpp")),
 
     ])
 ]

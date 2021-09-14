@@ -29,4 +29,4 @@ else
     nordvpn c $1
 fi
 
-sh ~/.scripts/vpn-status
+#sh ~/.scripts/vpn-status
