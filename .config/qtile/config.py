@@ -1,7 +1,6 @@
 import os
 import subprocess
 
-from Xlib import display as xdisplay
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook
@@ -51,8 +50,8 @@ for i in range(len(group_names)):
 ###########
 
 layout_theme = {
-    "margin" : 8,
-    "border_width": 4,
+    "margin" : 0,
+    "border_width": 2,
     "border_focus": colors[10],
     "border_normal": colors[3],
     "shift_widnows": True

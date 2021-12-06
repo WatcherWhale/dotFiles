@@ -1,6 +1,5 @@
-from libqtile import bar, widget
+from libqtile import qtile, bar, widget
 from libqtile.config import Screen
-from Xlib import display as xdisplay
 
 from settings import getColors, dark_colors
 from settings.groups import group_names
@@ -8,6 +7,8 @@ from settings.groups import group_names
 from screens.ConditionalWidget import ConditionalWidget
 from screens.ScriptWidget import ScriptWidget
 from screens.DynamicIcons import BatteryIconWidget, BrightnessIconWidget, WifiSignalWidget
+
+from settings.groups import group_names
 
 
 colors = getColors()
@@ -43,6 +44,32 @@ def getTopBar(third = False):
         font="NotoSansMono Nerd Font",
     )
 
+    if third:
+        groupBox = widget.GroupBox(
+            highlight_method="block",
+            this_current_screen_border=colors[10],
+            this_screen_border=colors[10],
+            other_current_screen_border=colors[16],
+            other_screen_border=colors[16],
+            inactive=colors[6],
+            active=colors[6],
+            urgent_alert_method="block",
+            urgent_text=colors[12],
+            foreground=colors[6],
+            highlight_color = [colors[6], colors[12]],
+            padding_x = 10,
+            padding_y = 15,
+            rounded = False,
+            margin_y = 0,
+            margin_x = 0,
+            disable_drag = True,
+            hide_unused = True,
+            font="NotoSansMono Nerd Font",
+            visible_groups= [group_names[2], group_names[4], group_names[6]]
+        )
+
+
+
     return bar.Bar([
         widget.Sep(padding=10, foreground=colors[0]),
         widget.CurrentScreen(
@@ -75,23 +102,23 @@ def getTopBar(third = False):
 
         widget.Sep(padding=20, foreground=colors[0]),
 
-        widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
-        ScriptWidget(
-            cmd=["/home/watcherwhale/.local/bin/temp_bureau"],
-            foreground=colors[6],
-            background=colors[1],
-            update_interval = 10,
-            padding=0
-        ),
-        widget.TextBox(
-            text="糖",
-            foreground=colors[6],
-            background=colors[1],
-            font="NotoSansMono Nerd Font",
-            padding=0
-        ),
-        widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
-        widget.Sep(padding=20, foreground=colors[0]),
+       # widget.Sep(padding=10, foreground=colors[1], background=colors[1]),
+       # ScriptWidget(
+       #     cmd=["/home/watcherwhale/.local/bin/temp_bureau"],
+       #     foreground=colors[6],
+       #     background=colors[1],
+       #     update_interval = 10,
+       #     padding=0
+       # ),
+       # widget.TextBox(
+       #     text="糖",
+       #     foreground=colors[6],
+       #     background=colors[1],
+       #     font="NotoSansMono Nerd Font",
+       #     padding=0
+       # ),
+       # widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
+       # widget.Sep(padding=20, foreground=colors[0]),
 
         #widget.Sep(padding=6, foreground=colors[10], background=colors[10]),
 
@@ -195,8 +222,6 @@ def getTopBar(third = False):
 
     ], 45, background=colors[0])
 
-
-
 def getBottomBar():
     return bar.Bar([
         #widget.WindowTabs(),
@@ -218,26 +243,32 @@ def getBottomBar():
 
 
 def getNumScreens():
-    num_monitors = 0
-    try:
-        display = xdisplay.Display()
-        screen = display.screen()
-        resources = screen.root.xrandr_get_screen_resources()
+    # Change this when amount of monitors changes
+    num_monitors = 3
 
-        for output in resources.outputs:
-            monitor = display.xrandr_get_output_info(output, resources.config_timestamp)
-            preferred = False
-            if hasattr(monitor, "preferred"):
-                preferred = monitor.preferred
-            elif hasattr(monitor, "num_preferred"):
-                preferred = monitor.num_preferred
-            if preferred:
-                num_monitors += 1
-    except Exception:
-        # always setup at least one monitor
-        return 1
-    else:
-        return num_monitors
+    #if qtile.core.name != "wayland":
+    #    try:
+    #        from Xlib import display as xdisplay
+    #        display = xdisplay.Display()
+    #        screen = display.screen()
+    #        resources = screen.root.xrandr_get_screen_resources()
+
+    #        for output in resources.outputs:
+    #            monitor = display.xrandr_get_output_info(output, resources.config_timestamp)
+    #            preferred = False
+    #            if hasattr(monitor, "preferred"):
+    #                preferred = monitor.preferred
+    #            elif hasattr(monitor, "num_preferred"):
+    #                preferred = monitor.num_preferred
+    #            if preferred:
+    #                num_monitors += 1
+    #    except Exception:
+    #        # always setup at least one monitor
+    #        return 1
+    #else:
+    #    num_monitors = len(qtile.cmd_screens()) - 1
+
+    return num_monitors
 
 def getAdditionalScreen(i):
     if i is not 2:

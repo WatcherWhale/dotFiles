@@ -34,6 +34,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rbgrouleff/bclose.vim'
 " Plug 'francoiscabrol/ranger.vim'
 
+" HTML
+Plug 'mattn/emmet-vim'
 
 " Matlab
 Plug 'jvirtanen/vim-octave'

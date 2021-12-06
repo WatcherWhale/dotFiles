@@ -29,14 +29,14 @@ end
 alias r2="radare2 -A"
 alias j="joplin"
 alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
-alias latexcompile="latexmk -pdflatex=lualatex -f -pdf -interaction=nonstopmode"
-alias fm="i3-swallow pcmanfm"
+alias latexcompile="latexmk -pdflatex=lualatex -f -shell-escape -pdf -interaction=nonstopmode"
+alias fm="thunar ."
 
 # use trash instead of the default remove
 alias rm="trash"
 
 # Media
-alias ytmp3="youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata -i -o \"%(autonumber)s %(title)s.%(ext)s\""
+alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --embed-thumbnail --add-metadata -i -o \"%(autonumber)s %(title)s.%(ext)s\""
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -86,7 +86,7 @@ alias mirrord="sudo reflector --verbose --latest 50 --number 20 --protocol https
 alias mirrors="sudo reflector --verbose --latest 50 --number 20 --protocol https --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --verbose --latest 50 --number 20 --protocol https --sort age --save /etc/pacman.d/mirrorlist"
 
-alias cat="bat"
+#alias cat="bat"
 
 alias cast="catt cast"
 
@@ -99,8 +99,10 @@ end
 # Fun
 alias rr="~/.scripts/roll.sh"
 
-terminalmsg
-#ponysay -o
+function fish_greeting
+    terminalmsg
+end
+
 starship init fish | source
 
 function fish_command_not_found
@@ -109,5 +111,6 @@ function fish_command_not_found
     set_color normal
 end
 
+#bind \cL 'clear && terminalmsg'
 
 

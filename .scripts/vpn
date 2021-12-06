@@ -4,20 +4,21 @@ country="uk"
 connlen="$(cat /usr/local/share/vpn)"
 
 if [ "$1" == "stop" ] || [ "$1" == "disconnect" ] || [ "$1" == "d" ]; then
-    nordvpn d
+    systemctl --user stop sshuttle
     if [ "$connlen" != "0" ]; then
+        sudo wgnord d
         sudo wg-quick down wg0-client
         sudo /usr/local/share/scripts/vpn-get &
         sleep 1
         sudo killall vpn-get
     fi
-elif [ "$1" == "t" ] || [ "$1" == "toggle" ]; then
+elif [ "$1" == "t" ] || [ "$1" == "toggle" ] || [ "$1" == "" ]; then
     server="$(nordvpn status | grep -w "server" | awk -F ': ' '{ print $2 }' | awk -F '.' '{ print $1}')"
 
     if [ "$server" == "" ]; then
-        nordvpn c $country
+        sudo wgnord c $country
     else
-        nordvpn d
+        sudo wgnord d
     fi
 elif [ "$1" == "home" ] || [ "$1" == "h" ];
 then
@@ -25,8 +26,13 @@ then
     sudo /usr/local/share/scripts/vpn-get &
     sleep 1
     sudo killall vpn-get
+elif [ "$1" == "sshuttle" ] || [ "$1" == "ssh" ];
+then
+    systemctl --user start sshuttle
 else
-    nordvpn c $1
+    sudo wgnord c $1
 fi
+
+sudo systemctl restart dnsmasq.service stubby.service
 
 #sh ~/.scripts/vpn-status

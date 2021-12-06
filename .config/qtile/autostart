@@ -7,7 +7,8 @@ sh -c 'find ~/.config/mpv/watch_later -mtime +30 -print | xargs rm -f' &
 numlockx on &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #xfce4-power-manager &
-nm-applet &
+#nm-applet &
+nm-tray &
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
 /usr/bin/nextcloud --background &

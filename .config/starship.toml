@@ -11,9 +11,9 @@ format = """\
   $line_break\
   $jobs\
   $battery\
-  $time\
   $character\
   """
+#right_format= """$time"""
 
 [character]
 success_symbol = "[ ](bold blue)"
@@ -21,13 +21,18 @@ error_symbol = "[ ](bold red)"
 vicmd_symbol = "[ 🐟️](bold blue)"
 
 [time]
-disabled = true
+disabled = false
+format = "[$time]($style)"
+style = "bold cyan"
+time_format = "(%H:%M)"
+
 
 [cmd_duration]
 disabled = true
 
 [directory]
 style = "bold blue"
+read_only = " "
 
 [hostname]
 ssh_only = false
