@@ -1,24 +1,27 @@
 #!/bin/bash
 
-autorandr --change
-xset s off
-find /home/watcherwhale/Downloads/* -mtime +50 -exec rm {} \; &
+#autorandr --change
+#xset s off
+#find /home/watcherwhale/Downloads/* -mtime -50 -type f -exec rm {} \; &
 sh -c 'find ~/.config/mpv/watch_later -mtime +30 -print | xargs rm -f' &
 numlockx on &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #xfce4-power-manager &
-#nm-applet &
-nm-tray &
+nm-applet &
+#nm-tray &
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
 /usr/bin/nextcloud --background &
 trash-empty 30 &
 unclutter &
 greenclip daemon &
-mailspring -b &
+#mailspring -b &
 #pulseeffects --gapplication-service &
 /usr/bin/telegram-desktop &
+flatpak run com.discordapp.Discord &
 optimus-manager-qt &
+
+flameshot &
 
 sleep 2
 

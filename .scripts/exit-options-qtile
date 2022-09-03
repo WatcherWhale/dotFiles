@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-choice="$(echo -e "Lock\0icon\x1flock\nLogout\0icon\x1fuser\nRestart\0icon\x1freboot\nShutdown\0icon\x1fpower\nSleep\0icon\x1fsleep" | rofi -lines 5 -dmenu -i -p '')"
+
+declare -A icons=( ["Lock"]="lock" ["Logout"]="system-log-out" ["Restart"]="system-reboot" ["Shutdown"]="system-shutdown" ["Sleep"]="sleep")
+
+choice="$(echo -e "Lock\0icon\x1flock\nLogout\0icon\x1fsystem-log-out\nRestart\0icon\x1fsystem-reboot\nShutdown\0icon\x1fsystem-shutdown\nSleep\0icon\x1fsleep" | rofi -lines 5 -dmenu -i -p '')"
 
 if [ "$choice" != "" ]; then
 
-    confirm="$(echo -e "No\0icon\x1ferror\nYes\0icon\x1ftask-complete" | rofi -dmenu -i -p '')"
+    confirm="$(echo -e "Cancel\0icon\x1ferror\n$choice\0icon\x1f${icons[$choice]}" | rofi -dmenu -i -p '')"
 
     echo $choice
     echo $confirm
 
-    if [ "$confirm" == "Yes" ]; then
+    if [ "$confirm" == $choice ]; then
         if [ "$choice" == "Logout" ]; then
             qtile cmd-obj -o cmd -f shutdown &
             sleep 3
@@ -21,8 +24,8 @@ if [ "$choice" != "" ]; then
             qtile cmd-obj -o cmd -f shutdown &
             systemctl poweroff
         elif [ "$choice" == "Lock" ]; then
-            #~/.scripts/lock
-            dm-tool lock
+            ~/.scripts/lock
+            #dm-tool lock
         elif [ $choice == "Sleep" ]; then
             systemctl suspend
         fi

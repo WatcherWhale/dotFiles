@@ -25,11 +25,22 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
-" Ranger
+" Split handling
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+nnoremap <S-h> <C-w>>
+nnoremap <S-l> <C-w><
+
+
+
+" File manager
 let g:ranger_map_keys = 0
-noremap <silent> <F2>      :Ranger<CR>
-vnoremap <silent> <F2>     <C-C>:Ranger<CR>
-inoremap <silent> <F2>     <C-O>:Ranger<CR>
+noremap <silent> <F2>      :NERDTreeToggle<CR>
+vnoremap <silent> <F2>     <C-C>:NERDTreeToggle<CR>
+inoremap <silent> <F2>     <C-O>:NERDTreeToggle<CR>
 
 noremap <silent> <C-n>      :NERDTreeToggle<CR>
 vnoremap <silent> <C-n>     <C-C>:NERDTreeToggle<CR>

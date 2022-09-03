@@ -16,6 +16,13 @@ def kterm(cmd, cls=None):
     else:
         return terminal + ' -e fish -C "' + cmd + '"'
 
+def dterm(cmd, cls=None):
+    if cls != None:
+        return terminal + ' --class "' + cls + '" -e fish -c "' + cmd + '"'
+    else:
+        return terminal + ' -e fish -c "' + cmd + '"'
+
+
 def pterm(cmd, cls=None):
     if cls != None:
         return terminal + ' --class "' + cls + '" -e "' + cmd + '"'
@@ -79,9 +86,9 @@ keys = [
 
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
-    Key([mod, "shift"], "r", lazy.spawn("qtile cmd-obj -o cmd -f restart"), desc="Restart Qtile"),
+    Key([mod, "shift"], "r", lazy.spawn("qtile cmd-obj -o cmd -f reload_config"), desc="Restart Qtile"),
     #Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "shift"], "e", lazy.spawn("exit-options-qtile")),
+    Key([mod, "shift"], "e", lazy.spawn(home + "/.scripts/exit-options-qtile")),
     Key(["control", "mod1"], "l", lazy.spawn("lock")),
 
     Key([mod], "f", lazy.window.toggle_fullscreen()),
@@ -132,7 +139,8 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, "control"], "Return", lazy.group["scratchpad"].dropdown_toggle("terminal")),
 
-    Key([], "Print", lazy.spawn(home + "/.scripts/screenshot")),
+    Key([], "Print", lazy.spawn("flameshot gui")),
+    #Key([], "Print", lazy.spawn(home + "/.scripts/screenshot")),
 
     Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("calculator")),
     Key([], "XF86Calculator", lazy.group["scratchpad"].dropdown_toggle("calculator")),
@@ -149,8 +157,7 @@ keys = [
        #Key([], "w", lazy.spawn("rofi-wifi-menu")),
 
         Key([], "t", lazy.spawn("/usr/bin/telegram-desktop"), lazy.function(focus_group, group_names[2])),
-        Key(["shift"], "d", lazy.spawn("/opt/Discord-linux-x64/Discord"), lazy.function(focus_group, group_names[2])),
-        Key([], "d", lazy.spawn("/usr/bin/discord"), lazy.function(focus_group, group_names[2])),
+        Key([], "d", lazy.spawn("flatpak run com.discordapp.Discord"), lazy.function(focus_group, group_names[2])),
 
         Key([], "m", lazy.spawn("/usr/bin/mailspring")),
 
@@ -161,9 +168,9 @@ keys = [
         Key([], "r", lazy.spawn(kterm("ranger"))),
         Key(["shift"], "r", lazy.spawn("thunar")),
 
-        Key([], "w", lazy.spawn("nitrogen --restore")),
+        Key([], "w", lazy.spawn(dterm("wiki"))),
 
-        Key([], "n", lazy.spawn(pterm("joplin"))),
+        Key([], "n", lazy.spawn(dterm("wiki"))),
         Key(["shift"], "n", lazy.spawn("/usr/bin/joplin-desktop")),
         Key([], "x", lazy.spawn("/usr/bin/xournalpp")),
 

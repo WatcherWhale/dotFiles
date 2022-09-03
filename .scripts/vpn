@@ -5,6 +5,7 @@ connlen="$(cat /usr/local/share/vpn)"
 
 if [ "$1" == "stop" ] || [ "$1" == "disconnect" ] || [ "$1" == "d" ]; then
     systemctl --user stop sshuttle
+    systemctl --user stop sshuttle-school
     if [ "$connlen" != "0" ]; then
         sudo wgnord d
         sudo wg-quick down wg0-client
@@ -28,7 +29,12 @@ then
     sudo killall vpn-get
 elif [ "$1" == "sshuttle" ] || [ "$1" == "ssh" ];
 then
+    sudo systemctl restart dnsmasq.service stubby.service
     systemctl --user start sshuttle
+elif [ "$1" == "school" ];
+then
+    sudo systemctl restart dnsmasq.service stubby.service
+    systemctl --user start sshuttle-school
 else
     sudo wgnord c $1
 fi

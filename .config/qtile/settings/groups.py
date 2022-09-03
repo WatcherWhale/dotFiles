@@ -37,11 +37,14 @@ def focus_group(qtile, group_name):
 groups = [ Group(i) for i in group_names]
 
 groups[2].matches = [Match(wm_class="telegram-desktop"), Match(wm_class="discord-nativefier-6ae157"), Match(wm_class="discord"),
-                     Match(wm_class="signal"), Match(wm_class="whatsapp-nativefier-d40211")]
+                     Match(wm_class="signal"), Match(wm_class="whatsapp-nativefier-d40211"), Match(wm_class="microsoft teams - preview"),
+                     Match(wm_class="element")]
 groups[2].layout = "max"
+
 groups[4].layout = "max"
+
 groups[6].layout = "max"
-groups[6].matches = [Match(wm_class="spotify"), Match(wm_class="music_terminal"), Match(wm_class="music")]
+groups[6].matches = [Match(wm_class="spotify"), Match(wm_class="music_terminal"), Match(wm_class="music"), Match(wm_class="jellyfinmediaplayer")]
 
 wm_classes = ["spectacle"]
 

@@ -1,11 +1,11 @@
 import os
 import subprocess
 
-from typing import List  # noqa: F401
-
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
+
+from libqtile.backend.wayland import InputConfig
 
 from screens import getScreens, widget_defaults, getNumScreens
 
@@ -23,12 +23,14 @@ home = os.path.expanduser("~")
 @hook.subscribe.startup_once
 def autostart_once():
     path = home + "/.config/qtile"
-    subprocess.call([path + "/autostart"])
+    if qtile.core.name == "x11":
+        subprocess.call([path + "/autostart"])
 
 @hook.subscribe.startup
 def autostart_always():
     path = home + "/.config/qtile"
-    subprocess.call([path + "/autostart_always"])
+    if qtile.core.name == "x11":
+        subprocess.call([path + "/autostart_always"])
 
 #####################
 # Group KeyBindings #
@@ -92,6 +94,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 
+
 floating_layout = layout.Floating(float_rules=[
     *layout.Floating.default_float_rules,
     Match(wm_class='confirmreset'),  # gitk
@@ -102,6 +105,12 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
 ], border_width=2, border_focus=colors[10], border_normal=colors[3])
+
+auto_minimize = True
+wl_input_rules = {
+    "type:touchpad": InputConfig(natural_scroll=True, tap=True),
+    "*": InputConfig(kb_layout="be", kb_variant="nodeadkeys")
+}
 
 auto_fullscreen = True
 focus_on_window_activation = "smart"

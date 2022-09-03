@@ -15,3 +15,5 @@ source /home/watcherwhale/.config/nvim/coc.vim
 
 " Load CtrlP
 source /home/watcherwhale/.config/nvim/fuzzy.vim
+
+source /home/watcherwhale/.config/nvim/commands.vim

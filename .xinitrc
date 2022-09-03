@@ -24,20 +24,27 @@ source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-#xrandr --setprovideroutputsource modesetting NVIDIA-0
-#xrandr --auto
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 autorandr --change
 xrandr --dpi 96
 xrdb /home/watcherwhale/.Xresources
 
+xset s off
+xset -dpms
+
 export QT_QPA_PLATFORMTHEME=gtk2
 export QT_SCALE_FACTOR=1
 export PATH=$PATH:~/.scripts/:/usr/local/MATLAB/R2020b/bin/
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export DIFFPROG="nvim -d"
+export GOPATH="$HOME/.local/go"
+
+
+/usr/bin/prime-offload
 
 #xsettingsd &
 

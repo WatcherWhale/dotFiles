@@ -74,4 +74,16 @@ Plug 'alvan/vim-closetag'
 " Spelling & Grammar
 Plug 'dpelle/vim-LanguageTool'
 
+" Install docstring
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
+
 call plug#end()

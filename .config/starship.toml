@@ -1,16 +1,18 @@
 format = """\
+  $shell\
   $username\
   $directory\
   $hostname\
+  $kubernetes\
   $git_branch\
   $git_commit\
   $git_state\
   $git_status\
   $cmd_duration\
+  $python\
   $custom\
   $line_break\
   $jobs\
-  $battery\
   $character\
   """
 #right_format= """$time"""
@@ -37,3 +39,24 @@ read_only = " "
 [hostname]
 ssh_only = false
 format = "[@ ](bold)[$hostname](bold blue) "
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[shell]
+disabled = false
+format = "[$indicator]($style)"
+fish_indicator = ""
+bash_indicator = "\\[bash\\] "
+zsh_indicator = "\\[zsh\\] "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+
+
+

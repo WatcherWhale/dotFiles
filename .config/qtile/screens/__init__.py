@@ -24,7 +24,7 @@ def getTopBar(third = False):
 
     groupBox = widget.GroupBox(
         highlight_method="block",
-        this_current_screen_border=colors[10],
+        this_current_screen_border=colors[17],
         this_screen_border=colors[10],
         other_current_screen_border=colors[16],
         other_screen_border=colors[16],
@@ -33,7 +33,7 @@ def getTopBar(third = False):
         urgent_alert_method="block",
         urgent_text=colors[12],
         foreground=colors[6],
-        highlight_color = [colors[6], colors[12]],
+        highlight_color = [colors[0], colors[1], colors[4]],
         padding_x = 10,
         padding_y = 15,
         rounded = False,
@@ -41,7 +41,7 @@ def getTopBar(third = False):
         margin_x = 0,
         disable_drag = True,
         hide_unused = True,
-        font="NotoSansMono Nerd Font",
+        font="NotoSansMono Nerd Font"
     )
 
     if third:
@@ -68,13 +68,11 @@ def getTopBar(third = False):
             visible_groups= [group_names[2], group_names[4], group_names[6]]
         )
 
-
-
     return bar.Bar([
         widget.Sep(padding=10, foreground=colors[0]),
         widget.CurrentScreen(
-            active_text="",
-            inactive_text="",
+            active_text="",
+            inactive_text="",
             active_color=colors[6],
             inactive_color=colors[3],
             font="NotoSansMono Nerd Font",
@@ -98,6 +96,25 @@ def getTopBar(third = False):
             foreground= colors[6],
             padding = 7
         ),
+        widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
+
+        widget.Sep(padding=20, foreground=colors[0]),
+
+        widget.TextBox(
+            text="",
+            foreground=colors[10],
+            background=colors[1],
+            font="NotoSansMono Nerd Font",
+            padding=5
+        ),
+        widget.KeyboardLayout(
+            configured_keyboards = ["be nodeadkeys"],
+            display_map = {"be nodeadkeys": "BE"},
+            foreground = colors[6],
+            background = colors[1],
+            padding = 7
+        ),
+
         widget.Sep(padding=5, foreground=colors[1], background=colors[1]),
 
         widget.Sep(padding=20, foreground=colors[0]),
@@ -223,23 +240,42 @@ def getTopBar(third = False):
     ], 45, background=colors[0])
 
 def getBottomBar():
-    return bar.Bar([
-        #widget.WindowTabs(),
-        widget.Spacer(
-            foreground=colors[0]
-        ),
-        widget.Systray(
-            icon_size=25,
-            padding=10,
-            background=colors[0]
-        ),
-        widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
-        widget.Clock(
-            format='%H:%M:%S\n%a %d/%m/%y',
-            fontsize=15,
-        ),
-        widget.Sep(padding=10, foreground=colors[0] ),
-    ],45, background=colors[0])
+    if qtile.core.name == "x11":
+        return bar.Bar([
+            #widget.WindowTabs(),
+            widget.Spacer(
+                foreground=colors[0]
+            ),
+            widget.Systray(
+                icon_size=25,
+                padding=10,
+                background=colors[0]
+            ),
+            widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
+            widget.Clock(
+                format='%H:%M:%S\n%a %d/%m/%y',
+                fontsize=15,
+            ),
+            widget.Sep(padding=10, foreground=colors[0] ),
+        ],45, background=colors[0])
+    else:
+        return bar.Bar([
+            #widget.WindowTabs(),
+            widget.Spacer(
+                foreground=colors[0]
+            ),
+            widget.StatusNotifier(
+                icon_size=25,
+                padding=10,
+                background=colors[0]
+            ),
+            widget.Sep(padding=20, background=colors[0], foreground=colors[0]),
+            widget.Clock(
+                format='%H:%M:%S\n%a %d/%m/%y',
+                fontsize=15,
+            ),
+            widget.Sep(padding=10, foreground=colors[0] ),
+        ],45, background=colors[0])
 
 
 def getNumScreens():

@@ -1,3 +1,5 @@
+let g:python3_host_prog='/usr/bin/python3'
+
 " LEARN VIM BETTER
 
 "nnoremap <up>    <nop>
@@ -139,12 +141,10 @@ let g:vimtex_quickfix_enabled = 0
 let g:vimtex_compiler_latexmk = {
        \ 'executable' : 'latexmk',
        \ 'options' : [
+       \   '-pdflatex=lualatex',
        \   '-f',
        \   '-shell-escape',
        \   '-pdf',
-       \   '-pdflatex=lualatex',
-       \   '-file-line-error',
-       \   '-synctex=1',
        \   '-interaction=nonstopmode',
        \ ],
        \}
@@ -176,3 +176,18 @@ set spelllang=en,nl
 
 let g:languagetool_lang = "en-GB"
 let g:languagetool_cmd = "/sbin/languagetool"
+
+let g:pydocstring_formatter = "google"
+
+" Clear search
+command ClearSearch :let @/ = ""
+command Nos :call histdel('/') | :noh
+
+" Vim Wiki
+let g:vimwiki_list = [{'path': '~/Documents/Notes/', 'path_html': '~/Documents/Notes-html'}]
+
+set nocompatible
+filetype plugin on
+syntax on
+
+let g:vimwiki_toc_header_level = 2

@@ -9,3 +9,6 @@ fi
 echo -n -e "\e[0m\e[34m"
 cat $ascii
 echo -n -e "\e[0m"
+
+task due.after:yesterday due.before:30d list 2> /dev/null
+exit 0

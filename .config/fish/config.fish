@@ -1,17 +1,27 @@
-set -x PATH /usr/bin /usr/local/bin /bin /sbin /usr/local/sbin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl /home/watcherwhale/.scripts/ /home/watcherwhale/.local/bin /opt/texlive/2021/bin/x86_64-linux/ /usr/local/MATLAB/R2020b/bin/ ~/.local/share/gem/ruby/3.0.0/bin
+set -x PATH /usr/bin /usr/local/bin /bin /sbin /usr/local/sbin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl /home/watcherwhale/.scripts/ /home/watcherwhale/.local/bin /opt/texlive/2021/bin/x86_64-linux/ /usr/local/MATLAB/R2020b/bin/ ~/.local/share/gem/ruby/3.0.0/bin /home/watcherwhale/.linkerd2/bin /home/watcherwhale/.krew/bin
 set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x DIFFPROG "nvim -d"
 set -x TEXMFHOME "~/.local/share/texmf"
 set -x JUPYTERLAB_DIR $HOME/.local/share/jupyter/lab
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
+set -x LIBVIRT_DEFAULT_URI "qemu:///system"
+set -x JAVA_HOME "/usr/lib/jvm/java-17-openjdk/"
 
 set --unexport COLUMNS
 set --unexport LINES
 
+export TALOSCONFIG="/home/watcherwhale/.config/talos/talosconfig"
+
+eval (dircolors -c ~/.dircolors)
+
 #source ~/.config/fish/nord.fish
 
 set fish_greeting
+
+source ~/.config/fish/completions/talos.fish
+source ~/.config/fish/completions/linkerd.fish
+source ~/.config/fish/completions/kubectl-krew.fish
 
 # Make ranger cd to the chosen directory
 #alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
@@ -32,11 +42,34 @@ alias 2pdf="libreoffice --headless --invisible --convert-to pdf"
 alias latexcompile="latexmk -pdflatex=lualatex -f -shell-escape -pdf -interaction=nonstopmode"
 alias fm="thunar ."
 
+# Ansible
+alias ap="ansible-playbook"
+
+# Kubernetes
+alias kc="kubectl"
+alias kcp="kubectl get pods"
+alias ktop="kubectl top pods"
+alias kx="kubectx"
+alias kns="kubens"
+alias keit="kubectl exec -it"
+alias kedit="kubectl edit"
+
+# Docker
+alias deit="docker exec -it"
+alias drit="docker run --rm -it"
+alias dr="docker run --rm"
+alias db="docker build"
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
+
+alias ssh="env TERM=xterm-256color ssh"
+
+alias venvactivate="source ./.venv/bin/activate.fish"
+
 # use trash instead of the default remove
 alias rm="trash"
 
 # Media
-alias ytmp3="youtube-dl -f bestaudio -x --audio-format mp3 --embed-thumbnail --add-metadata -i -o \"%(autonumber)s %(title)s.%(ext)s\""
+alias ytmp3="yt-dlp -f bestaudio -x --audio-format mp3 --embed-thumbnail --add-metadata -i -o \"%(autonumber)s %(title)s.%(ext)s\""
 alias cpimg="xclip -selection clipboard -t image/png -i"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -61,6 +94,9 @@ alias merge="git merge"
 # Vim
 alias vim="nvim"
 alias svim="sudo -e"
+alias notes="nvim \"+:VimwikiIndex\""
+alias n="notes"
+alias wiki="notes"
 
 # cd aliasses
 alias ..="cd .."
@@ -113,4 +149,4 @@ end
 
 #bind \cL 'clear && terminalmsg'
 
-
+bind \ce edit_command_buffer

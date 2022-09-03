@@ -1,4 +1,5 @@
 #!/bin/sh
 
 qtile cmd-obj -o cmd -f restart &
-i3 restart &
+#i3 restart &
+systemctl --user restart pipewire-pulse pipewire &

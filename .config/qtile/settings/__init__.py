@@ -1,5 +1,25 @@
 import os
 
+dark_colors_cat = [
+    "#161320",
+    "#302D41",
+    "#302D41",
+    "#575268",
+    "#988BA2",
+    "#C3BAC6",
+    "#D9E0EE",
+    "#B5E8E0",
+    "#C9CBFF",
+    "#89DCEB",
+    "#96CDFB",
+    "#F28FAD",
+    "#F8BD96",
+    "#FAE3B0",
+    "#ABE9B3",
+    "#F5C2E7",
+    "#302D41",
+    "#96CDFB"
+]
 dark_colors = [
     "#2e3440",
     "#3b4252",
@@ -17,7 +37,8 @@ dark_colors = [
     "#ebcb8b",
     "#a3be8c",
     "#b48ead",
-    "#3b4252"
+    "#3b4252",
+    "#5e81ac"
 ]
 
 light_colors = [
@@ -37,7 +58,8 @@ light_colors = [
     "#ebcb8b",
     "#a3be8c",
     "#b48ead",
-    "#88c0d0"
+    "#88c0d0",
+    "#5e81ac"
 ]
 
 def getTheme():

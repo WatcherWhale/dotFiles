@@ -3,8 +3,8 @@ clear
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]];
 then
-  #echo "1) Xorg (QTile)"
-  #echo "2) Wayland (Sway)"
+  echo "1) Xorg (QTile)"
+  echo "2) Wayland (Sway)"
 
   #read de
 
@@ -19,7 +19,7 @@ then
     export QT_QPA_PLATFORMTHEME="gtk2"
     export QT_SCALE_FACTOR=1
 
-    exec sway
+    exec qtile start -b wayland -l DEBUG > log.txt
   else
     startx
     sudo /usr/bin/prime-switch
