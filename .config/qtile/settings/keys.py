@@ -1,9 +1,16 @@
 import os
 
+from libqtile.log_utils import logger
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
 
 from settings.groups import focus_group, group_names
+
+import subprocess
+
+def sendmessage(message):
+    subprocess.Popen(['notify-send', message])
+    return
 
 home = os.path.expanduser("~")
 
@@ -28,6 +35,37 @@ def pterm(cmd, cls=None):
         return terminal + ' --class "' + cls + '" -e "' + cmd + '"'
     else:
         return terminal + ' -e "' + cmd + '"'
+
+def current_layout(group):
+    return group.layout.info()["name"]
+
+def all_layouts(group):
+    return list(map(lambda x: x.info()["name"], group.layouts))
+
+def next_layout_constrained(qtile):
+    group = qtile.current_group
+
+    current = current_layout(group)
+    layouts = all_layouts(group)
+    current_i = layouts.index(current)
+
+    max = 2
+    group.layout = layouts[(current_i + 1) % max]
+
+def rotate_layout(qtile):
+    group = qtile.current_group
+
+    current = current_layout(group)
+    layouts = all_layouts(group)
+
+    if current == "max":
+        return "max"
+
+    # Remove max layout from possible layouts
+    layouts.remove("max")
+    current_i = layouts.index(current)
+
+    group.layout = layouts[(current_i + 1) % len(layouts)]
 
 keys = [
     ##################
@@ -79,8 +117,9 @@ keys = [
         lazy.layout.increase_nmaster(),
         desc="Grow window up"),
 
-    Key([mod, "shift"], "Tab", lazy.layout.flip()),
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    #Key([mod, "shift"], "Tab", lazy.layout.flip()),
+    Key([mod], "Tab", lazy.function(next_layout_constrained), desc="Toggle between max layout and monadtall"),
+    Key([mod, "shift"], "Tab", lazy.function(rotate_layout), desc="Rotate similar layouts"),
     Key([mod, "shift"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
 

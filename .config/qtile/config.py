@@ -59,9 +59,18 @@ layout_theme = {
     "shift_widnows": True
 }
 
+max_layout_theme = {
+    "margin" : 0,
+    "border_width": 0,
+    "border_focus": colors[10],
+    "border_normal": colors[3],
+    "shift_widnows": True
+}
+
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max(**max_layout_theme),
+    layout.MonadWide(**layout_theme),
 ]
 
 

@@ -47,6 +47,7 @@ alias ap="ansible-playbook"
 
 # Kubernetes
 alias kc="kubectl"
+alias kcw="watch -n 0.5 kubectl"
 alias kcp="kubectl get pods"
 alias ktop="kubectl top pods"
 alias kx="kubectx"
@@ -133,7 +134,7 @@ if test "$TERM" = "xterm-kitty"
 end
 
 # Fun
-alias rr="~/.scripts/roll.sh"
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 
 function fish_greeting
     terminalmsg
